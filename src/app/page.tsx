@@ -1,9 +1,9 @@
-import { Button } from "@nextui-org/react";
+import GenerateImageForm from "@/components/GenerateImageForm";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Button size="lg">Generate</Button>
+      <GenerateImageForm />
     </main>
   );
 }
