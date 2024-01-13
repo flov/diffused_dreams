@@ -17,10 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body>
         <Providers>
-          <div className="dark">
+          <div>
             <Header />
 
             <main className="container min-h-screen mx-auto px-4 max-w-6xl">

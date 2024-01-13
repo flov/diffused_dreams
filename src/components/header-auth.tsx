@@ -39,7 +39,7 @@ export default function HeaderAuth() {
       <>
         <NavbarItem>
           <form action={actions.signIn}>
-            <Button type="submit" color="primary" variant="bordered">
+            <Button type="submit" variant="bordered">
               Sign in with Github
             </Button>
           </form>
