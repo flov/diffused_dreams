@@ -9,7 +9,7 @@ const GenerateImageForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [image, setImage] = useState<GenerateImageApiResponse>();
   const [prompt, setPrompt] = useState(
-    "beautiful lady, (freckles), frowning, blue eyes, fuzzy messy hair, dark makeup, hyperdetailed photography, apocalyptic scenario",
+    "beautiful lady, (freckles), bright smile, blue eyes, fuzzy messy hair, dark makeup, hyperdetailed photography",
   );
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
