@@ -1,6 +1,5 @@
 "use client";
 
-import { db } from "@/db";
 import { GenerateImageApiResponse } from "@/types";
 import { Button, Input } from "@nextui-org/react";
 
