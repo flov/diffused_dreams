@@ -1,3 +1,6 @@
+export const maxDuration = 50; // This function can run for a maximum of 5 seconds
+export const dynamic = "force-dynamic";
+
 export async function POST(request: Request) {
   const url = "https://api.runpod.ai/v2/rc1sln2qncxcp6/runsync";
   const model = "sdxlYamersRealisticNSFW_v5SX.safetensors";
