@@ -2,21 +2,18 @@
 
 import {
   Button,
-  Input,
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";
-import React, { useState } from "react";
-import HeaderAuth from "./header-auth";
+import React, { FC, useState } from "react";
+import HeaderAuth from "./HeaderAuth";
 import * as actions from "@/actions";
 
-const header = () => {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -59,6 +56,4 @@ const header = () => {
       </NavbarMenu>
     </Navbar>
   );
-};
-
-export default header;
+}

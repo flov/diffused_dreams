@@ -7,6 +7,7 @@ import { db } from "@/db";
 import { redirect } from "next/navigation";
 import { paths } from "@/paths";
 import { revalidatePath } from "next/cache";
+import type { Topic } from "@prisma/client";
 
 const createTopicSchema = z.object({
   name: z
@@ -49,10 +50,8 @@ export const createTopic = async (
     return { errors: result.error.flatten().fieldErrors };
   }
 
-  let topic;
+  let topic: Topic;
   try {
-    // wait for 2 seconds
-    await new Promise((resolve) => setTimeout(resolve, 2000));
     topic = await db.topic.create({
       data: {
         slug: result.data.name,
@@ -68,6 +67,7 @@ export const createTopic = async (
   }
 
   revalidatePath("/");
+  revalidatePath("/topics");
 
-  redirect(paths.topicShowPath(topic.slug));
+  redirect("/topics");
 };

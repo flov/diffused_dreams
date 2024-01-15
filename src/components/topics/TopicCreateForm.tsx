@@ -13,14 +13,12 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
+import { FormButton } from "../common/FormButton";
 
 export default function TopicCreateForm() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
   const [formState, action] = useFormState(createTopic, { errors: {} });
-  const formStatus = useFormStatus();
-  console.log(formStatus);
 
   return (
     <div className="flex justify-center">
@@ -62,13 +60,7 @@ export default function TopicCreateForm() {
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close
                   </Button>
-                  <Button
-                    isLoading={formStatus.pending}
-                    color="primary"
-                    type="submit"
-                  >
-                    Action
-                  </Button>
+                  <FormButton>Create Topic</FormButton>
                 </ModalFooter>
               </form>
             </>
