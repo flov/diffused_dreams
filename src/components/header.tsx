@@ -31,13 +31,13 @@ export default function Header() {
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          <p className="font-bold text-inherit">Yo</p>
+          <p className="font-bold text-inherit">Diffused Dreams</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
-          <p className="font-bold text-inherit">Yo</p>
+          <p className="font-bold text-inherit">Diffused Dreams</p>
         </NavbarBrand>
       </NavbarContent>
 
