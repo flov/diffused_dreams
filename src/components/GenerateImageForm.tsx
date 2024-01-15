@@ -1,20 +1,20 @@
 "use client";
 
-import { GenerateImageApiResponse } from "@/types";
+import { RunResponse, StatusResponse } from "@/types";
 import { Button, Input } from "@nextui-org/react";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import ShowStatus from "@/components/images/ShowStatus";
 
 const GenerateImageForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [image, setImage] = useState<GenerateImageApiResponse>();
+  const [run, setRun] = useState<RunResponse>();
+  const [status, setStatus] = useState<StatusResponse>();
   const [prompt, setPrompt] = useState(
     "beautiful lady, (freckles), bright smile, blue eyes, fuzzy messy hair, dark makeup, hyperdetailed photography",
   );
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsLoading(true);
     const res = await fetch("/api/generate-image", {
       method: "POST",
       headers: {
@@ -22,10 +22,34 @@ const GenerateImageForm = () => {
       },
       body: JSON.stringify(prompt),
     });
-    const data = (await res.json()) as GenerateImageApiResponse;
-    setImage(data);
-    setIsLoading(false);
+    const runData = (await res.json()) as RunResponse;
+
+    setRun(runData);
+    setStatus(undefined);
   };
+
+  useEffect(() => {
+    const pollStatus = async () => {
+      if (run) {
+        let currentStatus = status;
+        while (
+          currentStatus?.status !== "COMPLETED" &&
+          currentStatus?.status !== "FAILED"
+        ) {
+          const res = await fetch(`/api/status/${run.id}`);
+          const statusData = await res.json();
+          currentStatus = statusData;
+          setStatus(statusData);
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          // Wait for 1 second before polling again
+        }
+      }
+    };
+
+    pollStatus();
+  }, [run]);
+
+  console.log(run, status);
 
   return (
     <>
@@ -35,20 +59,25 @@ const GenerateImageForm = () => {
             required={true}
             size="md"
             type="text"
-            label="prompt"
-            placeholder="Enter your prompt"
-            onChange={(e) => setPrompt(e.target.value)}
+            label="Prompt"
+            placeholder="Imagine..."
+            onChange={(e) => {
+              setPrompt(e.target.value);
+            }}
             value={prompt}
           />
         </div>
-        <Button isLoading={isLoading} color="primary" type="submit" size="lg">
+        <Button
+          isLoading={status && status.status !== "COMPLETED"}
+          color="primary"
+          type="submit"
+          size="lg"
+        >
           Generate!
         </Button>
-
-        {image && image.output.status === "success" && (
-          <img src={image.output.message} alt="generated image" />
-        )}
       </form>
+
+      <ShowStatus status={status} />
     </>
   );
 };

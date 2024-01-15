@@ -2,7 +2,7 @@ export const maxDuration = 10; // This function can run for a maximum of 50 seco
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
-  const url = "https://api.runpod.ai/v2/rc1sln2qncxcp6/runsync";
+  const url = "https://api.runpod.ai/v2/rc1sln2qncxcp6/run";
   const model = "sdxlYamersRealisticNSFW_v5SX.safetensors";
 
   const headers = {
@@ -75,6 +75,7 @@ export async function POST(request: Request) {
       },
     },
   };
+
   const res = await fetch(url, {
     method: "POST",
     headers: headers,
