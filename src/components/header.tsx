@@ -46,8 +46,11 @@ export default function Header() {
           <p className="font-bold text-inherit">Diffused Dreams</p>
         </NavbarBrand>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Github
+          <Link
+            color="foreground"
+            href="https://github.com/flov/diffused_dreams"
+          >
+            Github repo
           </Link>
         </NavbarItem>
       </NavbarContent>
