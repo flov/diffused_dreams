@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 export default function Providers({ children }: { children: ReactNode }) {
   return (
     <SessionProvider>
-      <NextUIProvider>{children}</NextUIProvider>;
+      <NextUIProvider>{children}</NextUIProvider>
     </SessionProvider>
   );
 }
