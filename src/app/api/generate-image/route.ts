@@ -12,12 +12,15 @@ export async function POST(request: Request) {
 
   const prompt = await request.json();
 
+  // random seed
+  const seed = Math.floor(Math.random() * 1000000000);
+
   const body = {
     input: {
       workflow: {
         "3": {
           inputs: {
-            seed: 133452345637,
+            seed: seed,
             steps: 40,
             cfg: 8,
             sampler_name: "dpmpp_2m_sde",
