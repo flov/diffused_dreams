@@ -1,16 +1,9 @@
-## Getting Started
+# Diffused Dreams
 
-First, run the development server:
+Next.js 14 website that generates stable diffusion images
+by using a comfy ui workflow by leveraging the GPU of a
+serverless Runpod API endpoint.
 
-```bash
-pnpm dev
-```
-
-# Mapping routes:
-
-| Page Name     | Path                      | Data show                  |
-| ------------- | ------------------------- | -------------------------- |
-| Home page     | /                         | Many posts, many topics    |
-| Topic show    | /topics/[slug]            | Single topic, many posts   |
-| Create a post | /topics/[slug]/posts/new  |                            |
-| Create a post | /topics/[slug]/posts/[id] | Single post, many comments |
+The Runpod serverless API uses [runpod-worker-comfy](https://github.com/flov/comfy-deploy-runpod-worker)
+to run a comfyUi docker image with the chosen model.
+In this case we are using [SDXL yamers realistic nsfw and sfw](https://civitai.com/models/127923/sdxl-yamers-realistic-nsfw-and-sfw).
