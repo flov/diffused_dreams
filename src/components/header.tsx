@@ -5,6 +5,7 @@ import {
   Navbar,
   NavbarBrand,
   NavbarContent,
+  NavbarItem,
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
@@ -12,9 +13,14 @@ import {
 import React, { FC, useState } from "react";
 import HeaderAuth from "./HeaderAuth";
 import * as actions from "@/actions";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const session = useSession();
+
+  console.log(session);
 
   return (
     <Navbar
@@ -39,6 +45,11 @@ export default function Header() {
         <NavbarBrand>
           <p className="font-bold text-inherit">Diffused Dreams</p>
         </NavbarBrand>
+        <NavbarItem>
+          <Link color="foreground" href="#">
+            Github
+          </Link>
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent justify="end">
@@ -47,12 +58,20 @@ export default function Header() {
 
       <NavbarMenu>
         <NavbarMenuItem>
-          <form action={actions.signOut}>
-            <Button type="submit" color="danger">
-              Sign Out
-            </Button>
-          </form>
+          <Link href="https://github.com/flov/diffused_dreams">Github</Link>
         </NavbarMenuItem>
+
+        {session.status === "authenticated" && (
+          <>
+            <NavbarMenuItem>
+              <form action={actions.signOut}>
+                <Button type="submit" color="danger">
+                  Sign Out
+                </Button>
+              </form>
+            </NavbarMenuItem>
+          </>
+        )}
       </NavbarMenu>
     </Navbar>
   );
