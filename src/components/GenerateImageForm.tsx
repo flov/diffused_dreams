@@ -9,9 +9,7 @@ import ShowStatus from "@/components/images/ShowStatus";
 const GenerateImageForm = () => {
   const [run, setRun] = useState<RunResponse>();
   const [status, setStatus] = useState<StatusResponse>();
-  const [prompt, setPrompt] = useState(
-    "beautiful lady, (freckles), bright smile, blue eyes, fuzzy messy hair, dark makeup, hyperdetailed photography",
-  );
+  const [prompt, setPrompt] = useState("");
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
