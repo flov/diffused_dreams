@@ -1,7 +1,7 @@
 import React from "react";
 
-import CaptureAndUpload from "@/components/webcam/CaptureAndUpload";
+import CaptureAndGenerate from "@/components/webcam/CaptureAndUpload";
 
 export default function page() {
-  return <CaptureAndUpload />;
+  return <CaptureAndGenerate />;
 }

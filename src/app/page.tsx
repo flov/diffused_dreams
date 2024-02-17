@@ -1,7 +1,7 @@
 export const revalidate = 3;
 
-import CaptureAndUpload from "@/components/webcam/CaptureAndUpload";
+import CaptureAndGenerate from "@/components/webcam/CaptureAndGenerate";
 
 export default async function Home() {
-  return <CaptureAndUpload />;
+  return <CaptureAndGenerate />;
 }

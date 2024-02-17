@@ -1,15 +1,15 @@
 "use client";
 
-import { RunResponse, StatusResponse } from "@/types";
-import { dataURLtoFile } from "@/utils";
-import { Button, Input, Select, SelectItem } from "@nextui-org/react";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
+
+import { Button, Input, Select, SelectItem } from "@nextui-org/react";
+import { GenerateImagePayload } from "@/types/api/generate-image";
+import { RunResponse, StatusResponse } from "@/types";
 import ShowStatus from "../images/ShowStatus";
 import { flows } from "./data";
-import { GenerateImagePayload } from "@/types/api/generate-image";
 
-const CaptureAndUpload: React.FC = () => {
+const CaptureAndGenerate: React.FC = () => {
   const webcamRef = useRef<Webcam>(null);
   const [run, setRun] = useState<RunResponse>();
   const [status, setStatus] = useState<StatusResponse>();
@@ -18,7 +18,6 @@ const CaptureAndUpload: React.FC = () => {
   );
   const [negativePrompt, setNegativePrompt] = useState("nsfw");
   const [flowId, setFlowId] = useState<number>(5);
-  const [screenshot, setScreenshot] = useState<string | null>(null);
 
   const generateImage = async (payload: GenerateImagePayload) => {
     const body = JSON.stringify(payload);
@@ -40,7 +39,6 @@ const CaptureAndUpload: React.FC = () => {
 
     const screenshot = webcamRef.current?.getScreenshot();
     if (screenshot) {
-      setScreenshot(screenshot);
       // remove the data:image/jpeg;base64, prefix
       const base64Image = screenshot.split(",")[1];
       generateImage({ base64Image, positivePrompt, negativePrompt, flowId });
@@ -142,4 +140,4 @@ const CaptureAndUpload: React.FC = () => {
   );
 };
 
-export default CaptureAndUpload;
+export default CaptureAndGenerate;
