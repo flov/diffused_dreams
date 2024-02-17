@@ -47,8 +47,6 @@ const GenerateImageForm = () => {
     pollStatus();
   }, [run]);
 
-  console.log(run, status);
-
   return (
     <>
       <form className="flex flex-col gap-4" onSubmit={onSubmit}>

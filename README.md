@@ -1,4 +1,4 @@
-# Diffused Dreams
+# EventStation.ai
 
 Next.js 14 website that generates stable diffusion images
 by using a comfy ui workflow by leveraging the GPU of a

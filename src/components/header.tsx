@@ -20,8 +20,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const session = useSession();
 
-  console.log(session);
-
   return (
     <Navbar
       isBordered
@@ -37,22 +35,14 @@ export default function Header() {
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          <p className="font-bold text-inherit">Diffused Dreams</p>
+          <p className="font-bold text-inherit">✨ EventStation.ai</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
-          <p className="font-bold text-inherit">Diffused Dreams</p>
+          <p className="font-bold text-inherit">✨ EventStation.ai</p>
         </NavbarBrand>
-        <NavbarItem>
-          <Link
-            color="foreground"
-            href="https://github.com/flov/diffused_dreams"
-          >
-            Github repo
-          </Link>
-        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent justify="end">

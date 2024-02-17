@@ -8,7 +8,7 @@ export async function GET(
 ) {
   const { id } = params;
 
-  const url = "https://api.runpod.ai/v2/rc1sln2qncxcp6/status/" + id;
+  const url = `https://api.runpod.ai/v2/${process.env.EVENTSTATION_RUNPOD_SINGLE_PERSON_EDNPOINT_ID}/status/${id}`;
 
   const headers = {
     Authorization: `Bearer ${process.env.RUNPOD_APIKEY}`,

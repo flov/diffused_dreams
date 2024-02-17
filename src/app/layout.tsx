@@ -4,8 +4,8 @@ import Providers from "./providers";
 import Header from "@/components/header";
 
 export const metadata: Metadata = {
-  title: "Diffused Dreams",
-  description: "Generate images using an SDXL stable diffusion model",
+  title: "EventStation",
+  description: "The AI Photo Booth",
 };
 
 export default function RootLayout({
