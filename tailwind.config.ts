@@ -18,6 +18,34 @@ const config: Config = {
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      layout: {
+        disabledOpacity: "0.3", // opacity-[0.3]
+        borderWidth: {
+          small: "1px", // border-small
+          medium: "1px", // border-medium
+          large: "2px", // border-large
+        },
+      },
+      themes: {
+        light: {},
+        dark: {
+          layout: {
+            borderColor: {
+              DEFAULT: "#000000",
+            },
+          },
+          colors: {
+            primary: {
+              DEFAULT: "#9450FF",
+              foreground: "#000000",
+            },
+            focus: "#260058",
+          },
+        },
+      },
+    }),
+  ],
 };
 export default config;
