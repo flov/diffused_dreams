@@ -1,12 +1,12 @@
 import { STATUS, StatusResponse } from "@/types";
-import { Chip } from "@nextui-org/react";
 import { FC } from "react";
+import { Chip } from "@nextui-org/react";
 
 type ShowStatusProps = {
   status: StatusResponse | undefined;
 };
 
-const getColor = (status: STATUS) => {
+const getColor = (status: string) => {
   if (status === "IN_QUEUE") {
     return "primary";
   } else if (status === "IN_PROGRESS") {
@@ -34,12 +34,6 @@ const ShowStatus: FC<ShowStatusProps> = ({ status }) => {
         <Chip color={getColor(status.status)}>{status.status}</Chip>
         <ExecutionTime status={status} />
       </div>
-
-      {status.status === "COMPLETED" && status.output.status === "success" && (
-        <div className="flex items-center justify-center">
-          <img src={status.output.message} />
-        </div>
-      )}
     </>
   );
 };

@@ -1,6 +1,12 @@
 "use client";
 
-import React, { FormEvent, useEffect, useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Webcam from "react-webcam";
 
 import { Button, Input, Select, SelectItem } from "@nextui-org/react";
@@ -76,7 +82,9 @@ const CaptureAndGenerate: React.FC = () => {
             type="text"
             label="Positive prompt"
             placeholder="Imagine..."
-            onChange={({ target: { value } }) => {
+            onChange={({
+              target: { value },
+            }: ChangeEvent<HTMLInputElement>) => {
               setPositivePrompt(value);
             }}
             value={positivePrompt}
@@ -90,7 +98,9 @@ const CaptureAndGenerate: React.FC = () => {
             type="text"
             label="Negative prompt"
             placeholder="Imagine..."
-            onChange={({ target: { value } }) => {
+            onChange={({
+              target: { value },
+            }: ChangeEvent<HTMLInputElement>) => {
               setNegativePrompt(value);
             }}
             value={negativePrompt}
@@ -104,11 +114,15 @@ const CaptureAndGenerate: React.FC = () => {
             placeholder="Select a flow"
             className="max-w"
             defaultSelectedKeys={flows[0].value}
-            onChange={(flow) => {
-              setFlowId(Number(flow));
+            onChange={({
+              target: { value },
+            }: ChangeEvent<HTMLSelectElement>) => {
+              setFlowId(Number(value));
             }}
           >
-            {(flow) => <SelectItem key={flow.value}>{flow.label}</SelectItem>}
+            {flows.map((flow) => (
+              <SelectItem key={flow.value}>{flow.label}</SelectItem>
+            ))}
           </Select>
         </div>
 

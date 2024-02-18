@@ -3,7 +3,7 @@
 import { RunResponse, StatusResponse } from "@/types";
 import { Button, Input } from "@nextui-org/react";
 
-import { FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import ShowStatus from "@/components/images/ShowStatus";
 
 const GenerateImageForm = () => {
@@ -57,7 +57,7 @@ const GenerateImageForm = () => {
             type="text"
             label="Prompt"
             placeholder="Imagine..."
-            onChange={(e) => {
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setPrompt(e.target.value);
             }}
             value={prompt}

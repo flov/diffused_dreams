@@ -31,5 +31,6 @@ type FAILED = {
 };
 
 export type Output = {
+  status: string;
   images: string;
 };

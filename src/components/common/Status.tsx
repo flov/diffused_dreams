@@ -18,15 +18,5 @@ const getColor = (status: STATUS) => {
 export default function Status(status: StatusResponse | undefined) {
   if (!status) return null;
 
-  return (
-    <>
-      <Chip color={getColor(status.status)}>{status.status}</Chip>
-
-      <h4>{status.status}</h4>
-      {status.status === "COMPLETED" && status.output.status === "success" && (
-        <img src={status.output.message} />
-      )}
-    </>
-  );
+  return <Chip color={getColor(status.status)}>{status.status}</Chip>;
 }
-
