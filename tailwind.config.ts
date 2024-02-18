@@ -20,22 +20,11 @@ const config: Config = {
   darkMode: "class",
   plugins: [
     nextui({
-      layout: {
-        disabledOpacity: "0.3", // opacity-[0.3]
-        borderWidth: {
-          small: "1px", // border-small
-          medium: "1px", // border-medium
-          large: "2px", // border-large
-        },
-      },
+      layout: {},
       themes: {
         light: {},
         dark: {
-          layout: {
-            borderColor: {
-              DEFAULT: "#000000",
-            },
-          },
+          layout: {},
           colors: {
             primary: {
               DEFAULT: "#9450FF",
