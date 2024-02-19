@@ -8,12 +8,13 @@ export async function GET(
 ) {
   const { id } = params;
 
-  const url = `https://api.runpod.ai/v2/${process.env.EVENTSTATION_RUNPOD_SINGLE_PERSON_EDNPOINT_ID}/status/${id}`;
+  const url = `https://api.runpod.ai/v2/wxgerymesqt634/status/${id}`;
 
   const headers = {
-    Authorization: `Bearer ${process.env.RUNPOD_APIKEY}`,
+    Authorization: `Bearer ${process.env.EVENTSTATION_RUNPOD_APIKEY}`,
     "Content-Type": "application/json",
   };
+  console.log({ headers, url });
   const res = await fetch(url, { method: "GET", headers });
   const data = await res.json();
 

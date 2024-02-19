@@ -4,7 +4,7 @@ export const maxDuration = 10; // This function can run for a maximum of 10 seco
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
-  const url = `https://api.runpod.ai/v2/${process.env.EVENTSTATION_RUNPOD_SINGLE_PERSON_EDNPOINT_ID}/run`;
+  const url = `https://api.runpod.ai/v2/${process.env.EVENTSTATION_RUNPOD_SINGLE_PERSON_ENDPOINT_ID}/run`;
 
   const headers = {
     Authorization: `Bearer ${process.env.EVENTSTATION_RUNPOD_APIKEY}`,
