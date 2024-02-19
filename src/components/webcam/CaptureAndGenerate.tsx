@@ -77,6 +77,7 @@ const CaptureAndGenerate: React.FC = () => {
       <form className="flex flex-col gap-4" onSubmit={capture}>
         <div className="flex w-full flex-wrap md:flex-nowrap md:mb-0 gap-4">
           <Input
+            color="secondary"
             required={true}
             size="md"
             type="text"
@@ -93,32 +94,34 @@ const CaptureAndGenerate: React.FC = () => {
 
         <div className="flex w-full flex-wrap md:flex-nowrap md:mb-0 gap-4">
           <Input
-            required={true}
-            size="md"
-            type="text"
+            color="secondary"
             label="Negative prompt"
-            placeholder="Imagine..."
             onChange={({
               target: { value },
             }: ChangeEvent<HTMLInputElement>) => {
               setNegativePrompt(value);
             }}
+            placeholder="Imagine..."
+            required={true}
+            size="md"
+            type="text"
             value={negativePrompt}
           />
         </div>
 
         <div className="flex w-full flex-wrap md:flex-nowrap md:mb-0 gap-4">
           <Select
+            className="max-w"
+            color="secondary"
+            defaultSelectedKeys={flows[0].value}
             items={flows}
             label="Flow"
-            placeholder="Select a flow"
-            className="max-w"
-            defaultSelectedKeys={flows[0].value}
             onChange={({
               target: { value },
             }: ChangeEvent<HTMLSelectElement>) => {
               setFlowId(Number(value));
             }}
+            placeholder="Select a flow"
           >
             {flows.map((flow) => (
               <SelectItem key={flow.value}>{flow.label}</SelectItem>

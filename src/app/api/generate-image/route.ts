@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   const url = `https://api.runpod.ai/v2/${process.env.EVENTSTATION_RUNPOD_SINGLE_PERSON_EDNPOINT_ID}/run`;
 
   const headers = {
-    Authorization: `Bearer ${process.env.RUNPOD_APIKEY}`,
+    Authorization: `Bearer ${process.env.EVENTSTATION_RUNPOD_APIKEY}`,
     "Content-Type": "application/json",
   };
 

@@ -27,10 +27,15 @@ const config: Config = {
           layout: {},
           colors: {
             primary: {
-              DEFAULT: "#9450FF",
-              foreground: "#000000",
+              DEFAULT: "#9353D3",
+              foreground: "#fff",
+            },
+            secondary: {
+              DEFAULT: "#C9A9E9",
+              foreground: "#fff",
             },
             focus: "#260058",
+            background: "#260058",
           },
         },
       },
