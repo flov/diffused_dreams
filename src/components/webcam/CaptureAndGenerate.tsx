@@ -17,6 +17,8 @@ import { flows } from "./data";
 
 const CaptureAndGenerate: React.FC = () => {
   const webcamRef = useRef<Webcam>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const [run, setRun] = useState<RunResponse>();
   const [status, setStatus] = useState<StatusResponse>();
   const [positivePrompt, setPositivePrompt] = useState(
@@ -24,6 +26,13 @@ const CaptureAndGenerate: React.FC = () => {
   );
   const [negativePrompt, setNegativePrompt] = useState("nsfw");
   const [flowId, setFlowId] = useState<number>(5);
+  const [base64Image, setBase64Image] = useState<string | ArrayBuffer>();
+  const [showWebcam, setShowWebcam] = useState(false);
+
+  const handleUseWebcam = () => {
+    setShowWebcam(true);
+    setBase64Image(undefined);
+  };
 
   const generateImage = async (payload: GenerateImagePayload) => {
     const body = JSON.stringify(payload);
@@ -40,7 +49,7 @@ const CaptureAndGenerate: React.FC = () => {
     setStatus(undefined);
   };
 
-  const capture = async (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const screenshot = webcamRef.current?.getScreenshot();
@@ -49,6 +58,24 @@ const CaptureAndGenerate: React.FC = () => {
       const base64Image = screenshot.split(",")[1];
       generateImage({ base64Image, positivePrompt, negativePrompt, flowId });
     }
+  };
+
+  // file upload for image
+  const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files) return;
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        if (reader.result) setBase64Image(reader.result);
+      };
+    }
+  };
+
+  const handleUploadImageClick = () => {
+    fileInputRef?.current?.click();
+    setShowWebcam(false);
   };
 
   useEffect(() => {
@@ -74,10 +101,10 @@ const CaptureAndGenerate: React.FC = () => {
 
   return (
     <div>
-      <form className="flex flex-col gap-4" onSubmit={capture}>
+      <form className="flex flex-col gap-4" onSubmit={onSubmit}>
         <div className="flex w-full flex-wrap md:flex-nowrap md:mb-0 gap-4">
           <Input
-            color="secondary"
+            color="primary"
             required={true}
             size="md"
             type="text"
@@ -94,7 +121,7 @@ const CaptureAndGenerate: React.FC = () => {
 
         <div className="flex w-full flex-wrap md:flex-nowrap md:mb-0 gap-4">
           <Input
-            color="secondary"
+            color="primary"
             label="Negative prompt"
             onChange={({
               target: { value },
@@ -112,7 +139,7 @@ const CaptureAndGenerate: React.FC = () => {
         <div className="flex w-full flex-wrap md:flex-nowrap md:mb-0 gap-4">
           <Select
             className="max-w"
-            color="secondary"
+            color="primary"
             defaultSelectedKeys={flows[0].value}
             items={flows}
             label="Flow"
@@ -129,10 +156,28 @@ const CaptureAndGenerate: React.FC = () => {
           </Select>
         </div>
 
-        <div className="flex justify-center">
-          {status?.status === "COMPLETED" ? (
-            <img src={status.output.images} />
-          ) : (
+        <div className="flex justify-around w-full flex-wrap md:flex-nowrap gap-4">
+          <Button color="primary" onClick={handleUploadImageClick}>
+            Upload image
+          </Button>
+          <input
+            type="file"
+            className="hidden"
+            onChange={handleFileInputChange}
+            ref={fileInputRef}
+          />
+          <Button color="primary" onClick={handleUseWebcam}>
+            Use Webcam
+          </Button>
+        </div>
+
+        {base64Image && (
+          <div className="flex justify-center">
+            <img src={base64Image as string} />
+          </div>
+        )}
+        {showWebcam && (
+          <div className="flex justify-center">
             <Webcam
               audio={false}
               ref={webcamRef}
@@ -140,6 +185,12 @@ const CaptureAndGenerate: React.FC = () => {
               width={640}
               height={480}
             />
+          </div>
+        )}
+
+        <div className="flex justify-center">
+          {status?.status === "COMPLETED" && (
+            <img alt="generated image" src={status.output.images} />
           )}
         </div>
         <Button
@@ -147,6 +198,7 @@ const CaptureAndGenerate: React.FC = () => {
           color="primary"
           type="submit"
           size="lg"
+          className="mb-8"
         >
           Go
         </Button>

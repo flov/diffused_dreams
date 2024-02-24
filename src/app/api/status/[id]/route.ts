@@ -14,7 +14,6 @@ export async function GET(
     Authorization: `Bearer ${process.env.EVENTSTATION_RUNPOD_APIKEY}`,
     "Content-Type": "application/json",
   };
-  console.log({ headers, url });
   const res = await fetch(url, { method: "GET", headers });
   const data = await res.json();
 
