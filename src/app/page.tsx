@@ -1,7 +1,12 @@
 export const revalidate = 3;
 
-import CaptureAndGenerate from "@/components/webcam/CaptureAndGenerate";
+import { Suspense } from "react";
+import { Wizard } from "@/components/wizard/Wizard";
 
 export default async function Home() {
-  return <CaptureAndGenerate />;
+  return (
+    <Suspense>
+      <Wizard />
+    </Suspense>
+  );
 }
