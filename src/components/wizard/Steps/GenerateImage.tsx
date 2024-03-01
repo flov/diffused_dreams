@@ -1,4 +1,5 @@
 import React, { FC, use, useEffect, useState } from "react";
+import { RWebShare } from "react-web-share";
 
 import { RunResponse, StatusResponse } from "@/types";
 import { GenerateImagePayload } from "@/types/api/generate-image";
@@ -72,20 +73,16 @@ export const GenerateImage: FC<GenerateImageProps> = ({
   }, [run]);
 
   const hasCompleted = status && status.status === "COMPLETED";
-  const generatedImage =
+  const generatedImageUrl =
     status && status.status === "COMPLETED" ? status.output.images : undefined;
 
   const handleDownload = () => {
-    if (generatedImage) {
+    if (generatedImageUrl) {
       const link = document.createElement("a");
-      link.href = generatedImage;
+      link.href = generatedImageUrl;
       link.download = "generated-image.jpg";
       link.click();
     }
-  };
-
-  const shareOnSocialMedia = () => {
-    console.log("share");
   };
 
   return (
@@ -98,12 +95,22 @@ export const GenerateImage: FC<GenerateImageProps> = ({
       >
         {hasCompleted ? (
           <>
-            <Image src={generatedImage} alt="Generated image" />
-            <div className="mt-4">
-              <Button onClick={handleDownload}>Download Image</Button>
-              <Button onClick={shareOnSocialMedia}>
-                Share on social media
+            <Image src={generatedImageUrl} alt="Generated image" />
+            <div className="mt-4 flex gap-4">
+              <Button size="lg" variant="bordered" onClick={handleDownload}>
+                Download Image
               </Button>
+              <RWebShare
+                data={{
+                  text: "My new badass AI character",
+                  url: generatedImageUrl,
+                }}
+                onClick={() => console.log("shared successfully!")}
+              >
+                <Button size="lg" variant="bordered">
+                  Share 🔗 on social media
+                </Button>
+              </RWebShare>
             </div>
           </>
         ) : status ? (
