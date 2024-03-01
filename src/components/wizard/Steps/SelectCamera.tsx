@@ -21,26 +21,35 @@ interface CameraProps {
   setBase64Image: Dispatch<SetStateAction<string>>;
 }
 
-interface Device {
-  deviceId: string;
-  kind: string;
-  label: string;
-}
-
 export const SelectCamera: FC<CameraProps> = ({ setBase64Image }) => {
   const webcamRef = useRef<Webcam>(null);
 
-  const [deviceId, setDeviceId] = useState({});
-  const [devices, setDevices] = useState<Device[]>([]);
+  const [selectedDevice, setSelectedDevice] = useState("");
+  const [devices, setDevices] = useState<MediaDeviceInfo[]>([]);
 
   const handleDevices = useCallback(
-    (mediaDevices: Device[]) =>
-      setDevices(mediaDevices.filter(({ kind }) => kind === "videoinput")),
+    (mediaDevices: MediaDeviceInfo[]) => {
+      const videoDevices = mediaDevices.filter(
+        (device) => device.kind === "videoinput",
+      );
+      setDevices(videoDevices);
+      setSelectedDevice(videoDevices[0]?.deviceId || "");
+    },
     [setDevices],
   );
 
   useEffect(() => {
-    navigator.mediaDevices.enumerateDevices().then(handleDevices);
+    const enumerateDevices = async () => {
+      try {
+        if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
+          await navigator.mediaDevices.enumerateDevices().then(handleDevices);
+        }
+      } catch (error) {
+        console.error("Error enumerating devices:", error);
+      }
+    };
+
+    enumerateDevices();
   }, [handleDevices]);
 
   const { handleNextPage } = useWizardNavigation();
@@ -54,6 +63,8 @@ export const SelectCamera: FC<CameraProps> = ({ setBase64Image }) => {
       handleNextPage("SelectGender");
     }
   };
+
+  console.log({ selectedDevice, devices });
 
   return (
     <form
@@ -69,8 +80,10 @@ export const SelectCamera: FC<CameraProps> = ({ setBase64Image }) => {
           className="max-w"
           items={devices}
           label="Camera"
+          key={selectedDevice}
+          defaultSelectedKeys={[selectedDevice]}
           onChange={({ target: { value } }: ChangeEvent<HTMLSelectElement>) => {
-            setDeviceId(value);
+            setSelectedDevice(value);
           }}
           placeholder="Select your camera"
         >
@@ -85,7 +98,7 @@ export const SelectCamera: FC<CameraProps> = ({ setBase64Image }) => {
           audio={false}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
-          videoConstraints={{ deviceId: deviceId }}
+          videoConstraints={{ deviceId: selectedDevice }}
           width={640}
           height={480}
         />

@@ -6,6 +6,7 @@ const NewImage = () => {
   return (
     <>
       <h1>Generate a new image</h1>
+      <GenerateImageForm />
     </>
   );
 };

@@ -27,8 +27,8 @@ const config: Config = {
           layout: {},
           colors: {
             primary: {
-              DEFAULT: "#fff",
-              foreground: "#000",
+              DEFAULT: process.env.PRIMARY_COLOR || "#fff",
+              foreground: process.env.BACKGROUND_COLOR || "#000",
             },
             secondary: {
               DEFAULT: "#000",
