@@ -112,6 +112,15 @@ export const GenerateImage: FC<GenerateImageProps> = ({
                 </Button>
               </RWebShare>
             </div>
+            <div className="mt-4 flex gap-4">
+              <Button
+                size="lg"
+                variant="bordered"
+                onClick={() => handleNextPage("SelectCameraOrFile")}
+              >
+                Exit
+              </Button>
+            </div>
           </>
         ) : status ? (
           <CircularProgress
