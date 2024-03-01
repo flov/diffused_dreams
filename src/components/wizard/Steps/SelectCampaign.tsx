@@ -38,7 +38,11 @@ export const characters = (gender: string): Character[] => [
     prompt: spaceMarine(gender),
     image: "/images/campaign_2.webp",
   },
-  { label: "wizard", prompt: wizard(gender), image: "/images/campaign_3.webp" },
+  {
+    label: "your grace",
+    prompt: wizard(gender),
+    image: "/images/campaign_3.webp",
+  },
 ];
 
 export const SelectCampaign: FC<SelectCampaignProps> = ({
