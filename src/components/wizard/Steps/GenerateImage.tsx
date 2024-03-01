@@ -96,7 +96,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
         {hasCompleted ? (
           <>
             <Image src={generatedImageUrl} alt="Generated image" />
-            <div className="mt-4 flex gap-4">
+            <div className="mt-4 flex flex-col sm:flex gap-4">
               <Button size="lg" variant="bordered" onClick={handleDownload}>
                 Download Image
               </Button>
@@ -108,7 +108,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
                 onClick={() => console.log("shared successfully!")}
               >
                 <Button size="lg" variant="bordered">
-                  Share 🔗 on social media
+                  Share 🔗
                 </Button>
               </RWebShare>
             </div>
