@@ -20,7 +20,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <div>
-            <main className="container mx-auto px-4 max-w-6xl w-full h-screen">
+            <main className="container mx-auto px-4 max-w-6xl w-full">
               <div className="flex justify-center">
                 <Link href="/">
                   <Image

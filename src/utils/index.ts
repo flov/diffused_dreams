@@ -10,3 +10,7 @@ export const dataURLtoFile = (dataurl: string) => {
   }
   return new File([u8arr], "capture.jpg", { type: mime });
 };
+
+export const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};

@@ -56,9 +56,12 @@ export const SelectCamera: FC<CameraProps> = ({ setBase64Image }) => {
   };
 
   return (
-    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
+    <form
+      className="flex flex-col h-2/3 items-center justify-center gap-4"
+      onSubmit={onSubmit}
+    >
       <div className="flex justify-center">
-        <h1 className="md:text-7xl text-4xl">Take a photo</h1>
+        <h1 className="md:text-6xl text-5xl sm:mb-4">Take a photo</h1>
       </div>
       <div className="flex w-full flex-wrap md:flex-nowrap md:mb-0 gap-4">
         <Select

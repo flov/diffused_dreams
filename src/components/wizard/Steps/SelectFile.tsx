@@ -7,6 +7,9 @@ import React, {
 } from "react";
 import useWizardNavigation from "../useWizardNavigation";
 import { Button, Image } from "@nextui-org/react";
+import { BackButton } from "./BackButton";
+import { CardButton } from "@/components/common/CardButton";
+import { UploadIcon } from "@/icons";
 
 interface UploadProps {
   setBase64Image: Dispatch<SetStateAction<string>>;
@@ -38,36 +41,51 @@ export const SelectFile: FC<UploadProps> = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <div className="flex flex-col items-center w-full flex-wrap md:flex-nowrap gap-4">
-      {base64Image ? (
-        <>
-          <Image src={base64Image} width={600} alt="Uploaded image" />
-          <div className="flex gap-4">
-            <Button
-              color="success"
-              onClick={() => handleNextPage("SelectGender")}
-            >
-              Confirm
-            </Button>
-            <Button color="danger" onClick={() => setBase64Image("")}>
-              Cancel
-            </Button>
-          </div>
-        </>
-      ) : (
-        <>
-          <h1>Select a file</h1>
-          <Button color="primary" onClick={handleUploadImageClick}>
-            Select file
-          </Button>
-        </>
-      )}
-      <input
-        type="file"
-        className="hidden"
-        onChange={handleFileInputChange}
-        ref={fileInputRef}
-      />
-    </div>
+    <>
+      <BackButton nextPage="SelectCameraOrFile" />
+      <div className="flex h-2/3 justify-center flex-col items-center w-full flex-wrap md:flex-nowrap gap-4">
+        {base64Image ? (
+          <ShowImage
+            base64Image={base64Image}
+            setBase64Image={setBase64Image}
+          />
+        ) : (
+          <>
+            <h1 className="mb-4">Select a file</h1>
+            <CardButton
+              icon={UploadIcon}
+              text="Upload a photo"
+              onPress={() => handleUploadImageClick()}
+            />
+          </>
+        )}
+        <input
+          type="file"
+          className="hidden"
+          onChange={handleFileInputChange}
+          ref={fileInputRef}
+        />
+      </div>
+    </>
+  );
+};
+
+const ShowImage: FC<{
+  base64Image: string;
+  setBase64Image: Dispatch<SetStateAction<string>>;
+}> = ({ base64Image, setBase64Image }) => {
+  const { handleNextPage } = useWizardNavigation();
+  return (
+    <>
+      <Image src={base64Image} width={600} alt="Uploaded image" />
+      <div className="flex gap-4">
+        <Button color="success" onClick={() => handleNextPage("SelectGender")}>
+          Confirm
+        </Button>
+        <Button color="danger" onClick={() => setBase64Image("")}>
+          Cancel
+        </Button>
+      </div>
+    </>
   );
 };

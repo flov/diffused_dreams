@@ -34,9 +34,15 @@ export const Wizard: FC = () => {
         <SelectFile setBase64Image={setBase64Image} base64Image={base64Image} />
       );
     case "SelectGender":
-      return <SelectGender setGender={setGender} />;
+      return <SelectGender base64Image={base64Image} setGender={setGender} />;
     case "SelectCampaign":
-      return <SelectCampaign setCampaign={setCampaign} gender={gender} />;
+      return (
+        <SelectCampaign
+          base64Image={base64Image}
+          setCampaign={setCampaign}
+          gender={gender}
+        />
+      );
     case "GenerateImage":
       return <GenerateImage base64Image={base64Image} prompt={campaign} />;
     default:

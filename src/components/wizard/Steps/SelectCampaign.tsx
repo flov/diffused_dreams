@@ -2,10 +2,12 @@ import React, { Dispatch, FC, SetStateAction } from "react";
 import { Card, CardFooter, Image } from "@nextui-org/react";
 import useWizardNavigation from "../useWizardNavigation";
 import { BackButton } from "./BackButton";
+import { useEffect } from "react";
 
 type SelectCampaignProps = {
   setCampaign: Dispatch<SetStateAction<string>>;
   gender: string;
+  base64Image: string;
 };
 
 export const spaceMarine = (gender: string) =>
@@ -42,14 +44,24 @@ export const characters = (gender: string): Character[] => [
 export const SelectCampaign: FC<SelectCampaignProps> = ({
   setCampaign,
   gender,
+  base64Image,
 }) => {
   const { handleNextPage } = useWizardNavigation();
+
+  useEffect(() => {
+    if (base64Image && !gender) {
+      handleNextPage("SelectGender");
+    } else if (!base64Image) {
+      handleNextPage("SelectCameraOrFile");
+    }
+  }, [base64Image]);
 
   return (
     <>
       <BackButton nextPage="SelectGender" />
 
-      <div className="flex flex-col sm:flex-row gap-4">
+      <h1 className="text-center mb-8">Select Campaign</h1>
+      <div className="min-h-[calc(100vh - 100px)] items-center justify-center flex flex-col sm:flex-row gap-4 mt-8">
         {characters(gender).map((character) => (
           <Card
             key={character.label}

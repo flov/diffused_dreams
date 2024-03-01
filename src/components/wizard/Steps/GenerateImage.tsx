@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, use, useEffect, useState } from "react";
 
 import { RunResponse, StatusResponse } from "@/types";
 import { GenerateImagePayload } from "@/types/api/generate-image";
@@ -71,19 +71,41 @@ export const GenerateImage: FC<GenerateImageProps> = ({
     pollStatus();
   }, [run]);
 
-  const hasNotStarted =
-    !status || status.status === "FAILED" || status.status === "COMPLETED";
   const hasCompleted = status && status.status === "COMPLETED";
   const generatedImage =
     status && status.status === "COMPLETED" ? status.output.images : undefined;
+
+  const handleDownload = () => {
+    if (generatedImage) {
+      const link = document.createElement("a");
+      link.href = generatedImage;
+      link.download = "generated-image.jpg";
+      link.click();
+    }
+  };
+
+  const shareOnSocialMedia = () => {
+    console.log("share");
+  };
 
   return (
     <>
       <BackButton nextPage="SelectCampaign" />
 
-      <div className="flex flex-col items-center justify-center">
+      <div
+        className="flex flex-col items-center justify-center h-full"
+        style={{ minHeight: "calc(100vh - 200px)" }}
+      >
         {hasCompleted ? (
-          <Image src={status.output.images} alt="Generated image" />
+          <>
+            <Image src={generatedImage} alt="Generated image" />
+            <div className="mt-4">
+              <Button onClick={handleDownload}>Download Image</Button>
+              <Button onClick={shareOnSocialMedia}>
+                Share on social media
+              </Button>
+            </div>
+          </>
         ) : status ? (
           <CircularProgress
             classNames={{
