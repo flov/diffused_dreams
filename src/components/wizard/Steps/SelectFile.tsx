@@ -43,7 +43,10 @@ export const SelectFile: FC<UploadProps> = ({
   return (
     <>
       <BackButton nextPage="SelectCameraOrFile" />
-      <div className="flex h-2/3 justify-center flex-col items-center w-full flex-wrap md:flex-nowrap gap-4">
+      <div
+        style={{ height: "70vh" }}
+        className="flex h-2/3 justify-center flex-col items-center w-full flex-wrap md:flex-nowrap gap-4"
+      >
         {base64Image ? (
           <ShowImage
             base64Image={base64Image}
@@ -51,7 +54,7 @@ export const SelectFile: FC<UploadProps> = ({
           />
         ) : (
           <>
-            <h1 className="mb-4">Select a file</h1>
+            <h2 className="mb-4">Select a file</h2>
             <CardButton
               icon={UploadIcon}
               text="Upload a photo"
@@ -76,9 +79,9 @@ const ShowImage: FC<{
 }> = ({ base64Image, setBase64Image }) => {
   const { handleNextPage } = useWizardNavigation();
   return (
-    <>
+    <div style={{ height: "70vh" }}>
       <Image src={base64Image} width={600} alt="Uploaded image" />
-      <div className="flex gap-4">
+      <div className="flex justify-center gap-4 mt-4">
         <Button color="success" onClick={() => handleNextPage("SelectGender")}>
           Confirm
         </Button>
@@ -86,6 +89,6 @@ const ShowImage: FC<{
           Cancel
         </Button>
       </div>
-    </>
+    </div>
   );
 };

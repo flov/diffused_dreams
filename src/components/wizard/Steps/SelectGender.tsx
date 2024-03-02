@@ -23,17 +23,17 @@ export const SelectGender: FC<SelectGenderProps> = ({
   }, [base64Image]);
 
   return (
-    <div className="flex flex-col sm:h-2/3 items-center justify-center gap-4 md:gap-8">
+    <div className="flex flex-col items-center justify-center gap-4 md:gap-8">
       <BackButton nextPage="SelectCameraOrFile" />
       <div className="flex justify-center">
         <h1 className="text-4xl md:text-6xl mb-4">Select your gender</h1>
       </div>
-      <div className="flex justify-center w-full flex-wrap md:flex-nowrap gap-4 md:gap-8">
+      <div className="flex justify-center w-full flex-wrap md:flex-nowrap gap-2 md:gap-8">
         {["man", "woman"].map((gender) => (
           <GenderCard key={gender} setGender={setGender} gender={gender} />
         ))}
       </div>
-      <div className="flex justify-center w-full flex-wrap md:flex-nowrap gap-4 md:gap-8">
+      <div className="flex justify-center w-full flex-wrap md:flex-nowrap gap-2 md:gap-8">
         {["boy", "girl"].map((gender) => (
           <GenderCard key={gender} setGender={setGender} gender={gender} />
         ))}
@@ -56,7 +56,7 @@ const GenderCard: FC<GenderCardProps> = ({ gender, setGender }) => {
 
   return (
     <Card
-      className="py-4 w-48 h-60 sm:w-60 sm:h-80"
+      className="py-4 w-30 h-60 sm:w-60 sm:h-80"
       isPressable
       isHoverable
       onPress={handleGenderSelection}

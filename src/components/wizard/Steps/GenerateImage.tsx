@@ -91,7 +91,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
 
       <div
         className="flex flex-col items-center justify-center h-full"
-        style={{ minHeight: "calc(100vh - 200px)" }}
+        style={{ height: "70vh" }}
       >
         {hasCompleted ? (
           <>
