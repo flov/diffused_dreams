@@ -7,6 +7,7 @@ import useWizardNavigation from "../useWizardNavigation";
 import { Button, CircularProgress, Image } from "@nextui-org/react";
 import ShowStatus from "@/components/images/ShowStatus";
 import { BackButton } from "./BackButton";
+import { ShareIcon } from "@/icons";
 
 type GenerateImageProps = {
   base64Image: string;
@@ -89,52 +90,78 @@ export const GenerateImage: FC<GenerateImageProps> = ({
     <>
       <BackButton nextPage="SelectCampaign" />
 
-      <div
-        className="flex flex-col items-center justify-center h-full"
-        style={{ height: "70vh" }}
-      >
+      <div className="flex flex-col items-center justify-center h-full">
         {hasCompleted ? (
-          <>
-            <Image src={generatedImageUrl} alt="Generated image" />
-            <div className="mt-4 flex flex-col sm:flex gap-4">
-              <Button size="lg" variant="bordered" onClick={handleDownload}>
-                Download Image
-              </Button>
-              <RWebShare
-                data={{
-                  text: "My new badass AI character",
-                  url: generatedImageUrl,
-                }}
-                onClick={() => console.log("shared successfully!")}
-              >
-                <Button size="lg" variant="bordered">
-                  Share 🔗
-                </Button>
-              </RWebShare>
-            </div>
-            <div className="mt-4 flex gap-4">
-              <Button
-                size="lg"
-                variant="bordered"
-                onClick={() => handleNextPage("SelectCameraOrFile")}
-              >
-                Exit
-              </Button>
-            </div>
-          </>
-        ) : status ? (
-          <CircularProgress
-            classNames={{
-              svg: "w-36 h-36 drop-shadow-md",
-              indicator: "stroke-white",
-              track: "stroke-white/10",
-              value: "text-3xl font-semibold text-white",
-            }}
-            label="Generating image, please wait..."
+          <ShowImage
+            handleDownload={handleDownload}
+            generatedImageUrl={generatedImageUrl}
           />
+        ) : status ? (
+          <IsLoading />
         ) : null}
         <ShowStatus status={status} />
       </div>
     </>
+  );
+};
+
+interface ShowImageProps {
+  generatedImageUrl: string | undefined;
+  handleDownload: () => void;
+}
+
+const ShowImage: FC<ShowImageProps> = ({
+  generatedImageUrl,
+  handleDownload,
+}) => {
+  const { handleNextPage } = useWizardNavigation();
+  if (!generatedImageUrl) return null;
+  return (
+    <>
+      <Image src={generatedImageUrl} alt="Generated image" />
+      <div className="mt-4 flex flex-col sm:flex gap-4">
+        <Button size="md" variant="bordered" onClick={handleDownload}>
+          Download Image
+        </Button>
+        <RWebShare
+          data={{
+            text: "My new badass AI character",
+            url: generatedImageUrl,
+          }}
+          onClick={() => console.log("shared successfully!")}
+        >
+          <Button
+            size="md"
+            variant="bordered"
+            endContent={<ShareIcon width="20px" height="20px" color="#fff" />}
+          >
+            Share
+          </Button>
+        </RWebShare>
+      </div>
+      <div className="mt-4 flex gap-4">
+        <Button
+          size="md"
+          variant="bordered"
+          onClick={() => handleNextPage("SelectCameraOrFile")}
+        >
+          Exit
+        </Button>
+      </div>
+    </>
+  );
+};
+
+const IsLoading: FC = () => {
+  return (
+    <CircularProgress
+      classNames={{
+        svg: "w-36 h-36 drop-shadow-md",
+        indicator: "stroke-white",
+        track: "stroke-white/10",
+        value: "text-3xl font-semibold text-white",
+      }}
+      label="Generating image, please wait..."
+    />
   );
 };
