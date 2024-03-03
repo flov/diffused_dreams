@@ -12,7 +12,9 @@ export const BackButton: FC<BackButtonProps> = ({ nextPage }) => {
   return (
     <div className="flex justify-between items-center fixed top-4 left-4">
       <div className="flex items-center">
-        <Button onClick={() => handleNextPage(nextPage)}>Back</Button>
+        <Button color="primary" onClick={() => handleNextPage(nextPage)}>
+          Back
+        </Button>
       </div>
     </div>
   );

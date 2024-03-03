@@ -17,6 +17,8 @@ export const CardButton: FC<CardButtonProps> = ({
       className="py-4 w-48 h-48 sm:w-60 sm:h-60"
       isPressable
       isHoverable
+      isBordered
+      isBlurred
       onPress={onPress}
     >
       <CardHeader className="pb-0 flex justify-center items-start">

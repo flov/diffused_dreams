@@ -8,7 +8,7 @@ export const SelectCameraOrFile: FC = () => {
   return (
     <div
       style={{ height: "70vh" }}
-      className="flex h-70vh flex-col sm:flex-row items-center justify-center gap-8 w-full"
+      className="flex flex-col sm:flex-row items-center justify-center gap-8 w-full"
     >
       <CardButton
         text="Upload a photo"
