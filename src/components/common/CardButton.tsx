@@ -17,7 +17,6 @@ export const CardButton: FC<CardButtonProps> = ({
       className="py-4 w-48 h-48 sm:w-60 sm:h-60"
       isPressable
       isHoverable
-      isBordered
       isBlurred
       onPress={onPress}
     >
