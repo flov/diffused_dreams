@@ -62,15 +62,15 @@ const config: Config = {
           layout: {},
           colors: {
             primary: {
-              DEFAULT: process.env.PRIMARY_COLOR,
-              foreground: process.env.BACKGROUND_COLOR,
+              DEFAULT: "#fff",
+              foreground: "#000",
             },
             secondary: {
               DEFAULT: "#000",
               foreground: "#fff",
             },
             focus: "#1499ff",
-            background: process.env.BACKGROUND_COLOR,
+            background: "#222",
           },
         },
       },
