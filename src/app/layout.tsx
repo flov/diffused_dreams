@@ -4,6 +4,7 @@ import Providers from "./providers";
 import Link from "next/link";
 import Image from "next/image";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import ThemedLogo from "@/components/ThemedLogo";
 
 export const metadata: Metadata = {
   title: "EventStation",
@@ -22,14 +23,7 @@ export default function RootLayout({
           <div>
             <main className="container mx-auto px-4 max-w-6xl w-full min-h-screen">
               <div className="flex py-8 justify-center">
-                <Link href="/">
-                  <Image
-                    src="/event-logo.svg"
-                    width={400}
-                    height={200}
-                    alt="logo"
-                  />
-                </Link>
+                <ThemedLogo />
               </div>
               <ThemeSwitcher />
               {children}

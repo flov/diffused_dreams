@@ -7,7 +7,7 @@ export const SelectCameraOrFile: FC = () => {
   const { handleNextPage } = useWizardNavigation();
   return (
     <div
-      style={{ height: "70vh" }}
+      style={{ height: "60vh" }}
       className="flex flex-col sm:flex-row items-center justify-center gap-8 w-full"
     >
       <CardButton

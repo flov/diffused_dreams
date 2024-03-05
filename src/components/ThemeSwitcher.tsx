@@ -4,6 +4,9 @@ import { Select, SelectItem } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
+const themes = ["event-station", "alienware"];
+export type Theme = (typeof themes)[number];
+
 export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
   const { setTheme } = useTheme();
@@ -14,8 +17,6 @@ export function ThemeSwitcher() {
   const { resolvedTheme } = useTheme();
 
   if (!mounted) return null;
-
-  const themes = ["event-station", "alienware"];
 
   return (
     // position absolute in the bottom right corner

@@ -44,8 +44,8 @@ export const SelectFile: FC<UploadProps> = ({
     <>
       <BackButton nextPage="SelectCameraOrFile" />
       <div
-        style={{ height: "70vh" }}
-        className="flex h-2/3 justify-center flex-col items-center w-full flex-wrap md:flex-nowrap gap-4"
+        style={{ height: "60vh" }}
+        className="flex justify-center flex-col items-center w-full flex-wrap md:flex-nowrap gap-4"
       >
         {base64Image ? (
           <ShowImage
@@ -79,7 +79,7 @@ const ShowImage: FC<{
 }> = ({ base64Image, setBase64Image }) => {
   const { handleNextPage } = useWizardNavigation();
   return (
-    <div style={{ height: "70vh" }}>
+    <div style={{ height: "60vh" }}>
       <Image src={base64Image} width={600} alt="Uploaded image" />
       <div className="flex justify-center gap-4 mt-4">
         <Button color="success" onClick={() => handleNextPage("SelectGender")}>
