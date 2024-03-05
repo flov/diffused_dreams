@@ -22,6 +22,31 @@ const config: Config = {
     nextui({
       layout: {},
       themes: {
+        alienware: {
+          extend: "dark", // <- inherit default values from dark theme
+          colors: {
+            background: "#222",
+            foreground: "#ffffff",
+            primary: {
+              DEFAULT: "#333333",
+              foreground: "#ffffff",
+            },
+            focus: "#444",
+          },
+          layout: {
+            disabledOpacity: "0.3",
+            radius: {
+              small: "4px",
+              medium: "6px",
+              large: "8px",
+            },
+            borderWidth: {
+              small: "1px",
+              medium: "2px",
+              large: "3px",
+            },
+          },
+        },
         "purple-dark": {
           extend: "dark", // <- inherit default values from dark theme
           colors: {

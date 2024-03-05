@@ -4,6 +4,7 @@ import Providers from "./providers";
 import Header from "@/components/header";
 import Link from "next/link";
 import Image from "next/image";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 export const metadata: Metadata = {
   title: "EventStation",
@@ -16,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="purple-dark text-foreground bg-background">
+    <html lang="en" className="text-foreground bg-background">
       <body>
         <Providers>
           <div>
@@ -31,6 +32,7 @@ export default function RootLayout({
                   />
                 </Link>
               </div>
+              <ThemeSwitcher />
               {children}
             </main>
           </div>
