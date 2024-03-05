@@ -12,7 +12,7 @@ const ThemedLogo: FC = () => {
         alt="logo"
         src="/event-station-logo.svg"
         width={367}
-        height={100}
+        height={144}
       />
     );
   } else {
