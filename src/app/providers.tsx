@@ -9,7 +9,11 @@ export default function Providers({ children }: { children: ReactNode }) {
   return (
     <SessionProvider>
       <NextUIProvider>
-        <ThemeProvider attribute="class" defaultTheme="dark">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="event-station"
+          themes={["event-station", "alienware"]}
+        >
           {children}
         </ThemeProvider>
       </NextUIProvider>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
-import Header from "@/components/header";
 import Link from "next/link";
 import Image from "next/image";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
@@ -17,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="text-foreground bg-background">
+    <html lang="en" className="dark text-foreground bg-background">
       <body>
         <Providers>
           <div>

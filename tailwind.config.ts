@@ -28,8 +28,18 @@ const config: Config = {
             background: "#222",
             foreground: "#ffffff",
             primary: {
-              DEFAULT: "#333333",
+              DEFAULT: "#111",
               foreground: "#ffffff",
+              50: "#595959",
+              100: "#666666",
+              200: "#737373",
+              300: "#808080",
+              400: "#8c8c8c",
+              500: "#999999",
+              600: "#a6a6a6",
+              700: "#b3b3b3",
+              800: "#bfbfbf",
+              900: "#cccccc",
             },
             focus: "#444",
           },
@@ -47,7 +57,7 @@ const config: Config = {
             },
           },
         },
-        "purple-dark": {
+        "event-station": {
           extend: "dark", // <- inherit default values from dark theme
           colors: {
             background: "#0D001A",
@@ -83,21 +93,7 @@ const config: Config = {
           },
         },
         light: {},
-        dark: {
-          layout: {},
-          colors: {
-            primary: {
-              DEFAULT: "#fff",
-              foreground: "#000",
-            },
-            secondary: {
-              DEFAULT: "#000",
-              foreground: "#fff",
-            },
-            focus: "#1499ff",
-            background: "#222",
-          },
-        },
+        dark: {},
       },
     }),
   ],

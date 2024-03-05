@@ -21,8 +21,6 @@ export const Wizard: FC = () => {
   const stepName = searchParams.get("name") || "SelectCameraOrFile";
   const step = searchParams.get("step") || 1;
 
-  console.log({ base64Image, gender, campaign });
-
   // switch over stepName and render the appropriate component
   switch (stepName) {
     case "SelectCameraOrFile":
