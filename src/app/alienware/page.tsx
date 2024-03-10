@@ -3,10 +3,10 @@ export const revalidate = 3;
 import { Suspense } from "react";
 import { Wizard } from "@/components/wizard/Wizard";
 
-export default async function Home() {
+export default async function Alienware() {
   return (
     <Suspense>
-      <Wizard initialStep="SelectCameraAndFilter" />
+      <Wizard initialStep="SelectCameraOrFile" />
     </Suspense>
   );
 }

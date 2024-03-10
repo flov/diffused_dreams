@@ -1,13 +1,12 @@
-import React, { FC, use, useEffect, useState } from "react";
-import { RWebShare } from "react-web-share";
+import React, { FC, useEffect, useState } from "react";
 
 import { RunResponse, StatusResponse } from "@/types";
 import { GenerateImagePayload } from "@/types/api/generate-image";
 import useWizardNavigation from "../useWizardNavigation";
-import { Button, CircularProgress, Image } from "@nextui-org/react";
 import ShowStatus from "@/components/images/ShowStatus";
-import { BackButton } from "./BackButton";
-import { ShareIcon } from "@/icons";
+import { BackButton } from "../../common/BackButton";
+import { IsLoading } from "@/components/common/IsLoading";
+import { ShowImage } from "../../common/ShowImage";
 
 type GenerateImageProps = {
   base64Image: string;
@@ -46,7 +45,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
     // call generateImage when the component mounts
     // if base64Image and prompt is empty, redirect to home
     if (!base64Image || !prompt) {
-      handleNextPage("SelectCameraOrFile");
+      handleNextPage({ nextPage: "SelectCameraOrFile" });
     }
     console.log("you should see me only once");
     generateImage({
@@ -60,10 +59,15 @@ export const GenerateImage: FC<GenerateImageProps> = ({
   useEffect(() => {
     const pollStatus = async () => {
       if (run) {
-        while (status?.status !== "COMPLETED" && status?.status !== "FAILED") {
+        let isCompleted =
+          status?.status === "COMPLETED" || status?.status === "FAILED";
+        while (!isCompleted) {
           const res = await fetch(`/api/status/${run.id}`);
           const statusData = await res.json();
           setStatus(statusData);
+          if (["COMPLETED", "FAILED"].includes(statusData.status)) {
+            isCompleted = true; // Update the completion status
+          }
           await new Promise((resolve) => setTimeout(resolve, 1000));
           // Wait for 1 second before polling again
         }
@@ -75,7 +79,9 @@ export const GenerateImage: FC<GenerateImageProps> = ({
 
   const hasCompleted = status && status.status === "COMPLETED";
   const generatedImageUrl =
-    status && status.status === "COMPLETED" ? status.output.images : undefined;
+    status && status.status === "COMPLETED"
+      ? "data:image/jpeg;base64," + status.output.images
+      : undefined;
 
   const handleDownload = () => {
     if (generatedImageUrl) {
@@ -88,7 +94,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
 
   return (
     <>
-      <BackButton nextPage="SelectCampaign" />
+      <BackButton page="CaptureWithCamera" />
 
       <div className="flex flex-col items-center justify-center h-full">
         {hasCompleted ? (
@@ -96,72 +102,11 @@ export const GenerateImage: FC<GenerateImageProps> = ({
             handleDownload={handleDownload}
             generatedImageUrl={generatedImageUrl}
           />
-        ) : status ? (
+        ) : (
           <IsLoading />
-        ) : null}
+        )}
         <ShowStatus status={status} />
       </div>
     </>
-  );
-};
-
-interface ShowImageProps {
-  generatedImageUrl: string | undefined;
-  handleDownload: () => void;
-}
-
-const ShowImage: FC<ShowImageProps> = ({
-  generatedImageUrl,
-  handleDownload,
-}) => {
-  const { handleNextPage } = useWizardNavigation();
-  if (!generatedImageUrl) return null;
-  return (
-    <>
-      <Image src={generatedImageUrl} alt="Generated image" />
-      <div className="mt-4 flex flex-col sm:flex gap-4">
-        <Button size="md" variant="bordered" onClick={handleDownload}>
-          Download Image
-        </Button>
-        <RWebShare
-          data={{
-            text: "My new badass AI character",
-            url: generatedImageUrl,
-          }}
-          onClick={() => console.log("shared successfully!")}
-        >
-          <Button
-            size="md"
-            variant="bordered"
-            endContent={<ShareIcon width="20px" height="20px" color="#fff" />}
-          >
-            Share
-          </Button>
-        </RWebShare>
-      </div>
-      <div className="mt-4 flex gap-4">
-        <Button
-          size="md"
-          variant="bordered"
-          onClick={() => handleNextPage("SelectCameraOrFile")}
-        >
-          Exit
-        </Button>
-      </div>
-    </>
-  );
-};
-
-const IsLoading: FC = () => {
-  return (
-    <CircularProgress
-      classNames={{
-        svg: "w-36 h-36 drop-shadow-md",
-        indicator: "stroke-white",
-        track: "stroke-white/10",
-        value: "text-3xl font-semibold text-white",
-      }}
-      label="Generating image, please wait..."
-    />
   );
 };

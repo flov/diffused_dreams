@@ -44,7 +44,6 @@ const config: Config = {
             focus: "#444",
           },
           layout: {
-            disabledOpacity: "0.3",
             radius: {
               small: "4px",
               medium: "6px",

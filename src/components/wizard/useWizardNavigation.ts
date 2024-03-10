@@ -1,32 +1,47 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export type Step =
+  | "CaptureWithCamera"
+  | "ChooseCampaign"
+  | "ChooseGender"
+  | "GenerateImage"
+  | "SelectCameraAndCapture"
+  | "SelectCameraAndFilter"
   | "SelectCameraOrFile"
-  | "SelectCamera"
-  | "SelectFile"
-  | "SelectGender"
   | "SelectCampaign"
-  | "GenerateImage";
+  | "SelectFile"
+  | "SelectGender";
 
 const useWizardNavigation = () => {
   const wizardSteps = {
+    CaptureWithCamera: 2,
+    ChooseCampaign: 3,
+    ChooseGender: 2,
+    GenerateImage: 5,
+    SelectCameraAndCapture: 2,
+    SelectCameraAndFilter: 1,
     SelectCameraOrFile: 1,
-    SelectCamera: 2,
+    SelectCampaign: 4,
     SelectFile: 2,
     SelectGender: 3,
-    SelectCampaign: 4,
-    GenerateImage: 5,
   };
 
   const { replace } = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  const handleNextPage = (nextPage: Step) => {
+  const handleNextPage = ({
+    nextPage,
+    lastPage,
+  }: {
+    nextPage: Step;
+    lastPage?: Step;
+  }) => {
     const nextStep = wizardSteps[nextPage];
     const params = new URLSearchParams(searchParams);
     params.set("step", String(nextStep));
     params.set("name", nextPage);
+    if (lastPage) params.set("back", lastPage);
     replace(`${pathname}?${params.toString()}`);
   };
 

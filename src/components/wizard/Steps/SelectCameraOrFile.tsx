@@ -12,12 +12,12 @@ export const SelectCameraOrFile: FC = () => {
     >
       <CardButton
         text="Upload a photo"
-        onPress={() => handleNextPage("SelectFile")}
+        onPress={() => handleNextPage({ nextPage: "SelectFile" })}
         icon={ImageIcon}
       />
       <CardButton
         text="Take a photo"
-        onPress={() => handleNextPage("SelectCamera")}
+        onPress={() => handleNextPage({ nextPage: "SelectCameraAndCapture" })}
         icon={CameraRetroIcon}
       />
     </div>

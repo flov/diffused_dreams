@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import useWizardNavigation from "../useWizardNavigation";
 import { Button, Image } from "@nextui-org/react";
-import { BackButton } from "./BackButton";
+import { BackButton } from "../../common/BackButton";
 import { CardButton } from "@/components/common/CardButton";
 import { UploadIcon } from "@/icons";
 
@@ -20,8 +20,6 @@ export const SelectFile: FC<UploadProps> = ({
   base64Image,
   setBase64Image,
 }) => {
-  const { handleNextPage } = useWizardNavigation();
-
   const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) return;
     const file = event.target.files[0];
@@ -42,7 +40,7 @@ export const SelectFile: FC<UploadProps> = ({
 
   return (
     <>
-      <BackButton nextPage="SelectCameraOrFile" />
+      <BackButton page="SelectCameraOrFile" />
       <div
         style={{ height: "60vh" }}
         className="flex justify-center flex-col items-center w-full flex-wrap md:flex-nowrap gap-4"
@@ -82,7 +80,10 @@ const ShowImage: FC<{
     <div style={{ height: "60vh" }}>
       <Image src={base64Image} width={600} alt="Uploaded image" />
       <div className="flex justify-center gap-4 mt-4">
-        <Button color="success" onClick={() => handleNextPage("SelectGender")}>
+        <Button
+          color="success"
+          onClick={() => handleNextPage({ nextPage: "SelectGender" })}
+        >
           Confirm
         </Button>
         <Button color="danger" onClick={() => setBase64Image("")}>

@@ -1,14 +1,18 @@
-import { SelectCameraOrFile } from "./SelectCameraOrFile";
+import { ChooseGender } from "./ChooseGender";
 import { GenerateImage } from "./GenerateImage";
-import { SelectCamera } from "./SelectCamera";
+import { SelectCameraAndCapture } from "./SelectCameraAndCapture";
+import { SelectCameraAndFilter } from "./SelectCameraAndFilter";
+import { SelectCameraOrFile } from "./SelectCameraOrFile";
 import { SelectCampaign } from "./SelectCampaign";
 import { SelectFile } from "./SelectFile";
 import { SelectGender } from "./SelectGender";
 
 export {
-  SelectCameraOrFile,
+  ChooseGender,
   GenerateImage,
-  SelectCamera,
+  SelectCameraAndCapture,
+  SelectCameraAndFilter,
+  SelectCameraOrFile,
   SelectCampaign,
   SelectFile,
   SelectGender,

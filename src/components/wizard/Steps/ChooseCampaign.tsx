@@ -9,26 +9,23 @@ type SelectCampaignProps = {
   filters: string[];
 };
 
-export const SelectCampaign: FC<SelectCampaignProps> = ({
+// There is Choose campaign and Select Campaign, two similar
+// components which are used for two different wizard flows.
+export const ChooseCampaign: FC<SelectCampaignProps> = ({
   filters,
   gender,
   setCampaign,
 }) => {
-  const characters = !!filters.length
-    ? prompts(gender).filter((character) => {
-        return filters?.includes(character.label);
-      })
-    : prompts(gender);
-
   return (
     <>
-      <BackButton page="SelectGender" />
+      <BackButton page="ChooseGender" />
 
       <h1 className="text-center mb-8">Select your filter</h1>
       <SelectFilter
         gender={gender}
         setCampaign={setCampaign}
         filters={filters}
+        nextPage="CaptureWithCamera"
       />
     </>
   );

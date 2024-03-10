@@ -6,7 +6,11 @@ import { FC } from "react";
 
 const ThemedLogo: FC = () => {
   const { resolvedTheme } = useTheme();
-  if (resolvedTheme === "event-station") {
+  if (resolvedTheme === "alienware") {
+    return (
+      <Image alt="logo" src={"/alienware-logo.png"} width={400} height={200} />
+    );
+  } else {
     return (
       <Image
         alt="logo"
@@ -14,10 +18,6 @@ const ThemedLogo: FC = () => {
         width={367}
         height={144}
       />
-    );
-  } else {
-    return (
-      <Image alt="logo" src={"/alienware-logo.png"} width={400} height={200} />
     );
   }
 };
