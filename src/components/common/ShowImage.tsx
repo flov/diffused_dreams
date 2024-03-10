@@ -46,7 +46,7 @@ export const ShowImage: FC<ShowImageProps> = ({
         <Button
           size="lg"
           variant="bordered"
-          onClick={() => handleNextPage({ nextPage: "SelectCameraAndFilter" })}
+          onClick={() => handleNextPage({ nextPage: "ChooseGender" })}
         >
           Exit
         </Button>
