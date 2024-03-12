@@ -10,7 +10,7 @@ interface ShowImageProps {
   handleDownload: () => void;
 }
 
-export const ShowImage: FC<ShowImageProps> = ({
+export const ShowGeneratedImage: FC<ShowImageProps> = ({
   generatedImageUrl,
   handleDownload,
 }) => {
@@ -19,6 +19,7 @@ export const ShowImage: FC<ShowImageProps> = ({
   return (
     <>
       <Image
+        style={{ maxHeight: "calc(100vh - 329px)" }}
         src={generatedImageUrl}
         alt="Generated image"
         aria-label="Generated image"
@@ -42,7 +43,7 @@ export const ShowImage: FC<ShowImageProps> = ({
           </Button>
         </RWebShare>
       </div>
-      <div className="my-4 flex gap-4">
+      <div className="mt-4 flex gap-4">
         <Button
           size="lg"
           variant="bordered"

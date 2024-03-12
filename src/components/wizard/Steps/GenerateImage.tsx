@@ -6,7 +6,7 @@ import useWizardNavigation from "../useWizardNavigation";
 import ShowStatus from "@/components/images/ShowStatus";
 import { BackButton } from "../../common/BackButton";
 import { IsLoading } from "@/components/common/IsLoading";
-import { ShowImage } from "../../common/ShowImage";
+import { ShowGeneratedImage } from "../../common/ShowGeneratedImage";
 
 type GenerateImageProps = {
   base64Image: string;
@@ -98,7 +98,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
 
       <div className="flex flex-col items-center justify-center h-full">
         {hasCompleted ? (
-          <ShowImage
+          <ShowGeneratedImage
             handleDownload={handleDownload}
             generatedImageUrl={generatedImageUrl}
           />

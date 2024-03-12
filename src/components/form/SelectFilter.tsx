@@ -25,7 +25,7 @@ export const SelectFilter: FC<SelectCampaignProps> = ({
 
   return (
     <>
-      <div className="grid gap-4 mt-8 mx-auto px-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 my-8 mx-auto px-4 sm:grid-cols-2 lg:grid-cols-3">
         {characters.map((character) => (
           <Card
             key={character.label}
