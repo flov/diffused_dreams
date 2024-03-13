@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import ThemedLogo from "@/components/ThemedLogo";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "EventStation",
@@ -25,10 +26,12 @@ export default function RootLayout({
               <div className="flex py-8 justify-center">
                 <ThemedLogo />
               </div>
-              <ThemeSwitcher />
               {children}
             </main>
           </div>
+          <Suspense>
+            <ThemeSwitcher />
+          </Suspense>
         </Providers>
       </body>
     </html>
