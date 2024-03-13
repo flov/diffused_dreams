@@ -96,10 +96,23 @@ export const GenerateImage: FC<GenerateImageProps> = ({
     <>
       <BackButton page="CaptureWithCamera" />
 
-      <div className="flex flex-col items-center justify-center h-full h-calc(100vh - 200px)">
-        <IsLoading />
-        <ShowStatus status={status} />
-      </div>
+      {hasCompleted ? (
+        <div className="flex flex-col items-center justify-center">
+          <ShowGeneratedImage
+            handleDownload={handleDownload}
+            generatedImageUrl={generatedImageUrl}
+          />
+          <ShowStatus status={status} />
+        </div>
+      ) : (
+        <div
+          className="flex flex-col justify-center items-center"
+          style={{ height: "calc(100vh - 200px)" }}
+        >
+          <IsLoading />
+          <ShowStatus status={status} />
+        </div>
+      )}
     </>
   );
 };

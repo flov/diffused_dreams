@@ -78,7 +78,11 @@ const ShowImage: FC<{
   const { handleNextPage } = useWizardNavigation();
   return (
     <div style={{ height: "60vh" }}>
-      <Image src={base64Image} width={600} alt="Uploaded image" />
+      <Image
+        style={{ maxHeight: "calc(100vh -220px)" }}
+        src={base64Image}
+        alt="Uploaded image"
+      />
       <div className="flex justify-center gap-4 mt-4">
         <Button
           color="success"
