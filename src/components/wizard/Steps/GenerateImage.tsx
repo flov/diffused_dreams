@@ -3,10 +3,10 @@ import React, { FC, useEffect, useState } from "react";
 import { RunResponse, StatusResponse } from "@/types";
 import { GenerateImagePayload } from "@/types/api/generate-image";
 import useWizardNavigation from "../useWizardNavigation";
-import ShowStatus from "@/components/images/ShowStatus";
 import { BackButton } from "../../common/BackButton";
 import { IsLoading } from "@/components/common/IsLoading";
 import { ShowGeneratedImage } from "../../common/ShowGeneratedImage";
+import { ShowStatus } from "@/components/common/ShowStatus";
 
 type GenerateImageProps = {
   base64Image: string;
@@ -107,7 +107,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
       ) : (
         <div
           className="flex flex-col justify-center items-center"
-          style={{ height: "calc(100vh - 200px)" }}
+          style={{ height: "calc(100vh - 275px)" }}
         >
           <IsLoading />
           <ShowStatus status={status} />

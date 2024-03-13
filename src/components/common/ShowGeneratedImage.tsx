@@ -25,7 +25,7 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
         aria-label="Generated image"
       />
       <div className="mt-4 flex flex-col sm:flex-row gap-4">
-        <Button size="lg" onClick={handleDownload} color="primary">
+        <Button size="md" onClick={handleDownload} color="primary">
           Download Image
         </Button>
         <RWebShare
@@ -37,7 +37,7 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
         >
           <Button
             color="primary"
-            size="lg"
+            size="md"
             endContent={<ShareIcon width="20px" height="20px" color="#fff" />}
           >
             Share
@@ -47,7 +47,7 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
       <div className="mt-4 flex gap-4">
         <Button
           color="primary"
-          size="lg"
+          size="md"
           variant="bordered"
           onClick={() => handleNextPage({ nextPage: "ChooseGender" })}
         >

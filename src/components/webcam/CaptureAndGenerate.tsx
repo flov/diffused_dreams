@@ -12,8 +12,8 @@ import Webcam from "react-webcam";
 import { Button, Input, Select, SelectItem } from "@nextui-org/react";
 import { GenerateImagePayload } from "@/types/api/generate-image";
 import { RunResponse, StatusResponse } from "@/types";
-import ShowStatus from "../images/ShowStatus";
 import { flows } from "./data";
+import { ShowStatus } from "../common/ShowStatus";
 
 const CaptureAndGenerate: React.FC = () => {
   const webcamRef = useRef<Webcam>(null);

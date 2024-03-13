@@ -4,7 +4,7 @@ import { RunResponse, StatusResponse } from "@/types";
 import { Button, Input } from "@nextui-org/react";
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import ShowStatus from "@/components/images/ShowStatus";
+import { ShowStatus } from "./common/ShowStatus";
 
 const GenerateImageForm = () => {
   const [run, setRun] = useState<RunResponse>();

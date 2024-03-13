@@ -14,6 +14,7 @@ export const BackButton: FC<BackButtonProps> = ({ page }) => {
       <div className="flex items-center">
         <Button
           color="primary"
+          variant="bordered"
           onClick={() => handleNextPage({ nextPage: page })}
         >
           Back

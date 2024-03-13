@@ -6,7 +6,7 @@ type ShowStatusProps = {
   status: StatusResponse | undefined;
 };
 
-const getColor = (status: string) => {
+const getColor = (status: STATUS) => {
   if (status === "IN_QUEUE") {
     return "primary";
   } else if (status === "IN_PROGRESS") {
@@ -20,22 +20,22 @@ const getColor = (status: string) => {
   }
 };
 
-const ExecutionTime = ({ status }: { status: StatusResponse }) => {
+const ExecutionTime = ({ status }: { status: StatusResponse | undefined }) => {
+  if (!status) return null;
   if (status.status !== "COMPLETED") return null;
   return <h4>Finished in {Math.floor(status.executionTime / 100) / 10}s</h4>;
 };
 
-const ShowStatus: FC<ShowStatusProps> = ({ status }) => {
+export const ShowStatus: FC<ShowStatusProps> = ({ status: statusResponse }) => {
+  const status = statusResponse?.status || "IN_QUEUE";
   if (!status) return null;
 
   return (
     <>
       <div className="flex gap-4 py-4 items-center">
-        <Chip color={getColor(status.status)}>{status.status}</Chip>
-        <ExecutionTime status={status} />
+        <Chip color={getColor(status)}>{status.replace("_", " ")}</Chip>
+        <ExecutionTime status={statusResponse} />
       </div>
     </>
   );
 };
-
-export default ShowStatus;
