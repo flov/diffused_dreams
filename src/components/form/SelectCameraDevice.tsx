@@ -51,19 +51,19 @@ export const SelectCameraDevice: FC<SelectCameraDeviceProps> = ({
 
   return (
     <Select
-      variant="bordered"
+      className="max-w p-4"
       color="primary"
-      className="max-w my-4"
-      items={devices}
-      label="Camera"
-      key={selectedDevice}
       defaultSelectedKeys={[
         selectedDevice ? selectedDevice : devices[0]?.deviceId,
       ]}
+      items={devices}
+      key={selectedDevice}
+      label="Camera"
       onChange={({ target: { value } }: ChangeEvent<HTMLSelectElement>) => {
         setSelectedDevice(value);
       }}
       placeholder="Select your camera"
+      variant="bordered"
     >
       {devices.map((device) => (
         <SelectItem key={device.deviceId}>{device.label}</SelectItem>

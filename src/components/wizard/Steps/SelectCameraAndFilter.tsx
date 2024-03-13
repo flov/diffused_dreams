@@ -21,12 +21,12 @@ export const SelectCameraAndFilter: FC<SelectCameraAndFilterProps> = ({
 
   return (
     <>
-      <h2>Select your Camera</h2>
+      <h2 className="text-center">Select your Camera</h2>
       <SelectCameraDevice
         selectedDevice={selectedDevice}
         setSelectedDevice={setSelectedDevice}
       />
-      <h2>Select your AI-Filters</h2>
+      <h2 className="text-center">Select your AI-Filters</h2>
       <div className="my-4">
         <FiltersCheckboxGroup filters={filters} setFilters={setFilters} />
       </div>
