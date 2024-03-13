@@ -52,6 +52,7 @@ export const SelectCameraDevice: FC<SelectCameraDeviceProps> = ({
   return (
     <Select
       variant="bordered"
+      color="primary"
       className="max-w my-4"
       items={devices}
       label="Camera"

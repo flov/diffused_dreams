@@ -18,30 +18,27 @@ export function ThemeSwitcher() {
   const { resolvedTheme } = useTheme();
 
   const searchParams = useSearchParams();
-  const hasThemeSwitcher = Number(searchParams.get("themeSwitcher"));
+  const hasThemeSwitcher = searchParams.has("themeSwitcher");
 
   if (!mounted) return null;
+  if (!hasThemeSwitcher) return null;
 
-  if (hasThemeSwitcher) {
-    return (
-      // position absolute in the bottom right corner
-      <div className="fixed bottom-4 w-60 right-4">
-        <Select
-          items={themes}
-          label="Theme"
-          placeholder="Select a theme"
-          className="max-w-xs"
-          defaultSelectedKeys={[resolvedTheme || themes[0]]}
-          onChange={(e) => setTheme(e.target.value)}
-          color="primary"
-        >
-          {themes.map((theme) => (
-            <SelectItem key={theme}>{theme}</SelectItem>
-          ))}
-        </Select>
-      </div>
-    );
-  } else {
-    return null;
-  }
+  return (
+    // position absolute in the bottom right corner
+    <div className="fixed bottom-4 w-60 right-4">
+      <Select
+        items={themes}
+        label="Theme"
+        placeholder="Select a theme"
+        className="max-w-xs"
+        defaultSelectedKeys={[resolvedTheme || themes[0]]}
+        onChange={(e) => setTheme(e.target.value)}
+        color="primary"
+      >
+        {themes.map((theme) => (
+          <SelectItem key={theme}>{theme}</SelectItem>
+        ))}
+      </Select>
+    </div>
+  );
 }
