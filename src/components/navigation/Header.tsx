@@ -20,14 +20,12 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const session = useSession();
 
-  console.log(session);
-
   return (
     <Navbar
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="shadow mb-6"
+      className="shadow mb-6 z-1"
     >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle

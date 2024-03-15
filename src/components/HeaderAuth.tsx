@@ -19,7 +19,7 @@ export default function HeaderAuth() {
     authContent = null;
   } else if (session.data?.user) {
     authContent = (
-      <Popover placement="left">
+      <Popover placement="bottom" color="default">
         <PopoverTrigger>
           <Avatar src={session.data.user.image || ""} />
         </PopoverTrigger>
