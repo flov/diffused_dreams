@@ -29,7 +29,7 @@ const config: Config = {
             foreground: "#ffffff",
             default: {
               // DEFAULT: "#000fff",
-              foreground: "111",
+              // foreground: "#111",
             },
             primary: {
               DEFAULT: "#888",
@@ -64,7 +64,7 @@ const config: Config = {
           extend: "dark", // <- inherit default values from dark theme
           colors: {
             background: "#0D001A",
-            foreground: "#ffffff",
+            foreground: "#ddd",
             default: {
               DEFAULT: "#DD62ED",
               foreground: "#ffffff",
