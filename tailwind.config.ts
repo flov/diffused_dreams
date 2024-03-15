@@ -27,8 +27,12 @@ const config: Config = {
           colors: {
             background: "#222",
             foreground: "#ffffff",
+            default: {
+              // DEFAULT: "#000fff",
+              foreground: "111",
+            },
             primary: {
-              DEFAULT: "#111",
+              DEFAULT: "#888",
               foreground: "#ffffff",
               50: "#595959",
               100: "#666666",
@@ -61,6 +65,10 @@ const config: Config = {
           colors: {
             background: "#0D001A",
             foreground: "#ffffff",
+            default: {
+              DEFAULT: "#DD62ED",
+              foreground: "#ffffff",
+            },
             primary: {
               50: "#3B096C",
               100: "#520F83",

@@ -8,15 +8,15 @@ const ThemedLogo: FC = () => {
   const { resolvedTheme } = useTheme();
   if (resolvedTheme === "alienware") {
     return (
-      <Image alt="logo" src={"/alienware-logo.png"} width={400} height={144} />
+      <Image alt="logo" src={"/alienware-logo.png"} width={290} height={110} />
     );
   } else {
     return (
       <Image
         alt="logo"
         src="/event-station-logo.svg"
-        width={367}
-        height={144}
+        width={290}
+        height={110}
       />
     );
   }

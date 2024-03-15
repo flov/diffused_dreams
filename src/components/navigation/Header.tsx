@@ -5,20 +5,22 @@ import {
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";
-import React, { FC, useState } from "react";
-import HeaderAuth from "./HeaderAuth";
+import React, { useState } from "react";
+import HeaderAuth from "../HeaderAuth";
 import * as actions from "@/actions";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import ThemedLogo from "./ThemedLogo";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const session = useSession();
+
+  console.log(session);
 
   return (
     <Navbar
@@ -35,13 +37,13 @@ export default function Header() {
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          <p className="font-bold text-inherit">✨ EventStation.ai</p>
+          <p className="font-bold text-inherit">EventStation.ai</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
-          <p className="font-bold text-inherit">✨ EventStation.ai</p>
+          <ThemedLogo />
         </NavbarBrand>
       </NavbarContent>
 
