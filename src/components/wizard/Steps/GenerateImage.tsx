@@ -7,6 +7,8 @@ import { BackButton } from "../../common/BackButton";
 import { IsLoading } from "@/components/common/IsLoading";
 import { ShowGeneratedImage } from "../../common/ShowGeneratedImage";
 import { ShowStatus } from "@/components/common/ShowStatus";
+import { useUser } from "@/providers/userProvider";
+import { payUserTokens } from "@/db/queries/user";
 
 type GenerateImageProps = {
   base64Image: string;
@@ -45,9 +47,9 @@ export const GenerateImage: FC<GenerateImageProps> = ({
     // call generateImage when the component mounts
     // if base64Image and prompt is empty, redirect to home
     if (!base64Image || !prompt) {
-      handleNextPage({ nextPage: "SelectCameraOrFile" });
+      handleNextPage({ nextPage: "ChooseGender" });
     }
-    console.log("you should see me only once");
+
     generateImage({
       base64Image,
       positivePrompt: prompt,
@@ -55,6 +57,14 @@ export const GenerateImage: FC<GenerateImageProps> = ({
       flowId: 5,
     });
   }, []);
+
+  useEffect(() => {
+    if (status?.status === "COMPLETED") {
+      payUserTokens(50, setUser);
+    }
+  }, [status]);
+
+  const { setUser } = useUser();
 
   useEffect(() => {
     const pollStatus = async () => {
@@ -102,7 +112,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
             handleDownload={handleDownload}
             generatedImageUrl={generatedImageUrl}
           />
-          <ShowStatus status={status} />
+          {/* <ShowStatus status={status} /> */}
         </div>
       ) : (
         <div

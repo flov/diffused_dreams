@@ -19,7 +19,7 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
   return (
     <>
       <Image
-        style={{ maxHeight: "calc(100vh - 329px)" }}
+        style={{ maxHeight: "calc(100vh - 210px)" }}
         src={generatedImageUrl}
         alt="Generated image"
         aria-label="Generated image"

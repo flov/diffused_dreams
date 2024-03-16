@@ -11,4 +11,7 @@ export const paths = {
   postShowPath(postId: string, slug: string) {
     return `/topics/${slug}/posts/${postId}`;
   },
+  getCurrentUserApi() {
+    return `/api/current-user`;
+  },
 };

@@ -25,7 +25,7 @@ export default function Header() {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="shadow mb-6 z-1"
+      className="shadow mb-6"
     >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle
