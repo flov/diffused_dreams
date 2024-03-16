@@ -36,15 +36,13 @@ export default function HeaderAuth() {
     );
   } else {
     authContent = (
-      <>
-        <NavbarItem>
-          <form action={actions.signIn}>
-            <Button type="submit" variant="bordered">
-              Sign in with Github
-            </Button>
-          </form>
-        </NavbarItem>
-      </>
+      <NavbarItem>
+        <form action={actions.signIn}>
+          <Button type="submit" variant="bordered">
+            Sign in with Github
+          </Button>
+        </form>
+      </NavbarItem>
     );
   }
 

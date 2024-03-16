@@ -10,7 +10,7 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/react";
 import React, { useState } from "react";
-import HeaderAuth from "../HeaderAuth";
+import HeaderAuth from "./HeaderAuth";
 import * as actions from "@/actions";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
