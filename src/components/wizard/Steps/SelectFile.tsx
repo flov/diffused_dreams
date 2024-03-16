@@ -41,10 +41,7 @@ export const SelectFile: FC<UploadProps> = ({
   return (
     <>
       <BackButton page="SelectCameraOrFile" />
-      <div
-        style={{ height: "60vh" }}
-        className="flex justify-center flex-col items-center w-full flex-wrap md:flex-nowrap gap-4"
-      >
+      <div className="flex justify-center flex-col items-center w-full flex-wrap md:flex-nowrap gap-4">
         {base64Image ? (
           <ShowImage
             base64Image={base64Image}
@@ -79,7 +76,7 @@ const ShowImage: FC<{
   return (
     <div style={{ height: "60vh" }}>
       <Image
-        style={{ maxHeight: "calc(100vh -220px)" }}
+        style={{ maxHeight: "calc(100vh - 220px)" }}
         src={base64Image}
         alt="Uploaded image"
       />
