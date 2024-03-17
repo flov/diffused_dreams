@@ -6,6 +6,33 @@ export type Prompt = {
 
 export const prompts = (gender: string): Prompt[] => [
   {
+    label: "desert prophet",
+    prompt: `A captivating portrayal of a ${gender} desert mystic standing amidst the vast, sandy expanse of the planet Arrakis, shrouded in flowing robes adorned with intricate desert motifs, their eyes gazing into the distance with a mix of wisdom and foresight, a faint shimmer of spice in the air, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full length frame, High detail RAW color art, natural desert lighting with warm tones, shallow depth of field, intense focus, cinematic lighting`,
+    image: "/images/dune.png",
+  },
+  {
+    label: "host of the wild west",
+    prompt: `A striking portrayal of a ${gender} character from Westworld, standing in the middle of a dusty Western town, surrounded by saloons and desert landscape, their expression poised with a hint of mystery, wearing attire reminiscent of the old West but with a futuristic twist, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full-length frame, High detail RAW color art, natural desert lighting with dramatic shadows, medium depth of field, intense focus, cinematic lighting evoking the atmosphere of the Wild West meets futuristic technology`,
+    image: "/images/westworld.png",
+  },
+  {
+    label: "wizarding prodigy",
+    prompt: `A captivating portrayal of a ${gender} wizarding prodigy, standing amidst the halls of Hogwarts School of Witchcraft and Wizardry, wand raised in a spellcasting stance, surrounded by swirling magical energy, their eyes sparkling with intellect and determination, adorned in wizarding robes with house colors subtly woven in, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full-length frame, High detail RAW color art, soft ambient lighting with hints of magical glow, shallow depth of field, focused gaze, cinematic lighting evoking the enchantment of the wizarding world`,
+    image: "/images/harry_potter.jpg",
+  },
+  {
+    label: "serenity in the stars",
+    prompt: `An iconic portrayal of a ${gender} Jedi Knight, standing tall amidst the ruins of a ancient temple, lightsaber ignited, casting a warm glow that contrasts with the cool tones of the surroundings, robes billowing in the wind, a sense of serene determination in their expression, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full length frame, High detail RAW color art, ambient natural lighting with subtle lens flares, medium depth of field, focused gaze, cinematic lighting`,
+    image: "/images/star_wars.jpg",
+  },
+
+  {
+    label: "samurai of the shadows",
+    prompt: `A dynamic portrayal of a ${gender} manga samurai, poised in mid-action with their katana drawn, surrounded by swirling cherry blossoms and falling leaves, their eyes gleaming with determination, clothing billowing with movement, photography, detailed skin, detailed texture, manga-style illustration, vibrant colors, full-length frame, High detail art, dynamic lighting with emphasis on contrast, intense focus on character, manga-inspired composition`,
+    image: "/images/manga.jpg",
+  },
+
+  {
     label: "ruler of the seven kingdoms",
     prompt: `A full body portrait of a ${gender} noble figure, dressed in luxurious Game of Thrones inspired attire, complete with embroidery and fur trim, seated on an iron throne, holding a scepter, with a direwolf at their side, in a grand hall filled with banners representing different houses, looking at the camera with a commanding presence, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full length frame, High detail RAW color art, diffused soft lighting, shallow depth of field, sharp focus, cinematic lighting`,
     image: "/images/got.jpg",
