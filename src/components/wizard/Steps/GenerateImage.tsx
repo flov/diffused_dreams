@@ -104,8 +104,11 @@ export const GenerateImage: FC<GenerateImageProps> = ({
 
   return (
     <>
-      <BackButton page="CaptureWithCamera" />
-
+      {window.location.href.includes("alienware") ? (
+        <BackButton page="SelectCampaign" />
+      ) : (
+        <BackButton page="CaptureWithCamera" />
+      )}
       {hasCompleted ? (
         <div className="flex flex-col items-center justify-center">
           <ShowGeneratedImage
