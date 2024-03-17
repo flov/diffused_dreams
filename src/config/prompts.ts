@@ -18,18 +18,18 @@ export const prompts = (gender: string): Prompt[] => [
   {
     label: "wizarding prodigy",
     prompt: `A captivating portrayal of a ${gender} wizarding prodigy, standing amidst the halls of Hogwarts School of Witchcraft and Wizardry, wand raised in a spellcasting stance, surrounded by swirling magical energy, their eyes sparkling with intellect and determination, adorned in wizarding robes with house colors subtly woven in, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full-length frame, High detail RAW color art, soft ambient lighting with hints of magical glow, shallow depth of field, focused gaze, cinematic lighting evoking the enchantment of the wizarding world`,
-    image: "/images/harry_potter.jpg",
+    image: "/images/harry-potter.jpg",
   },
   {
     label: "serenity in the stars",
     prompt: `An iconic portrayal of a ${gender} Jedi Knight, standing tall amidst the ruins of a ancient temple, lightsaber ignited, casting a warm glow that contrasts with the cool tones of the surroundings, robes billowing in the wind, a sense of serene determination in their expression, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full length frame, High detail RAW color art, ambient natural lighting with subtle lens flares, medium depth of field, focused gaze, cinematic lighting`,
-    image: "/images/star_wars.jpg",
+    image: "/images/star_wars.png",
   },
 
   {
     label: "samurai of the shadows",
     prompt: `A dynamic portrayal of a ${gender} manga samurai, poised in mid-action with their katana drawn, surrounded by swirling cherry blossoms and falling leaves, their eyes gleaming with determination, clothing billowing with movement, photography, detailed skin, detailed texture, manga-style illustration, vibrant colors, full-length frame, High detail art, dynamic lighting with emphasis on contrast, intense focus on character, manga-inspired composition`,
-    image: "/images/manga.jpg",
+    image: "/images/manga.png",
   },
 
   {
