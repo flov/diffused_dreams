@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
-import { User } from "../types";
+import type { User } from "@prisma/client";
+import { db } from "..";
 
 export const payUserTokens = async (
   tokens: number,
@@ -17,4 +18,8 @@ export const payUserTokens = async (
   } catch (error) {
     console.error("Error updating token:", error);
   }
+};
+
+export const fetchUsers = (): Promise<User[]> => {
+  return db.user.findMany({ take: 20 });
 };
