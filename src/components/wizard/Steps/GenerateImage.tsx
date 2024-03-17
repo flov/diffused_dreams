@@ -117,7 +117,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
       ) : (
         <div
           className="flex flex-col justify-center items-center"
-          style={{ height: "calc(100vh - 275px)" }}
+          style={{ height: "calc(100vh - 120px)" }}
         >
           <IsLoading />
           <ShowStatus status={status} />

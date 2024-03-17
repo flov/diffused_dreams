@@ -76,7 +76,7 @@ const ShowImage: FC<{
   return (
     <div style={{ height: "60vh" }}>
       <Image
-        style={{ maxHeight: "calc(100vh - 220px)" }}
+        style={{ maxHeight: "calc(100vh - 160px)" }}
         src={base64Image}
         alt="Uploaded image"
       />
