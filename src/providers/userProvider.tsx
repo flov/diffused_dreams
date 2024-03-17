@@ -1,5 +1,5 @@
-import { User } from "@/db/types";
 import { paths } from "@/paths";
+import type { User } from "@prisma/client";
 import {
   Dispatch,
   SetStateAction,

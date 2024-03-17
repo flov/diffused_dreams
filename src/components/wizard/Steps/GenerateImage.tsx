@@ -58,13 +58,13 @@ export const GenerateImage: FC<GenerateImageProps> = ({
     });
   }, []);
 
+  const { setUser } = useUser();
+
   useEffect(() => {
     if (status?.status === "COMPLETED") {
       payUserTokens(50, setUser);
     }
   }, [status]);
-
-  const { setUser } = useUser();
 
   useEffect(() => {
     const pollStatus = async () => {
