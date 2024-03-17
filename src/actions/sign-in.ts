@@ -2,5 +2,7 @@
 
 import * as auth from "@/auth";
 
-export const signIn = async () =>
+export const signInWithGoogle = async () =>
+  auth.signIn("google", { redirectTo: "/eventstation" });
+export const signInWithGithub = async () =>
   auth.signIn("github", { redirectTo: "/eventstation" });
