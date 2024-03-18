@@ -1,14 +1,14 @@
 import ListUsers from "@/components/users/ListUsers";
 import { fetchUsers } from "@/db/queries/user";
 
+export const revalidate = 60;
+
 export default function Users() {
   return (
     <>
-      <h1>Users</h1>
-      <div className="grid grid-cols-4 gap-4 py-4">
-        <div className="col-span-3">
-          <ListUsers fetchData={fetchUsers} />
-        </div>
+      <h2>Users</h2>
+      <div className="flex mt-4 gap-4">
+        <ListUsers fetchData={fetchUsers} />
       </div>
     </>
   );

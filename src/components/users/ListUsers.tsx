@@ -21,5 +21,5 @@ export default async function PostList({ fetchData }: UserListProps) {
     );
   });
 
-  return <div className="space-y-2">{renderedUsers}</div>;
+  return renderedUsers;
 }
