@@ -6,6 +6,11 @@ export type Prompt = {
 
 export const prompts = (gender: string): Prompt[] => [
   {
+    label: "berghain nocturne",
+    prompt: `An electrifying portrayal of a ${gender} Techno raver, engulfed in the pulsating lights and shadows of Berghain's dance floor, dressed in sleek black attire, their movements synchronized with the hypnotic beat, a sense of euphoria and intensity reflected in their eyes, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full-length frame, High detail RAW color art, dynamic lighting with vibrant neon hues, shallow depth of field, intense focus, cinematic lighting capturing the essence of underground techno culture`,
+    image: "/images/berghaini.png",
+  },
+  {
     label: "desert prophet",
     prompt: `A captivating portrayal of a ${gender} desert mystic standing amidst the vast, sandy expanse of the planet Arrakis, shrouded in flowing robes adorned with intricate desert motifs, their eyes gazing into the distance with a mix of wisdom and foresight, a faint shimmer of spice in the air, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full length frame, High detail RAW color art, natural desert lighting with warm tones, shallow depth of field, intense focus, cinematic lighting`,
     image: "/images/dune.png",

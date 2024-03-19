@@ -51,7 +51,7 @@ export default function Header() {
 
       <NavbarMenu>
         <NavbarMenuItem>
-          <Link href="https://github.com/flov/diffused_dreams">Github</Link>
+          <Link href="/alienware">alienware</Link>
         </NavbarMenuItem>
 
         {session.status === "authenticated" && (
