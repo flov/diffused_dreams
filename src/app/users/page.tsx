@@ -1,7 +1,7 @@
 import ListUsers from "@/components/users/ListUsers";
 import { fetchUsers } from "@/db/queries/user";
 
-export const revalidate = 60;
+export const revalidate = 3600; // revalidate at most every hour
 
 export default function Users() {
   return (
