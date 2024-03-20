@@ -10,16 +10,15 @@ type BackButtonProps = {
 export const BackButton: FC<BackButtonProps> = ({ page }) => {
   const { handleNextPage } = useWizardNavigation();
   return (
-    <div className="flex justify-between items-center fixed top-20 left-4 z-2">
-      <div className="flex items-center">
-        <Button
-          color="primary"
-          variant="bordered"
-          onClick={() => handleNextPage({ nextPage: page })}
-        >
-          Back
-        </Button>
-      </div>
+    <div className="flex justify-between items-center">
+      <Button
+        color="primary"
+        variant="bordered"
+        size="sm"
+        onClick={() => handleNextPage({ nextPage: page })}
+      >
+        Back
+      </Button>
     </div>
   );
 };

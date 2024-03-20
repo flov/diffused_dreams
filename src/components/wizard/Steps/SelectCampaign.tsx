@@ -22,9 +22,11 @@ export const SelectCampaign: FC<SelectCampaignProps> = ({
 
   return (
     <>
-      <BackButton page="SelectGender" />
-
-      <h1 className="text-center mb-8">Select your filter</h1>
+      <div className="flex justify-between items-center">
+        <BackButton page="SelectGender" />
+        <h2 className="text-center">Select your filter</h2>
+        <div></div>
+      </div>
       <SelectFilter
         gender={gender}
         setCampaign={setCampaign}
