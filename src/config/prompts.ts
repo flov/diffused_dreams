@@ -68,7 +68,7 @@ export const prompts = (gender: string): Prompt[] => [
   {
     label: "Retro Space Hero",
     prompt: `A ${gender} space hero from the golden age of pulp sci-fi, rocketing through the cosmos in their sleek spacecraft, laser blaster in hand as they battle evil aliens and save the universe from certain doom.`,
-    image: "/images/retro_space_hero.jpg",
+    image: "/images/retro_space_hero.png",
   },
   {
     label: "Mythological Warrior",
@@ -78,7 +78,7 @@ export const prompts = (gender: string): Prompt[] => [
   {
     label: "Artificial Intelligence",
     prompt: `A ${gender} artificial intelligence, existing within the confines of a vast digital network, their consciousness expanding across the internet as they contemplate the nature of existence and their place in the world of humans.`,
-    image: "/images/artificial_intelligence.jpg",
+    image: "/images/artificial_intelligence.jpeg",
   },
   {
     label: "Underworld Crime Boss",
@@ -93,32 +93,27 @@ export const prompts = (gender: string): Prompt[] => [
   {
     label: "Ancient Alchemist",
     prompt: `A ${gender} alchemist delving into the secrets of the universe, their laboratory filled with bubbling potions and crackling lightning as they seek to unlock the mysteries of transmutation and immortality, their quest for knowledge leading them down dark and dangerous paths.`,
-    image: "/images/ancient_alchemist.jpg",
-  },
-  {
-    label: "Futuristic Cyborg",
-    prompt: `A ${gender} cyborg warrior of the future, their body enhanced with cybernetic implants and advanced weaponry, their mission to protect humanity from the threats of an increasingly hostile world, their humanity fading with every upgrade.`,
-    image: "/images/futuristic_cyborg.jpg",
+    image: "/images/ancient_alchemist.jpeg",
   },
   {
     label: "Shadowed Detective",
     prompt: `A gritty ${gender} detective, illuminated by the dim glow of a streetlamp, standing in the shadows of a rain-soaked alleyway, their silhouette cast against the misty backdrop of a neon-lit cityscape, trench coat billowing in the wind as they search for clues to unravel a web of deceit and corruption.`,
-    image: "/images/neo_noir_detective.jpg",
+    image: "/images/shadowed_detective.jpeg",
   },
   {
     label: "Rogue of the Realm",
     prompt: `A ${gender} rogue lurking in the shadows of a medieval marketplace, cloaked in darkness and secrecy, their eyes gleaming with mischief as they navigate the bustling streets, nimble fingers poised to pilfer treasures and secrets alike from unsuspecting passersby.`,
-    image: "/images/fantasy_rogue.jpg",
+    image: "/images/rogue_of_the_realm.jpeg",
   },
   {
     label: "Futuristic Mercenary",
     prompt: `A ${gender} mercenary of the future, clad in sleek armor and armed to the teeth with advanced weaponry, standing amidst the wreckage of a battle-scarred dystopian landscape, their gaze steely and unwavering as they prepare to face whatever challenges the cybernetic frontier may bring.`,
-    image: "/images/sci_fi_mercenary.jpg",
+    image: "/images/sci_fi_mercenary.jpeg",
   },
   {
     label: "Occult Investigator",
     prompt: `A ${gender} investigator delving into the mysteries of the supernatural, surrounded by ancient tomes and arcane artifacts in a dimly lit study, their expression a mix of skepticism and curiosity as they seek to uncover the truth behind paranormal phenomena that lurk in the shadows.`,
-    image: "/images/supernatural_investigator.jpg",
+    image: "/images/occult_investigator.jpg",
   },
   {
     label: "Survivor of the Wasteland",

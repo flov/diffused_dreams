@@ -6,22 +6,24 @@ import { Button, Image } from "@nextui-org/react";
 import { ShareIcon } from "@/icons";
 
 interface ShowImageProps {
-  generatedImageUrl: string | undefined;
+  generatedImage: string | undefined;
   handleDownload: () => void;
+  label: string;
 }
 
 export const ShowGeneratedImage: FC<ShowImageProps> = ({
-  generatedImageUrl,
+  generatedImage,
   handleDownload,
+  label,
 }) => {
   const { handleNextPage } = useWizardNavigation();
-  if (!generatedImageUrl) return null;
+  if (!generatedImage) return null;
   return (
     <>
       <Image
         style={{ maxHeight: "calc(100vh - 210px)" }}
-        src={generatedImageUrl}
-        alt="Generated image"
+        src={generatedImage}
+        alt={label || "Generated image"}
         aria-label="Generated image"
       />
       <div className="mt-4 flex flex-col sm:flex-row gap-4">
@@ -31,7 +33,7 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
         <RWebShare
           data={{
             text: "My new badass AI character",
-            url: generatedImageUrl,
+            url: generatedImage,
           }}
           onClick={() => console.log("shared successfully!")}
         >

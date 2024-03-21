@@ -13,7 +13,7 @@ import { payUserTokens } from "@/db/queries/user";
 type GenerateImageProps = {
   base64Image: string;
   prompt: string;
-  label: string | undefined;
+  label: string;
 };
 
 export const GenerateImage: FC<GenerateImageProps> = ({
@@ -116,8 +116,9 @@ export const GenerateImage: FC<GenerateImageProps> = ({
       {hasCompleted ? (
         <div className="flex flex-col items-center justify-center">
           <ShowGeneratedImage
+            label={label}
             handleDownload={handleDownload}
-            generatedImageUrl={generatedImageUrl}
+            generatedImage={generatedImageUrl}
           />
           {/* <ShowStatus status={status} /> */}
         </div>
