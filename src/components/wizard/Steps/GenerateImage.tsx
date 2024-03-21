@@ -13,11 +13,13 @@ import { payUserTokens } from "@/db/queries/user";
 type GenerateImageProps = {
   base64Image: string;
   prompt: string;
+  label: string | undefined;
 };
 
 export const GenerateImage: FC<GenerateImageProps> = ({
   base64Image,
   prompt,
+  label,
 }) => {
   const [run, setRun] = useState<RunResponse>();
   const [status, setStatus] = useState<StatusResponse>();
@@ -97,7 +99,9 @@ export const GenerateImage: FC<GenerateImageProps> = ({
     if (generatedImageUrl) {
       const link = document.createElement("a");
       link.href = generatedImageUrl;
-      link.download = "generated-image.jpg";
+      // downcase and substitute spaces with _
+      link.download =
+        label?.toLowerCase().replace(" ", "_") || "generated-image.jpg";
       link.click();
     }
   };

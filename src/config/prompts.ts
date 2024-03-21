@@ -6,6 +6,127 @@ export type Prompt = {
 
 export const prompts = (gender: string): Prompt[] => [
   {
+    label: "Steampunk Inventor",
+    prompt: `A ${gender} inventor in a steampunk workshop, surrounded by brass gadgets and contraptions, goggles perched on their forehead as they tinker with clockwork mechanisms and steam-powered devices.`,
+    image: "/images/steampunk_inventor.jpg",
+  },
+  {
+    label: "Space Explorer",
+    prompt: `A ${gender} space explorer aboard a futuristic spacecraft, peering out of a viewport into the vast expanse of the cosmos, their expression a mix of wonder and determination as they chart a course through the stars.`,
+    image: "/images/space_explorer.jpg",
+  },
+  {
+    label: "Neo-Noir Femme Fatale",
+    prompt: `A mysterious ${gender} femme fatale, bathed in the neon glow of a rain-soaked city street, cigarette smoke curling around her as she leans against a lamppost, her gaze both alluring and dangerous.`,
+    image: "/images/neo_noir_femme_fatal.jpg",
+  },
+  {
+    label: "Dystopian Rebel",
+    prompt: `A ${gender} rebel fighting against a tyrannical regime in a dystopian future, clad in makeshift armor and armed with makeshift weapons, leading a ragtag group of resistance fighters in a desperate struggle for freedom.`,
+    image: "/images/dystopian_rebel.jpg",
+  },
+  {
+    label: "Arctic Explorer",
+    prompt: `A ${gender} explorer braving the frozen wilderness of the Arctic, bundled up in fur-lined clothing as they trek across icy tundra and snow-covered mountains, searching for clues to unlock the secrets of the frigid landscape.`,
+    image: "/images/arctic_explorer.jpg",
+  },
+  {
+    label: "Mystical Shaman",
+    prompt: `A ${gender} shaman communing with the spirits of the natural world, surrounded by swirling mists and shimmering energy as they perform ancient rituals to harness the power of the elements and heal the land.`,
+    image: "/images/mystical_shaman.jpg",
+  },
+  {
+    label: "Gothic Vampire",
+    prompt: `A ${gender} vampire lurking in the shadows of a Gothic castle, their pale skin and sharp fangs gleaming as they prepare to strike fear into the hearts of their unsuspecting prey.`,
+    image: "/images/gothic_vampire.jpg",
+  },
+  {
+    label: "Wandering Ronin",
+    prompt: `A ${gender} ronin wandering the feudal countryside of ancient Japan, their sword at their side as they seek redemption for past sins and honor in a world torn apart by war and strife.`,
+    image: "/images/wandering_ronin.jpg",
+  },
+  {
+    label: "Mythical Druid",
+    prompt: `A ${gender} druid communing with the ancient spirits of the forest, their hands raised to the sky as they channel the power of nature to protect the sacred groves and maintain the balance of the natural world.`,
+    image: "/images/mythical_druid.jpg",
+  },
+  {
+    label: "Cosmic Wanderer",
+    prompt: `A ${gender} wanderer journeying through the cosmos aboard a starship, their eyes reflecting the light of distant galaxies as they chart a course through the infinite expanse of space, seeking knowledge and enlightenment.`,
+    image: "/images/cosmic_wanderer.jpg",
+  },
+  {
+    label: "Swashbuckling Pirate",
+    prompt: `A ${gender} pirate captain aboard their ship, the Jolly Roger, sailing the high seas in search of treasure and adventure, their cutlass flashing in the sunlight as they lead their crew into battle against rival buccaneers.`,
+    image: "/images/swashbuckling_pirate.jpg",
+  },
+  {
+    label: "Haunted Investigator",
+    prompt: `A ${gender} paranormal investigator exploring a haunted mansion, their flashlight cutting through the darkness as they search for clues to unravel the mysteries of the supernatural, their nerves steeling themselves against the terrors that lurk in the shadows.`,
+    image: "/images/haunted_investigator.jpg",
+  },
+  {
+    label: "Retro Space Hero",
+    prompt: `A ${gender} space hero from the golden age of pulp sci-fi, rocketing through the cosmos in their sleek spacecraft, laser blaster in hand as they battle evil aliens and save the universe from certain doom.`,
+    image: "/images/retro_space_hero.jpg",
+  },
+  {
+    label: "Mythological Warrior",
+    prompt: `A ${gender} warrior from ancient mythology, clad in armor forged by the gods as they do battle against legendary beasts and monsters, their courage and strength earning them a place in the annals of history.`,
+    image: "/images/mythological_warrior.jpg",
+  },
+  {
+    label: "Artificial Intelligence",
+    prompt: `A ${gender} artificial intelligence, existing within the confines of a vast digital network, their consciousness expanding across the internet as they contemplate the nature of existence and their place in the world of humans.`,
+    image: "/images/artificial_intelligence.jpg",
+  },
+  {
+    label: "Underworld Crime Boss",
+    prompt: `A ${gender} crime boss ruling over the seedy underbelly of the city, their fingers in every illicit pie as they pull the strings of power from the shadows, their reputation striking fear into the hearts of even the most hardened criminals.`,
+    image: "/images/underworld_crime_boss.jpg",
+  },
+  {
+    label: "High Fantasy Knight",
+    prompt: `A ${gender} knight clad in shining armor, their sword raised high as they charge into battle against a horde of mythical creatures, their loyalty to king and country unwavering as they fight to defend the realm from evil.`,
+    image: "/images/fantasy_knight.jpg",
+  },
+  {
+    label: "Ancient Alchemist",
+    prompt: `A ${gender} alchemist delving into the secrets of the universe, their laboratory filled with bubbling potions and crackling lightning as they seek to unlock the mysteries of transmutation and immortality, their quest for knowledge leading them down dark and dangerous paths.`,
+    image: "/images/ancient_alchemist.jpg",
+  },
+  {
+    label: "Futuristic Cyborg",
+    prompt: `A ${gender} cyborg warrior of the future, their body enhanced with cybernetic implants and advanced weaponry, their mission to protect humanity from the threats of an increasingly hostile world, their humanity fading with every upgrade.`,
+    image: "/images/futuristic_cyborg.jpg",
+  },
+  {
+    label: "Shadowed Detective",
+    prompt: `A gritty ${gender} detective, illuminated by the dim glow of a streetlamp, standing in the shadows of a rain-soaked alleyway, their silhouette cast against the misty backdrop of a neon-lit cityscape, trench coat billowing in the wind as they search for clues to unravel a web of deceit and corruption.`,
+    image: "/images/neo_noir_detective.jpg",
+  },
+  {
+    label: "Rogue of the Realm",
+    prompt: `A ${gender} rogue lurking in the shadows of a medieval marketplace, cloaked in darkness and secrecy, their eyes gleaming with mischief as they navigate the bustling streets, nimble fingers poised to pilfer treasures and secrets alike from unsuspecting passersby.`,
+    image: "/images/fantasy_rogue.jpg",
+  },
+  {
+    label: "Futuristic Mercenary",
+    prompt: `A ${gender} mercenary of the future, clad in sleek armor and armed to the teeth with advanced weaponry, standing amidst the wreckage of a battle-scarred dystopian landscape, their gaze steely and unwavering as they prepare to face whatever challenges the cybernetic frontier may bring.`,
+    image: "/images/sci_fi_mercenary.jpg",
+  },
+  {
+    label: "Occult Investigator",
+    prompt: `A ${gender} investigator delving into the mysteries of the supernatural, surrounded by ancient tomes and arcane artifacts in a dimly lit study, their expression a mix of skepticism and curiosity as they seek to uncover the truth behind paranormal phenomena that lurk in the shadows.`,
+    image: "/images/supernatural_investigator.jpg",
+  },
+  {
+    label: "Survivor of the Wasteland",
+    prompt: `A ${gender} survivor traversing the desolate wastelands of a post-apocalyptic world, clad in rugged attire and adorned with scavenged gear, their eyes scanning the horizon for signs of danger as they navigate the harsh and unforgiving terrain in search of hope and redemption.`,
+    image: "/images/post_apocalyptic_survivor.jpg",
+  },
+
+  {
     label: "digital renegade",
     prompt: `A compelling portrayal of a ${gender} hacker immersed in the digital underworld, surrounded by the glow of computer screens displaying lines of code and intricate cybernetic visuals, their expression intense and focused as they navigate through layers of encrypted data, dressed in urban streetwear with a hint of cyberpunk flair, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full-length frame, High detail RAW color art, neon-lit ambient lighting with flickering shadows, shallow depth of field, sharp focus, cinematic lighting capturing the clandestine world of digital rebellion`,
     image: "/images/hacker.png",

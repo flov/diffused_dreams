@@ -23,6 +23,7 @@ type WizardProps = {
 export const Wizard: FC<WizardProps> = ({ initialStep }) => {
   const [base64Image, setBase64Image] = useState<string>("");
   const [gender, setGender] = useState<string>("");
+  const [label, setLabel] = useState();
   const [campaign, setCampaign] = useState<string>("");
   const [filters, setFilters] = useState<string[]>([]);
   const [selectedDevice, setSelectedDevice] = useState("");
@@ -68,6 +69,7 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
       return (
         <SelectCampaign
           setCampaign={setCampaign}
+          setLabel={setLabel}
           gender={gender}
           filters={filters}
         />
@@ -81,7 +83,13 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
         />
       );
     case "GenerateImage":
-      return <GenerateImage base64Image={base64Image} prompt={campaign} />;
+      return (
+        <GenerateImage
+          base64Image={base64Image}
+          label={label}
+          prompt={campaign}
+        />
+      );
     default:
       return <SelectCameraOrFile />;
   }

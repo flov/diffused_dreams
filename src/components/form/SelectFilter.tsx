@@ -5,6 +5,7 @@ import { prompts } from "@/config/prompts";
 
 type SelectCampaignProps = {
   setCampaign: Dispatch<SetStateAction<string>>;
+  setLabel: Dispatch<SetStateAction<string>>;
   gender: string;
   filters: string[];
   nextPage?: Step;
@@ -14,6 +15,7 @@ export const SelectFilter: FC<SelectCampaignProps> = ({
   filters,
   gender,
   setCampaign,
+  setLabel,
   nextPage,
 }) => {
   const { handleNextPage } = useWizardNavigation();
@@ -35,6 +37,7 @@ export const SelectFilter: FC<SelectCampaignProps> = ({
             className="min-w-[20rem] w-full h-[370px]"
             onPress={() => {
               setCampaign(character.prompt);
+              setLabel(character.label);
               handleNextPage({ nextPage: nextPage || "GenerateImage" });
             }}
           >

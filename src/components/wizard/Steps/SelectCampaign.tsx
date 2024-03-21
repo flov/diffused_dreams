@@ -5,6 +5,7 @@ import { SelectFilter } from "@/components/form/SelectFilter";
 
 type SelectCampaignProps = {
   setCampaign: Dispatch<SetStateAction<string>>;
+  setLabel: Dispatch<SetStateAction<string>>;
   gender: string;
   filters: string[];
 };
@@ -13,6 +14,7 @@ export const SelectCampaign: FC<SelectCampaignProps> = ({
   filters,
   gender,
   setCampaign,
+  setLabel,
 }) => {
   const characters = !!filters.length
     ? prompts(gender).filter((character) => {
@@ -30,6 +32,7 @@ export const SelectCampaign: FC<SelectCampaignProps> = ({
       <SelectFilter
         gender={gender}
         setCampaign={setCampaign}
+        setLabel={setLabel}
         filters={filters}
       />
     </>
