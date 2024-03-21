@@ -5,6 +5,7 @@ import { SelectFilter } from "@/components/form/SelectFilter";
 
 type SelectCampaignProps = {
   setCampaign: Dispatch<SetStateAction<string>>;
+  setLabel: Dispatch<SetStateAction<string>>;
   gender: string;
   filters: string[];
 };
@@ -15,6 +16,7 @@ export const ChooseCampaign: FC<SelectCampaignProps> = ({
   filters,
   gender,
   setCampaign,
+  setLabel,
 }) => {
   return (
     <>
@@ -25,6 +27,7 @@ export const ChooseCampaign: FC<SelectCampaignProps> = ({
       </div>
       <SelectFilter
         gender={gender}
+        setLabel={setLabel}
         setCampaign={setCampaign}
         filters={filters}
         nextPage="CaptureWithCamera"

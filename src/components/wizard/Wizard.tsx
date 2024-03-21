@@ -23,8 +23,9 @@ type WizardProps = {
 export const Wizard: FC<WizardProps> = ({ initialStep }) => {
   const [base64Image, setBase64Image] = useState<string>("");
   const [gender, setGender] = useState<string>("");
-  const [label, setLabel] = useState();
+  const [label, setLabel] = useState<string>("");
   const [campaign, setCampaign] = useState<string>("");
+
   const [filters, setFilters] = useState<string[]>([]);
   const [selectedDevice, setSelectedDevice] = useState("");
 
@@ -78,6 +79,7 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
       return (
         <ChooseCampaign
           setCampaign={setCampaign}
+          setLabel={setLabel}
           gender={gender}
           filters={filters}
         />
