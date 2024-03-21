@@ -8,7 +8,7 @@ export const prompts = (gender: string): Prompt[] => [
   {
     label: "digital renegade",
     prompt: `A compelling portrayal of a ${gender} hacker immersed in the digital underworld, surrounded by the glow of computer screens displaying lines of code and intricate cybernetic visuals, their expression intense and focused as they navigate through layers of encrypted data, dressed in urban streetwear with a hint of cyberpunk flair, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full-length frame, High detail RAW color art, neon-lit ambient lighting with flickering shadows, shallow depth of field, sharp focus, cinematic lighting capturing the clandestine world of digital rebellion`,
-    image: "/images/hacker_prompt.jpg",
+    image: "/images/hacker.png",
   },
 
   {

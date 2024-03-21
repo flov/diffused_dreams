@@ -41,7 +41,9 @@ export default function Header() {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
-          <ThemedLogo />
+          <Link href="/">
+            <ThemedLogo />
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
