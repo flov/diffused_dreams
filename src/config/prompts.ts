@@ -6,6 +6,12 @@ export type Prompt = {
 
 export const prompts = (gender: string): Prompt[] => [
   {
+    label: "digital renegade",
+    prompt: `A compelling portrayal of a ${gender} hacker immersed in the digital underworld, surrounded by the glow of computer screens displaying lines of code and intricate cybernetic visuals, their expression intense and focused as they navigate through layers of encrypted data, dressed in urban streetwear with a hint of cyberpunk flair, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full-length frame, High detail RAW color art, neon-lit ambient lighting with flickering shadows, shallow depth of field, sharp focus, cinematic lighting capturing the clandestine world of digital rebellion`,
+    image: "/images/hacker_prompt.jpg",
+  },
+
+  {
     label: "berghain nocturne",
     prompt: `An electrifying portrayal of a ${gender} Techno raver, engulfed in the pulsating lights and shadows of Berghain's dance floor, dressed in sleek black attire, their movements synchronized with the hypnotic beat, a sense of euphoria and intensity reflected in their eyes, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full-length frame, High detail RAW color art, dynamic lighting with vibrant neon hues, shallow depth of field, intense focus, cinematic lighting capturing the essence of underground techno culture`,
     image: "/images/berghaini.png",
