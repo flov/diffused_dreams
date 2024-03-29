@@ -8,7 +8,7 @@ import { IsLoading } from "@/components/common/IsLoading";
 import { ShowGeneratedImage } from "../../common/ShowGeneratedImage";
 import { ShowStatus } from "@/components/common/ShowStatus";
 import { useUser } from "@/providers/userProvider";
-import { payUserTokens } from "@/db/queries/user";
+import { payUserTokens } from "@/db/queries/users";
 
 type GenerateImageProps = {
   base64Image: string;
@@ -64,7 +64,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
 
   useEffect(() => {
     if (status?.status === "COMPLETED") {
-      payUserTokens(50, setUser);
+      payUserTokens(1, setUser);
     }
   }, [status]);
 
@@ -92,7 +92,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
   const hasCompleted = status && status.status === "COMPLETED";
   const generatedImageUrl =
     status && status.status === "COMPLETED"
-      ? "data:image/jpeg;base64," + status.output.images
+      ? "data:image/png;base64," + status.output.images
       : undefined;
 
   const handleDownload = () => {

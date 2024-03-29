@@ -1,6 +1,5 @@
 import { auth } from "@/auth";
 import { db } from "@/db";
-import { signInRequired } from "@/db/utils/sign-in-required";
 import { GenerateImagePayload } from "@/types/api/generate-image";
 
 export const maxDuration = 10; // This function can run for a maximum of 10 seconds

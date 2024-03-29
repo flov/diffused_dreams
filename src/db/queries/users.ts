@@ -23,3 +23,7 @@ export const payUserTokens = async (
 export const fetchUsers = (): Promise<User[]> => {
   return db.user.findMany({ take: 20 });
 };
+
+export const fetchUserByEmail = (email: string): Promise<User | null> => {
+  return db.user.findUnique({ where: { email } });
+};

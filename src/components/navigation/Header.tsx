@@ -5,6 +5,7 @@ import {
   Navbar,
   NavbarBrand,
   NavbarContent,
+  NavbarItem,
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
@@ -47,13 +48,25 @@ export default function Header() {
         </NavbarBrand>
       </NavbarContent>
 
+      <NavbarContent justify="center">
+        <NavbarItem>
+          <Link href="/gallery">Gallery</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="/alienware">Generate image</Link>
+        </NavbarItem>
+      </NavbarContent>
+
       <NavbarContent justify="end">
         <HeaderAuth />
       </NavbarContent>
 
       <NavbarMenu>
         <NavbarMenuItem>
-          <Link href="/alienware">alienware</Link>
+          <Link href="/alienware">Alienware</Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
+          <Link href="/gallery">Gallery</Link>
         </NavbarMenuItem>
 
         {session.status === "authenticated" && (
