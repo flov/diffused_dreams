@@ -14,9 +14,6 @@ export const SelectGender: FC<SelectGenderProps> = ({
 }) => {
   return (
     <div className="flex flex-col items-center justify-center gap-4 md:gap-8">
-      <div className="flex justify-center">
-        <h1 className="text-4xl md:text-6xl mb-4">Select your gender</h1>
-      </div>
       <div className="flex justify-center w-full flex-wrap md:flex-nowrap gap-2 md:gap-8">
         {["man", "woman"].map((gender) => (
           <GenderCard

@@ -9,7 +9,12 @@ type SelectGenderProps = {
 export const SelectGender: FC<SelectGenderProps> = ({ setGender }) => {
   return (
     <>
-      <BackButton page="SelectCameraOrFile" />
+      <div className="flex justify-around">
+        <h1 className="text-4xl md:text-6xl mb-4">Select your gender</h1>
+        <BackButton page="SelectCameraOrFile" />
+        <div></div>
+      </div>
+
       <SelectGenderForm setGender={setGender} />
     </>
   );
