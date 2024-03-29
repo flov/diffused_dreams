@@ -41,11 +41,6 @@ export async function POST(request: Request) {
         status: 404,
         headers: { "Content-Type": "application/json" },
       });
-    if (user.tokens < 1)
-      return new Response(JSON.stringify({ error: "Not enough tokens" }), {
-        status: 402,
-        headers: { "Content-Type": "application/json" },
-      });
 
     const body = {
       input: {
