@@ -18,7 +18,10 @@ import Link from "next/link";
 import ThemedLogo from "./ThemedLogo";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = React.useReducer(
+    (current) => !current,
+    false,
+  );
   const session = useSession();
 
   return (
@@ -48,27 +51,11 @@ export default function Header() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent justify="center">
-        <NavbarItem>
-          <Link href="/gallery">Gallery</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link href="/alienware">Generate image</Link>
-        </NavbarItem>
-      </NavbarContent>
-
       <NavbarContent justify="end">
         <HeaderAuth />
       </NavbarContent>
 
       <NavbarMenu>
-        <NavbarMenuItem>
-          <Link href="/alienware">Alienware</Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <Link href="/gallery">Gallery</Link>
-        </NavbarMenuItem>
-
         {session.status === "authenticated" && (
           <>
             <NavbarMenuItem>
@@ -77,6 +64,12 @@ export default function Header() {
                   Sign Out
                 </Button>
               </form>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Link href="/alienware">Alienware</Link>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Link href="/gallery">Gallery</Link>
             </NavbarMenuItem>
           </>
         )}

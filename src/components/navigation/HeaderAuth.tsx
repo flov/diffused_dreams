@@ -8,7 +8,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   Chip,
-  CircularProgress,
+  Link,
 } from "@nextui-org/react";
 import { useSession } from "next-auth/react";
 import { signOut, signInWithGoogle } from "@/actions";
@@ -41,12 +41,14 @@ export default function HeaderAuth() {
             <Avatar src={session.data.user.image || ""} />
           </PopoverTrigger>
           <PopoverContent>
-            <div className="p-4">
+            <div className="p-4 flex flex-col gap-2">
               <form action={signOut}>
                 <Button type="submit" color="danger">
                   Sign Out
                 </Button>
               </form>
+              <Link href="/gallery">Gallery</Link>
+              <Link href="/alienware">Generate image</Link>
             </div>
           </PopoverContent>
         </Popover>
