@@ -12,7 +12,9 @@ export default async function ListImages({ fetchData }: PostListProps) {
   const renderedImages = images.map((image, idx) => {
     return (
       <div key={`id${idx}`}>
-        <Image className="border" src={image.imageUrl} alt={image.imageUrl} />
+        <a href={image.imageUrl} target="_blank" rel="noreferrer">
+          <Image className="border" src={image.imageUrl} alt={image.imageUrl} />
+        </a>
       </div>
     );
   });
@@ -20,7 +22,7 @@ export default async function ListImages({ fetchData }: PostListProps) {
   // make a grid in tailwind that contains maximum 4 images in a row and a max width of 4xl and center the grid
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
       {renderedImages}
     </div>
   );
