@@ -25,14 +25,12 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
   const [gender, setGender] = useState<string>("");
   const [label, setLabel] = useState<string>("");
   const [campaign, setCampaign] = useState<string>("");
-
   const [filters, setFilters] = useState<string[]>([]);
   const [selectedDevice, setSelectedDevice] = useState("");
 
   // get query params step and name
   const searchParams = useSearchParams();
-  const stepName =
-    searchParams.get("name") || initialStep || "SelectCameraOrFile";
+  const stepName = searchParams.get("name") || initialStep;
 
   // switch over stepName and render the appropriate component
   switch (stepName) {
