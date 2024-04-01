@@ -23,7 +23,7 @@ export async function GET(
       },
     );
 
-  const url = `https://api.runpod.ai/v2/wxgerymesqt634/status/${id}`;
+  const url = `https://api.runpod.ai/v2/${process.env.EVENTSTATION_RUNPOD_SINGLE_PERSON_ENDPOINT_ID}/status/${id}`;
 
   const headers = {
     Authorization: `Bearer ${process.env.EVENTSTATION_RUNPOD_APIKEY}`,
