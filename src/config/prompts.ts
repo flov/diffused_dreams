@@ -6,6 +6,31 @@ export type Prompt = {
 
 export const prompts = (gender: string): Prompt[] => [
   {
+    label: "Legendary Goal-Scorer",
+    prompt: `A ${gender === "male" ? "visionary" : "tactical"} ${gender} soccer player orchestrating the game from midfield, their precise passes and strategic vision dictating the flow of play, teammates and opponents alike in awe of their mastery of the beautiful game.`,
+    image: "/images/soccer_champion.jpg",
+  },
+  {
+    label: "Enigmatic Educator",
+    prompt: `An ${gender === "male" ? "inspiring" : "enigmatic"} ${gender} educator in a classroom filled with antique books and vintage globes, their chalk-stained hands gesturing animatedly as they captivate their students with tales of ancient civilizations and scientific discoveries, igniting a passion for learning that transcends the boundaries of time and space.`,
+    image: "/images/enigmatic_educator.jpg",
+  },
+  {
+    label: "Dancing Queen",
+    prompt: `A ${gender === "female" ? "graceful" : "smooth"} ${gender} dancer commanding the dance floor with effortless elegance and boundless energy, their every move a mesmerizing display of rhythm and style, captivating onlookers with their undeniable charisma and infectious enthusiasm.`,
+    image: "/images/dancing_queen.jpg",
+  },
+  {
+    label: "Suave Secret Agent",
+    prompt: `A ${gender} secret agent in a sharp suit, sipping a martini shaken, not stirred, as they survey the glamorous casino floor, their keen eyes assessing the room for potential threats and opportunities alike.`,
+    image: "/images/suave_secret_agent.jpg",
+  },
+  {
+    label: "Gadgets Expert",
+    prompt: `A ${gender} expert in espionage gadgets, surrounded by an array of cutting-edge technology in a hidden underground laboratory, their mind buzzing with ideas for the next ingenious invention that will help turn the tide in the fight against global threats.`,
+    image: "/images/gadgets_expert.jpg",
+  },
+  {
     label: "Steampunk Inventor",
     prompt: `A ${gender} inventor in a steampunk workshop, surrounded by brass gadgets and contraptions, goggles perched on their forehead as they tinker with clockwork mechanisms and steam-powered devices.`,
     image: "/images/steampunk_inventor.jpg",
