@@ -6,11 +6,6 @@ export type Prompt = {
 
 export const prompts = (gender: string): Prompt[] => [
   {
-    label: "Legendary Goal-Scorer",
-    prompt: `A ${gender === "male" ? "visionary" : "tactical"} ${gender} soccer player orchestrating the game from midfield, their precise passes and strategic vision dictating the flow of play, teammates and opponents alike in awe of their mastery of the beautiful game.`,
-    image: "/images/soccer_champion.jpg",
-  },
-  {
     label: "Enigmatic Educator",
     prompt: `An ${gender === "male" ? "inspiring" : "enigmatic"} ${gender} educator in a classroom filled with antique books and vintage globes, their chalk-stained hands gesturing animatedly as they captivate their students with tales of ancient civilizations and scientific discoveries, igniting a passion for learning that transcends the boundaries of time and space.`,
     image: "/images/enigmatic_educator.jpg",
