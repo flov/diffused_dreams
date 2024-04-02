@@ -7,6 +7,7 @@ export async function uploadImageToAzureBlobStorage(
   try {
     // Azure Blob Storage connection string
     const connectionString = process.env.AZURE_BLOB_STORAGE_CONNECTION_STRING;
+    console.log(connectionString);
     if (!connectionString) {
       throw new Error(
         "You need to provide an Azure Blob Storage connection string, see .env file.",
