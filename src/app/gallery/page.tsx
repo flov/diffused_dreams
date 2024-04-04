@@ -14,7 +14,7 @@ export default async function Page() {
   }
 
   // fetch user by email
-  const user = await fetchUserByEmail("petrit.luta@gmail.com");
+  const user = await fetchUserByEmail(session.user.email);
   if (!user) redirect("/");
 
   return (
