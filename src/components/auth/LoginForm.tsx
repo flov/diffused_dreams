@@ -9,6 +9,7 @@ import Link from "next/link";
 import { GoogleIcon } from "@/icons/GoogleLogoIcon";
 import { signInWithGoogle } from "@/actions";
 import { useSearchParams } from "next/navigation";
+import { EMAIL_NOT_VERIFIED } from "@/errors/customErrorTypes";
 
 interface LoginFormInputs {
   email: string;
@@ -37,8 +38,19 @@ export default function LoginForm() {
   return (
     <div className="flex flex-col items-center gap-y-2">
       {logInError && (
-        <div className="bg-red-700 text-white rounded p-3 w-full">
-          Email or password is wrong
+        <div className="bg-red-700 text-white rounded p-3 w-full max-w-72">
+          {logInError === EMAIL_NOT_VERIFIED ? (
+            <p>
+              Email is not verified. Please verify it in your email or click
+              <Link href="/verify-email/resend" className="text-purple-600">
+                {" "}
+                here{" "}
+              </Link>
+              to resend the verification link.
+            </p>
+          ) : (
+            <p>Email or password is wrong</p>
+          )}
         </div>
       )}
       <form

@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import crypto from "node:crypto";
 
 const SALT_ROUNDS = process.env.PASSWORD_SALT_ROUNDS
   ? parseInt(process.env.PASSWORD_SALT_ROUNDS, 10)
@@ -17,4 +18,8 @@ export const comparePasswords = async (
   }
 
   return bcrypt.compare(password, hash);
+};
+
+export const generateRandomString = (size = 20) => {
+  return crypto.randomBytes(size).toString("hex");
 };

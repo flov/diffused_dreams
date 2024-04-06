@@ -1,13 +1,11 @@
 import { db } from "@/db";
-import { UserRegisterSchema } from "@/schemas/user";
-import { generateRandomString, hashPassword } from "@/utils/crypto";
-import { Prisma, User } from "@prisma/client";
+import { UserEmailVerificationSchema } from "@/schemas/user";
+import { generateRandomString } from "@/utils/crypto";
 import dayjs from "dayjs";
 
 export async function POST(request: Request) {
   const body = await request.json();
-
-  const { value, error } = UserRegisterSchema.validate(body);
+  const { value, error } = UserEmailVerificationSchema.validate(body);
 
   if (error) {
     return new Response(JSON.stringify({ error: error.message }), {
@@ -15,30 +13,34 @@ export async function POST(request: Request) {
     });
   }
 
-  const { password, email } = value;
-  const passwordHash = await hashPassword(password);
+  const { email } = value;
 
-  let user: User;
+  const user = await db.user.findUnique({
+    where: {
+      email,
+    },
+  });
 
-  try {
-    user = await db.user.create({
-      data: {
-        email,
-        password: passwordHash,
-      },
+  if (!user) {
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
     });
-  } catch (e) {
-    if (e instanceof Prisma.PrismaClientKnownRequestError) {
-      if (e.code === "P2002") {
-        return new Response(JSON.stringify({ error: "Email already exists" }), {
-          status: 400,
-        });
-      }
-    }
-    throw e;
+  }
+
+  if (user.emailVerified) {
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+    });
   }
 
   const token = generateRandomString();
+
+  // delete old email verifications links
+  await db.userEmailVerification.deleteMany({
+    where: {
+      userId: user.id,
+    },
+  });
 
   await db.userEmailVerification.create({
     data: {

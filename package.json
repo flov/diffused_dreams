@@ -17,6 +17,7 @@
     "@nextui-org/react": "^2.2.9",
     "@prisma/client": "5.11.0",
     "bcrypt": "5.1.1",
+    "dayjs": "1.11.10",
     "framer-motion": "^10.18.0",
     "jimp": "^0.22.12",
     "joi": "17.12.3",

@@ -1,9 +1,10 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthError } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import { comparePasswords } from "./utils/crypto";
+import { EmailNotVerifiedError } from "./errors";
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
@@ -54,8 +55,6 @@ export const {
           return null;
         }
 
-        // todo add check to return null for unverified emails
-
         const isValid = await comparePasswords(
           credentials.password as string,
           user.password
@@ -63,6 +62,10 @@ export const {
 
         if (!isValid) {
           return null;
+        }
+
+        if (!user.emailVerified) {
+          throw new EmailNotVerifiedError("Email not verified");
         }
 
         return user;
