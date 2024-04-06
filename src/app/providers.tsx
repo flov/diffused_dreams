@@ -5,6 +5,8 @@ import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
 import { UserProvider } from "@/providers/userProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Providers({ children }: { children: ReactNode }) {
   return (
@@ -16,6 +18,7 @@ export default function Providers({ children }: { children: ReactNode }) {
           themes={["event-station", "alienware"]}
         >
           <UserProvider>{children}</UserProvider>
+          <ToastContainer />
         </ThemeProvider>
       </NextUIProvider>
     </SessionProvider>
