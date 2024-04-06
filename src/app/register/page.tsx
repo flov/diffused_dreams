@@ -11,10 +11,10 @@ export default async function Register() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-y-6 ">
+    <div className="flex flex-col items-center justify-center gap-y-6 ">
       <ThemedLogo />
       <h4 className="text-white text-xl">
-        Transform each event into a unique visual story with customized AI.
+        Transform each event into a unique visual story with customized AI.
       </h4>
 
       <h3 className="text-white text-4xl mt-10">Register</h3>
