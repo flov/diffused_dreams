@@ -80,7 +80,7 @@ export async function POST(request: Request) {
       subject: 'Email Verification',
       text: emailContent,
     };
-
+    console.log('Sending email:', mailOptions)
     // Send the email
     transporter.sendMail(mailOptions, (error: any, info: { response: any; }) => {
       if (error) {
