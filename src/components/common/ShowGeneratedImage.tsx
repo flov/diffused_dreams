@@ -51,9 +51,9 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
           color="primary"
           size="md"
           variant="bordered"
-          onClick={() => handleNextPage({ nextPage: "SelectCameraOrFile" })}
+          onClick={() => handleNextPage({ nextPage: "PrivacyPolicy" })}
         >
-          Exit
+          Restart Photobooth
         </Button>
       </div>
     </>

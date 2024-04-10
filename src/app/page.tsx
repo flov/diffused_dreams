@@ -21,19 +21,19 @@ export default async function Home() {
         <div className="mt-14 flex flex-col justify-center items-center w-full">
           <Button
             as={Link}
-            href="/gallery"
+            href="/eventstation"
             variant="bordered"
-            className="rounded border-2 border-secondary py-2.5 px-24 text-base text-white mb-4"
+            className="rounded border-2 border-secondary py-2.5 px-24 text-base text-white mb-4 w-64"
           >
-            Gallery
+            Start Photobooth Loop
           </Button>
           <Button
             as={Link}
-            href="/eventstation"
+            href="/gallery"
             variant="bordered"
-            className="rounded border-2 border-secondary py-2.5 px-24 text-base text-white"
+            className="rounded border-2 border-secondary py-2.5 px-24 text-base text-white w-64"
           >
-            Start Photobooth Loop
+            Gallery
           </Button>
         </div>
       )}

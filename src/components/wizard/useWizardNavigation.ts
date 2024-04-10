@@ -1,4 +1,5 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import PrivacyPolicyPage from "./Steps/PrivacyPolicy";
 
 export type Step =
   | "CaptureWithCamera"
@@ -10,7 +11,8 @@ export type Step =
   | "SelectCameraOrFile"
   | "SelectCampaign"
   | "SelectFile"
-  | "SelectGender";
+  | "SelectGender"
+  | "PrivacyPolicy";
 
 const useWizardNavigation = () => {
   const wizardSteps = {
@@ -24,6 +26,7 @@ const useWizardNavigation = () => {
     SelectCampaign: 4,
     SelectFile: 2,
     SelectGender: 3,
+    PrivacyPolicy: 0,
   };
 
   const { replace } = useRouter();

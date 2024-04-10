@@ -15,6 +15,7 @@ import { Step } from "./useWizardNavigation";
 import { CaptureWithCamera } from "./Steps/CaptureWithCamera";
 import { ChooseGender } from "./Steps/ChooseGender";
 import { ChooseCampaign } from "./Steps/ChooseCampaign";
+import PrivacyPolicyPage from "./Steps/PrivacyPolicy";
 
 type WizardProps = {
   initialStep: Step;
@@ -92,6 +93,8 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
           flowID={5}
         />
       );
+    case "PrivacyPolicy":
+      return <PrivacyPolicyPage />;
     default:
       return <SelectCameraOrFile />;
   }
