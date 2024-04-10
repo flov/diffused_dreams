@@ -23,7 +23,7 @@ export default async function Home() {
             as={Link}
             href="/gallery"
             variant="bordered"
-            className="rounded border-2 border-secondary py-2.5 px-24 text-base text-white"
+            className="rounded border-2 border-secondary py-2.5 px-24 text-base text-white mb-4"
           >
             Gallery
           </Button>
@@ -33,7 +33,7 @@ export default async function Home() {
             variant="bordered"
             className="rounded border-2 border-secondary py-2.5 px-24 text-base text-white"
           >
-            Start Photoboothloop
+            Start Photobooth Loop
           </Button>
         </div>
       )}

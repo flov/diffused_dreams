@@ -107,8 +107,8 @@ export default function LoginForm() {
             >
               LOGIN
             </Button>
-            <p className="text-white text-xl">OR</p>
-            <Button
+            {/* <p className="text-white text-xl">OR</p> */}
+            {/* <Button
               onClick={() => {
                 setLoading(true);
                 signInWithGoogle();
@@ -117,12 +117,12 @@ export default function LoginForm() {
               className="bg-white text-black py-3 text-base font-medium  w-full rounded"
             >
               <GoogleIcon /> Sign in with Google
-            </Button>
+            </Button> */}
           </>
         )}
       </form>
 
-      <div className="flex justify-end w-full">
+      <div className="flex justify-center w-full">
         {/* todo implement forgot password */}
         <Link href="/">
           <p className="text-white text-base">Forgot password?</p>
