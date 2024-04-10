@@ -15,7 +15,7 @@ export default async function Eventstation() {
 
   return (
     <Suspense>
-      <Wizard initialStep="SelectCameraAndFilter" />
+      <Wizard initialStep="SelectCameraOrFile" />
     </Suspense>
   );
 }

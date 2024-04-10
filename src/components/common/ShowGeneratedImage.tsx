@@ -51,7 +51,7 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
           color="primary"
           size="md"
           variant="bordered"
-          onClick={() => handleNextPage({ nextPage: "ChooseGender" })}
+          onClick={() => handleNextPage({ nextPage: "SelectCameraOrFile" })}
         >
           Exit
         </Button>
