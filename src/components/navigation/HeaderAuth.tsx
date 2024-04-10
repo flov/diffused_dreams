@@ -11,7 +11,7 @@ import {
   Link,
 } from "@nextui-org/react";
 import { useSession } from "next-auth/react";
-import { signOut, signInWithGoogle } from "@/actions";
+import { signOut } from "@/actions";
 import { StarIcon } from "@/icons/StarIcon";
 import { useUser } from "@/providers/userProvider";
 
@@ -57,11 +57,9 @@ export default function HeaderAuth() {
   } else {
     authContent = (
       <NavbarItem>
-        <form action={signInWithGoogle}>
-          <Button type="submit" variant="bordered">
-            Sign in
-          </Button>
-        </form>
+        <Button as={Link} href="/login" type="submit" variant="bordered">
+          Sign in
+        </Button>
       </NavbarItem>
     );
   }

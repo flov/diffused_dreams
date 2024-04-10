@@ -14,4 +14,7 @@ export const paths = {
   getCurrentUserApi() {
     return `/api/current-user`;
   },
+  sendVerificationEmail() {
+    return `/verify-email`;
+  },
 };
