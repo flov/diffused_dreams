@@ -29,7 +29,7 @@ export default function LoginForm() {
       email: data.email,
       password: data.password,
       redirect: true,
-      callbackUrl: "/eventstation",
+      callbackUrl: "/",
     });
 
     setLoading(false);
