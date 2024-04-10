@@ -82,7 +82,7 @@ export async function POST(request: Request) {
     };
 
     // Send the email
-    transporter.sendMail(mailOptions, (error, info) => {
+    transporter.sendMail(mailOptions, (error: any, info: { response: any; }) => {
       if (error) {
       console.error('Error sending email:', error);
       } else {
