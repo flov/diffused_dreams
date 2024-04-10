@@ -88,6 +88,8 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
           base64Image={base64Image}
           label={label}
           prompt={campaign}
+          negativePrompt={campaign}
+          flowID={5}
         />
       );
     default:

@@ -13,13 +13,17 @@ import { payUserTokens } from "@/db/queries/users";
 type GenerateImageProps = {
   base64Image: string;
   prompt: string;
+  negativePrompt: string;
   label: string;
+  flowID: number;
 };
 
 export const GenerateImage: FC<GenerateImageProps> = ({
   base64Image,
   prompt,
+  negativePrompt,
   label,
+  flowID,
 }) => {
   const [run, setRun] = useState<RunResponse>();
   const [status, setStatus] = useState<StatusResponse>();
@@ -55,8 +59,8 @@ export const GenerateImage: FC<GenerateImageProps> = ({
     generateImage({
       base64Image,
       positivePrompt: prompt,
-      negativePrompt: "nsfw",
-      flowId: 5,
+      negativePrompt: negativePrompt,
+      flowId: flowID,
     });
   }, []);
 
