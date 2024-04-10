@@ -36,11 +36,15 @@ export async function uploadImageToAzureBlobStorage(
     const resizedBuffer = await image.getBufferAsync(Jimp.MIME_PNG);
 
     // Upload data to the blob
-    await containerClient.uploadBlockBlob(
+    try {
+      await containerClient.uploadBlockBlob(
       blobName,
       resizedBuffer,
       resizedBuffer.length,
-    );
+      );
+    } catch (error) {
+      throw new Error("Failed to upload data to Azure Blob Storage");
+    }
 
     const uploadedBlobUrl = `https://${blobServiceClient.accountName}.blob.core.windows.net/${containerName}/${blobName}`;
     console.log(`Uploaded image to Azure Blob Storage: ${uploadedBlobUrl}`);
