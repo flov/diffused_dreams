@@ -50,7 +50,7 @@ export async function POST(request: Request) {
       expires: dayjs().add(5, "days").toDate(),
     },
   });
-
+  console.log("attempting to send email to", email, "with token", token)
   if (process.env.NODE_ENV !== "production") {
     console.log("Copy this to browser to verify email");
     console.log(`http://localhost:3000/verify-email/${token}`);
