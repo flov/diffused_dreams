@@ -65,9 +65,9 @@ export default function Header() {
                 </Button>
               </form>
             </NavbarMenuItem>
-            <NavbarMenuItem>
+            {/* <NavbarMenuItem>
               <Link href="/alienware">Alienware</Link>
-            </NavbarMenuItem>
+            </NavbarMenuItem> */}
             <NavbarMenuItem>
               <Link href="/gallery">Gallery</Link>
             </NavbarMenuItem>

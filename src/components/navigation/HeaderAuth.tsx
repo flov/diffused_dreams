@@ -48,7 +48,7 @@ export default function HeaderAuth() {
                 </Button>
               </form>
               <Link href="/gallery">Gallery</Link>
-              <Link href="/alienware">Generate image</Link>
+              <Link href="/eventstation">Generate image</Link>
             </div>
           </PopoverContent>
         </Popover>

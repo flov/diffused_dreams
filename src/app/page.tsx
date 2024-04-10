@@ -25,7 +25,15 @@ export default async function Home() {
             variant="bordered"
             className="rounded border-2 border-secondary py-2.5 px-24 text-base text-white"
           >
-            GALLERY
+            Gallery
+          </Button>
+          <Button
+            as={Link}
+            href="/eventstation"
+            variant="bordered"
+            className="rounded border-2 border-secondary py-2.5 px-24 text-base text-white"
+          >
+            Start Photoboothloop
           </Button>
         </div>
       )}
