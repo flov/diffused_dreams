@@ -51,12 +51,12 @@ export async function POST(request: Request) {
     },
   });
 
-  // if (process.env.NODE_ENV !== "production") {
-  //   console.log("Copy this to browser to verify email");
-  //   console.log(`http://localhost:3000/verify-email/${token}`);
-  // } else {
+  if (process.env.NODE_ENV !== "production") {
+    console.log("Copy this to browser to verify email");
+    console.log(`http://localhost:3000/verify-email/${token}`);
+  } else {
     // todo implement the logic to send it to email
-    const emailContent = `Click the following link to verify your email: http://localhost:3000/verify-email/${token}`;
+    const emailContent = `Click the following link to verify your email: https://diffused-dreams-psi.vercel.app/verify-email/${token}`;
     // TODO: Use your email sending library or service to send the email
     // For example, you can use Nodemailer to send the email
     // Here's an example of how you can use Nodemailer:
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
       }
     });
     
-  //}
+  }
 
   return new Response(JSON.stringify({ success: true }), {
     status: 200,
