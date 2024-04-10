@@ -2,12 +2,13 @@ import { auth } from "@/auth";
 import ListImages from "@/components/gallery/ListImages";
 import { fetchImagesByUserId } from "@/db/queries/generatedImages";
 import { fetchUserByEmail } from "@/db/queries/users";
+import { Button } from "@nextui-org/react";
 import { redirect } from "next/navigation";
 
 export default async function Page() {
   const session = await auth();
 
-  // redirect to '/' if not authenticated
+  // // redirect to '/' if not authenticated
   if (!session || !session.user || !session.user.email) {
     redirect("/");
   }
@@ -17,10 +18,25 @@ export default async function Page() {
   if (!user) redirect("/");
 
   return (
-    <>
-      <h2 className="font-bold mb-4">Gallery</h2>
+    <div className="mb-6">
+      <div className="flex flex-col justify-center items-center mt-8 gap-x-4 mb-11">
+        <h2 className="font-bold mb-4 text-white">Eventname</h2>
+        <Button
+          variant="bordered"
+          className="p-2.5 text-base border-secondary text-white rounded border-2"
+        >
+          Download all images
+        </Button>
+      </div>
 
       <ListImages fetchData={() => fetchImagesByUserId(user.id)} />
-    </>
+
+      {/* todo implement pagination logic when clicking the load more to get another batch of images */}
+      <div className="flex justify-center mt-6">
+        <Button variant="bordered" className="border-secondary border-2 p-2.5">
+          Load More Images
+        </Button>
+      </div>
+    </div>
   );
 }

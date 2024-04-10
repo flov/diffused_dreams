@@ -69,6 +69,9 @@ const config: Config = {
               DEFAULT: "#DD62ED",
               foreground: "#ffffff",
             },
+            secondary: {
+              DEFAULT: "#9450FF",
+            },
             primary: {
               50: "#3B096C",
               100: "#520F83",
