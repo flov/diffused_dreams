@@ -37,14 +37,17 @@ export async function uploadImageToAzureBlobStorage(
 
     // Upload data to the blob
     try {
+      // Upload data to the blob
       await containerClient.uploadBlockBlob(
-      blobName,
-      resizedBuffer,
-      resizedBuffer.length,
+        blobName,
+        resizedBuffer,
+        resizedBuffer.length
       );
+      console.log("Image uploaded successfully.");
     } catch (error) {
-      throw new Error("Failed to upload data to Azure Blob Storage");
+      console.error("Failed to upload image to Azure Blob Storage:", error);
     }
+    console.log("image uploaded")
 
     const uploadedBlobUrl = `https://${blobServiceClient.accountName}.blob.core.windows.net/${containerName}/${blobName}`;
     console.log(`Uploaded image to Azure Blob Storage: ${uploadedBlobUrl}`);
