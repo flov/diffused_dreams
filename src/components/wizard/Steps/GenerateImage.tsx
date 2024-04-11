@@ -45,6 +45,8 @@ export const GenerateImage: FC<GenerateImageProps> = ({
     });
     const runData = (await res.json()) as RunResponse;
 
+    console.log("Run Data:", runData); // Debugging statement
+
     setRun(runData);
     setStatus({ id: "0", status: "IN_QUEUE" });
   };
@@ -80,6 +82,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
         while (!isCompleted) {
           const res = await fetch(`/api/status/${run.id}`);
           const statusData = await res.json();
+          console.log("Status Data:", statusData); // Debugging statement
           setStatus(statusData);
           if (["COMPLETED", "FAILED"].includes(statusData.status)) {
             isCompleted = true; // Update the completion status
@@ -94,15 +97,15 @@ export const GenerateImage: FC<GenerateImageProps> = ({
   }, [run]);
 
   const hasCompleted = status && status.status === "COMPLETED";
-  const generatedImageUrl =
+  const generatedImage =
     status && status.status === "COMPLETED"
       ? "data:image/png;base64," + status.output.images
       : undefined;
 
   const handleDownload = () => {
-    if (generatedImageUrl) {
+    if (generatedImage) {
       const link = document.createElement("a");
-      link.href = generatedImageUrl;
+      link.href = generatedImage;
       // downcase and substitute spaces with _
       link.download =
         label?.toLowerCase().replace(" ", "_") || "generated-image.jpg";
@@ -122,7 +125,8 @@ export const GenerateImage: FC<GenerateImageProps> = ({
           <ShowGeneratedImage
             label={label}
             handleDownload={handleDownload}
-            generatedImage={generatedImageUrl}
+            generatedImage={generatedImage}
+            //generatedImageURL={status.uploadedBlobUrl} // Fix: Change 'uploadBlobUrl' to 'uploadedBlobUrl'
           />
           {/* <ShowStatus status={status} /> */}
         </div>

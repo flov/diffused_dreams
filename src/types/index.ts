@@ -12,6 +12,7 @@ type COMPLETED = {
   id: string;
   output: Output;
   status: "COMPLETED";
+  //uploadedBlobUrl: string;
 };
 
 type IN_PROGRESS = {

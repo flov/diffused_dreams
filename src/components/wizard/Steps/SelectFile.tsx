@@ -20,13 +20,19 @@ export const SelectFile: FC<UploadProps> = ({
   base64Image,
   setBase64Image,
 }) => {
+  console.log("attempted to upload image")
   const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) return;
+    console.log("file input change")
     const file = event.target.files[0];
     if (file) {
+      console.log("init file reader")
       const reader = new FileReader();
+      console.log("read file")
       reader.readAsDataURL(file);
+      console.log("read file done")
       reader.onloadend = () => {
+        console.log("onloadend")
         if (reader.result) setBase64Image(reader.result as string);
       };
     }

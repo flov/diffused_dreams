@@ -59,5 +59,10 @@ export async function GET(
       },
     });
   }
-  return Response.json(data);
+  const uploadedBlobUrl = ""; // Declare the uploadedBlobUrl variable
+  // return new Response(JSON.stringify({ data, uploadedBlobUrl }), {
+  //   status: 200,
+  //   headers: { "Content-Type": "application/json" },
+  // });
+  return Response.json(data); // Fix: Add 'new' keyword before 'Response'
 }
