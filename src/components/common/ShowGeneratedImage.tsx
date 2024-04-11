@@ -2,9 +2,11 @@ import React, { FC } from "react";
 import { RWebShare } from "react-web-share";
 
 import useWizardNavigation from "../wizard/useWizardNavigation";
-import { Button, Image } from "@nextui-org/react";
+import { Button, Image, listboxSection } from "@nextui-org/react";
 import { ShareIcon } from "@/icons";
 import PrintImageButton from "../gallery/PrintImageButton";
+import DialogModal from "../common/Modal";
+import QRCodeComponent from "../common/QRCode";
 
 interface ShowImageProps {
   generatedImage: string | undefined;
@@ -19,6 +21,14 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
 }) => {
   const { handleNextPage } = useWizardNavigation();
   if (!generatedImage) return null;
+
+  const link = {
+    href: generatedImage,
+    title: label || "Generated image",
+  };
+
+  const modalBodyContent = <QRCodeComponent value={generatedImage} />;
+
   return (
     <>
       <Image
@@ -34,6 +44,11 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
         <Button size="md" onClick={handleDownload} color="primary">
           Download Image
         </Button>
+        <DialogModal
+          title="Download with QR Code"
+          buttonTitle="Download with QR Code"
+          body={modalBodyContent}
+        />
         <RWebShare
           data={{
             text: "My new badass AI character",
@@ -49,8 +64,7 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
             Share
           </Button>
         </RWebShare>
-      </div>
-      <div className="mt-4 flex gap-4">
+        <div className="flex-grow"></div>
         <Button
           color="primary"
           size="md"

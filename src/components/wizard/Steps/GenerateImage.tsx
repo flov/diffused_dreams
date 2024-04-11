@@ -45,6 +45,8 @@ export const GenerateImage: FC<GenerateImageProps> = ({
     });
     const runData = (await res.json()) as RunResponse;
 
+    console.log("Run Data:", runData); // Debugging statement
+
     setRun(runData);
     setStatus({ id: "0", status: "IN_QUEUE" });
   };
@@ -94,37 +96,30 @@ export const GenerateImage: FC<GenerateImageProps> = ({
   }, [run]);
 
   const hasCompleted = status && status.status === "COMPLETED";
-  const generatedImageUrl =
+  const generatedImage =
     status && status.status === "COMPLETED"
-      ? "data:image/png;base64," + status.output.images
+      ? status.output.images
       : undefined;
 
   const handleDownload = () => {
-    if (generatedImageUrl) {
+    if (generatedImage) {
       const link = document.createElement("a");
-      link.href = generatedImageUrl;
+      link.href = generatedImage;
       // downcase and substitute spaces with _
       link.download =
         label?.toLowerCase().replace(" ", "_") || "generated-image.jpg";
       link.click();
     }
   };
-
   return (
     <>
-      {window.location.href.includes("alienware") ? (
-        <BackButton page="SelectCampaign" />
-      ) : (
-        <BackButton page="CaptureWithCamera" />
-      )}
       {hasCompleted ? (
         <div className="flex flex-col items-center justify-center">
           <ShowGeneratedImage
             label={label}
             handleDownload={handleDownload}
-            generatedImage={generatedImageUrl}
+            generatedImage={generatedImage}
           />
-          {/* <ShowStatus status={status} /> */}
         </div>
       ) : (
         <div

@@ -48,6 +48,7 @@ export const SelectFile: FC<UploadProps> = ({
 
   const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) return;
+    console.log("file input change")
     const file = event.target.files[0];
     if (file) {
       if (file.size > 3 * 1024 * 1024) {
