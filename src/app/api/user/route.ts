@@ -49,7 +49,12 @@ export async function POST(request: Request) {
     },
   });
 
-  await sendEmailVerificationLink({ token, email });
+  if (process.env.NODE_ENV !== "production") {
+    console.log("Copy this to browser to verify email");
+    console.log(`http://localhost:3000/verify-email/${token}`);
+  } else {
+    await sendEmailVerificationLink({ token, email });
+  }
 
   return new Response(JSON.stringify({ success: true }), {
     status: 200,
