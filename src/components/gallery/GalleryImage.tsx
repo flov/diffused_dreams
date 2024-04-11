@@ -1,8 +1,9 @@
 import { DownloadIcon } from "@/icons/DownloadIcon";
-import { PrintIcon } from "@/icons/PrintIcon";
 import { Button, Image, Tooltip } from "@nextui-org/react";
 import { GeneratedImage } from "@prisma/client";
 import React from "react";
+import PrintImageButton from "./PrintImageButton";
+import { PrintIcon } from "@/icons/PrintIcon";
 
 type GalleryImageProps = {
   image: GeneratedImage;
@@ -23,14 +24,15 @@ export default function GalleryImage(props: GalleryImageProps) {
         />
       </a>
       <div className="flex align-center justify-center gap-x-3">
-        <Tooltip content="Print image" closeDelay={0}>
-          <Button
-            variant="bordered"
-            className="border-secondary rounded py-1 px-3"
-          >
-            <PrintIcon />
-          </Button>
-        </Tooltip>
+        <PrintImageButton
+          withTooltip
+          tooltipContent={"Print image"}
+          imageUrl={image.imageUrl}
+          className="border-secondary rounded py-1 px-3"
+          variant="bordered"
+        >
+          <PrintIcon />
+        </PrintImageButton>
         <Tooltip content="Download image" closeDelay={0}>
           <Button
             variant="bordered"

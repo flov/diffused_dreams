@@ -4,6 +4,7 @@ import { RWebShare } from "react-web-share";
 import useWizardNavigation from "../wizard/useWizardNavigation";
 import { Button, Image } from "@nextui-org/react";
 import { ShareIcon } from "@/icons";
+import PrintImageButton from "../gallery/PrintImageButton";
 
 interface ShowImageProps {
   generatedImage: string | undefined;
@@ -27,6 +28,9 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
         aria-label="Generated image"
       />
       <div className="mt-4 flex flex-col sm:flex-row gap-4">
+        <PrintImageButton imageUrl={generatedImage} color="primary">
+          Print Image
+        </PrintImageButton>
         <Button size="md" onClick={handleDownload} color="primary">
           Download Image
         </Button>
