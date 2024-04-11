@@ -10,6 +10,7 @@ import { Button, Image } from "@nextui-org/react";
 import { BackButton } from "../../common/BackButton";
 import { CardButton } from "@/components/common/CardButton";
 import { UploadIcon } from "@/icons";
+import ImageCompressor from "image-compressor.js";
 
 interface UploadProps {
   setBase64Image: Dispatch<SetStateAction<string>>;
@@ -20,21 +21,60 @@ export const SelectFile: FC<UploadProps> = ({
   base64Image,
   setBase64Image,
 }) => {
-  console.log("attempted to upload image")
+  // const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+  //   if (!event.target.files) return;
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onloadend = () => {
+  //         if (reader.result) {
+  //           if (file.size > 3 * 1024 * 1024) {
+  //             new ImageCompressor(file, {
+  //               quality: .8, // Compression quality
+  //               success(result) {
+  //                 setBase64Image(result as unknown as string);
+  //               },
+  //               error(e) {
+  //                 console.log(e.message);
+  //               },
+  //             });
+  //           } else {
+  //           setBase64Image(reader.result as string);
+  //         }
+  //       };
+  //   }
+  // }};
+
   const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) return;
     console.log("file input change")
     const file = event.target.files[0];
     if (file) {
-      console.log("init file reader")
-      const reader = new FileReader();
-      console.log("read file")
-      reader.readAsDataURL(file);
-      console.log("read file done")
-      reader.onloadend = () => {
-        console.log("onloadend")
-        if (reader.result) setBase64Image(reader.result as string);
-      };
+      if (file.size > 3 * 1024 * 1024) {
+        // Directly compress the file without converting it to a data URL first
+        new ImageCompressor(file, {
+          quality: .8, // Compression quality
+          success(compressedResult) {
+            // Convert compressed file to Base64
+            const reader = new FileReader();
+            reader.readAsDataURL(compressedResult);
+            reader.onloadend = () => {
+              setBase64Image(reader.result as string);
+            };
+          },
+          error(e) {
+            console.log(e.message);
+          },
+        });
+      } else {
+        // Convert to Base64 directly for files under the size limit
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          setBase64Image(reader.result as string);
+        };
+      }
     }
   };
 
