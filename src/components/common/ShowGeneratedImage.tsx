@@ -2,34 +2,32 @@ import React, { FC } from "react";
 import { RWebShare } from "react-web-share";
 
 import useWizardNavigation from "../wizard/useWizardNavigation";
-import { Button, Image } from "@nextui-org/react";
+import { Button, Image, listboxSection } from "@nextui-org/react";
 import { ShareIcon } from "@/icons";
 import DialogModal from "../common/Modal";
+import QRCodeComponent from "../common/QRCode";
 
 interface ShowImageProps {
   generatedImage: string | undefined;
   handleDownload: () => void;
   label: string;
-  //generatedImageURL: string;
 }
 
 export const ShowGeneratedImage: FC<ShowImageProps> = ({
   generatedImage,
   handleDownload,
   label,
-  //generatedImageURL,
 }) => {
   const { handleNextPage } = useWizardNavigation();
   if (!generatedImage) return null;
 
-  function handleOpenModal(): void {
-    // Open the modal here
-  }
+  const link = {
+    href: generatedImage,
+    title: label || "Generated image",
+  };
 
   const modalBodyContent = (
-    <p>
-      test
-    </p>
+      <QRCodeComponent value={generatedImage} />
   );  
 
   return (
@@ -48,8 +46,6 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
             title="Download with QR Code"
             buttonTitle="Download with QR Code"
             body={modalBodyContent}
-            onCloseAction={() => console.log("closed")}
-            //onPrimaryAction={() => console.log("shared successfully!")}
         />
         <RWebShare
           data={{
@@ -67,8 +63,7 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
           </Button>
 
         </RWebShare>
-      </div>
-      <div className="mt-4 flex gap-4">
+        <div className="flex-grow"></div>
         <Button
           color="primary"
           size="md"

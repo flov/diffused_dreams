@@ -13,37 +13,37 @@ interface ModalProps {
 const DialogModal: React.FC<ModalProps> = ({ title, body, buttonTitle, onCloseAction, onPrimaryAction }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  return (
+return (
     <>
-      <Button onPress={onOpen}>{buttonTitle}</Button>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
-              <ModalBody>
-                {body}
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="light" onPress={() => {
-                  onCloseAction?.();
-                  onClose();
-                }}>
-                  Close
-                </Button>
-                <Button color="primary" onPress={() => {
-                  onPrimaryAction?.();
-                  onClose();
-                }}>
-                  Action
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
+        <Button onPress={onOpen}>{buttonTitle}</Button>
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false} size={'full'}>
+            <ModalContent>
+                {(onClose) => (
+                    <>
+                        <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
+                        <ModalBody className="flex justify-center items-center">
+                            {body}
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button className="flex justify-center items-center" color="danger" variant="light" onPress={() => {
+                                onCloseAction?.();
+                                onClose();
+                            }}>
+                                Close
+                            </Button>
+                            {/* <Button color="primary" onPress={() => {
+                                onPrimaryAction?.();
+                                onClose();
+                            }}>
+                                Action
+                            </Button> */}
+                        </ModalFooter>
+                    </>
+                )}
+            </ModalContent>
+        </Modal>
     </>
-  );
+);
 };
 
 export default DialogModal;

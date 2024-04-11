@@ -47,6 +47,7 @@ export async function GET(
       });
     const base64String = data.output.images;
     const uploadedBlobUrl = await uploadImageToAzureBlobStorage(base64String);
+    data.output.images = uploadedBlobUrl;
     // delete the job from the database after the image has been generated
     await db.job.delete({ where: { id } });
     // and create a new generated image in the db for the user
@@ -59,10 +60,5 @@ export async function GET(
       },
     });
   }
-  const uploadedBlobUrl = ""; // Declare the uploadedBlobUrl variable
-  // return new Response(JSON.stringify({ data, uploadedBlobUrl }), {
-  //   status: 200,
-  //   headers: { "Content-Type": "application/json" },
-  // });
   return Response.json(data); // Fix: Add 'new' keyword before 'Response'
 }

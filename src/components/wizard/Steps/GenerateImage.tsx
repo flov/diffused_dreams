@@ -82,7 +82,6 @@ export const GenerateImage: FC<GenerateImageProps> = ({
         while (!isCompleted) {
           const res = await fetch(`/api/status/${run.id}`);
           const statusData = await res.json();
-          console.log("Status Data:", statusData); // Debugging statement
           setStatus(statusData);
           if (["COMPLETED", "FAILED"].includes(statusData.status)) {
             isCompleted = true; // Update the completion status
@@ -99,7 +98,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
   const hasCompleted = status && status.status === "COMPLETED";
   const generatedImage =
     status && status.status === "COMPLETED"
-      ? "data:image/png;base64," + status.output.images
+      ? status.output.images
       : undefined;
 
   const handleDownload = () => {
@@ -112,23 +111,15 @@ export const GenerateImage: FC<GenerateImageProps> = ({
       link.click();
     }
   };
-
   return (
     <>
-      {window.location.href.includes("alienware") ? (
-        <BackButton page="SelectCampaign" />
-      ) : (
-        <BackButton page="CaptureWithCamera" />
-      )}
       {hasCompleted ? (
         <div className="flex flex-col items-center justify-center">
           <ShowGeneratedImage
             label={label}
             handleDownload={handleDownload}
             generatedImage={generatedImage}
-            //generatedImageURL={status.uploadedBlobUrl} // Fix: Change 'uploadBlobUrl' to 'uploadedBlobUrl'
           />
-          {/* <ShowStatus status={status} /> */}
         </div>
       ) : (
         <div
