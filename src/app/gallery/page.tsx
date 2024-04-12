@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import DownloadButton from "@/components/gallery/DownloadAllButton";
 import ListImages from "@/components/gallery/ListImages";
 import { fetchImagesByUserId } from "@/db/queries/generatedImages";
 import { fetchUserByEmail } from "@/db/queries/users";
@@ -21,12 +22,7 @@ export default async function Page() {
     <div className="mb-6">
       <div className="flex flex-col justify-center items-center mt-8 gap-x-4 mb-11">
         <h2 className="font-bold mb-4 text-white">Eventname</h2>
-        <Button
-          variant="bordered"
-          className="p-2.5 text-base border-secondary text-white rounded border-2"
-        >
-          Download all images
-        </Button>
+        <DownloadButton userId={user.id} />
       </div>
 
       <ListImages fetchData={() => fetchImagesByUserId(user.id)} />
