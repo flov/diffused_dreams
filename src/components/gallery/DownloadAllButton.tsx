@@ -16,7 +16,7 @@ export default function DownloadButton({ userId }: DownloadButtonProps) {
         const zip = await response.json();
         console.log("Images:", zip);
         const zipLink = document.createElement("a");
-        zipLink.href = zip.imageUrl; // Set the download link to the image URL
+        zipLink.href = zip.url; // Set the download link to the image URL
         zipLink.download = "all-images.zip";
         zipLink.click();
     };

@@ -43,15 +43,42 @@ try {
       const zip = new JSZip();
 
       // Generate the zip file
-      for (const image of images) {
-        const imageBlob = await fetch(image.imageUrl).then((res) => res.blob());
-        zip.file(image.label || "generated-image.jpg", imageBlob);
-      }
+      // for (const image of images) {
+      //   console.log('Fetching image:', image);
+      //   const imageBlob = await fetch(image.imageUrl).then((res) => res.blob());
+      //   console.log('Image fetched:', imageBlob);
+      //   console.log("append image to zip file")
+      //   zip.file(image.label || "generated-image.jpg", imageBlob);
+      // }
       
-      // write zip file to the path
-      const zipFilePath = join(__dirname, '../../../priv/zip/images.zip');
+      // // write zip file to the path
+      // const zipFilePath = join(__dirname, '../../../priv/zip/images.zip');
+      // const zipFile = await zip.generateAsync({ type: 'nodebuffer' });
+      // fs.writeFileSync(zipFilePath, zipFile);
+
+      for (const image of images) {
+        console.log('Fetching image:', image);
+        const response = await fetch(image.imageUrl);
+        if (!response.ok) throw new Error('Failed to fetch image: ' + image.imageUrl);
+        const imageArrayBuffer = await response.arrayBuffer();
+        console.log('Image fetched and converted to ArrayBuffer:', imageArrayBuffer);
+
+        console.log("Appending image to zip file");
+        // Append image to zip, you may want to extract the filename from imageUrl or use a generic name
+        const filename = image.imageUrl.split('/').pop() ?? 'image.jpg'; // Extract filename from URL or use a default name
+        zip.file(filename, imageArrayBuffer, { binary: true });
+      }
+      console.log('All images have been appended to the zip file');
+      // Generate the zip file as nodebuffer to save it to filesystem
       const zipFile = await zip.generateAsync({ type: 'nodebuffer' });
+      console.log('Zip file has been generated');
+      // Define the path where the zip file will be saved
+      const zipFilePath = join(__dirname, '../../../../../../priv/zip/images.zip');
+      console.log('Zip file will be saved to:', zipFilePath);
+      
+      // Write zip file to the path
       fs.writeFileSync(zipFilePath, zipFile);
+      console.log('Zip file has been saved to:', zipFilePath);
 
       // Upload the zip file to Azure Blob Storage
       const url = await uploadZipToAzureBlobService(zipFilePath);
