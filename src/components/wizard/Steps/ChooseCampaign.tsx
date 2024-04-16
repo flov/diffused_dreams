@@ -6,8 +6,10 @@ import { SelectFilter } from "@/components/form/SelectFilter";
 type SelectCampaignProps = {
   setCampaign: Dispatch<SetStateAction<string>>;
   setLabel: Dispatch<SetStateAction<string>>;
+  setWorkflowID: Dispatch<SetStateAction<number>>;
   gender: string;
   filters: string[];
+  workflow: string;
 };
 
 // There is Choose campaign and Select Campaign, two similar
@@ -17,6 +19,8 @@ export const ChooseCampaign: FC<SelectCampaignProps> = ({
   gender,
   setCampaign,
   setLabel,
+  setWorkflowID,
+  workflow,
 }) => {
   return (
     <>
@@ -29,8 +33,9 @@ export const ChooseCampaign: FC<SelectCampaignProps> = ({
         gender={gender}
         setLabel={setLabel}
         setCampaign={setCampaign}
+        setWorkflowID={setWorkflowID}
         filters={filters}
-        nextPage="CaptureWithCamera"
+        workflow={workflow}
       />
     </>
   );

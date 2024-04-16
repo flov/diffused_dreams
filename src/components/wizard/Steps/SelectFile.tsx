@@ -15,11 +15,13 @@ import ImageCompressor from "image-compressor.js";
 interface UploadProps {
   setBase64Image: Dispatch<SetStateAction<string>>;
   base64Image: string | undefined;
+  workflow: string;
 }
 
 export const SelectFile: FC<UploadProps> = ({
   base64Image,
   setBase64Image,
+  workflow
 }) => {
   // const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
   //   if (!event.target.files) return;
@@ -92,6 +94,7 @@ export const SelectFile: FC<UploadProps> = ({
           <ShowImage
             base64Image={base64Image}
             setBase64Image={setBase64Image}
+            workflow={workflow}
           />
         ) : (
           <>
@@ -117,7 +120,8 @@ export const SelectFile: FC<UploadProps> = ({
 const ShowImage: FC<{
   base64Image: string;
   setBase64Image: Dispatch<SetStateAction<string>>;
-}> = ({ base64Image, setBase64Image }) => {
+  workflow ?: string;
+}> = ({ base64Image, setBase64Image, workflow }) => {
   const { handleNextPage } = useWizardNavigation();
   return (
     <div style={{ height: "60vh" }}>
@@ -129,7 +133,7 @@ const ShowImage: FC<{
       <div className="flex justify-center gap-4 mt-4">
         <Button
           color="success"
-          onClick={() => handleNextPage({ nextPage: "SelectGender" })}
+          onClick={() => handleNextPage({ nextPage: workflow === "two persons" ? "ChooseCampaign" : "SelectGender" })}
         >
           Confirm
         </Button>

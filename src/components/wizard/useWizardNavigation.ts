@@ -1,5 +1,6 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import PrivacyPolicyPage from "./Steps/PrivacyPolicy";
+import { SelectWorkflow } from "../form/SelectWorkflow";
 
 export type Step =
   | "CaptureWithCamera"
@@ -12,21 +13,23 @@ export type Step =
   | "SelectCampaign"
   | "SelectFile"
   | "SelectGender"
+  | "SelectSingleOrTwoPersons"
   | "PrivacyPolicy";
 
 const useWizardNavigation = () => {
   const wizardSteps = {
-    CaptureWithCamera: 2,
-    ChooseCampaign: 3,
-    ChooseGender: 2,
-    GenerateImage: 5,
-    SelectCameraAndCapture: 2,
-    SelectCameraAndFilter: 1,
-    SelectCameraOrFile: 1,
-    SelectCampaign: 4,
-    SelectFile: 2,
-    SelectGender: 3,
+    CaptureWithCamera: 3,
+    ChooseCampaign: 4,
+    ChooseGender: 3,
+    GenerateImage: 6,
+    SelectCameraAndCapture: 3,
+    SelectCameraAndFilter: 2,
+    SelectCameraOrFile: 2,
+    SelectCampaign: 5,
+    SelectFile: 3,
+    SelectGender: 4,
     PrivacyPolicy: 0,
+    SelectSingleOrTwoPersons: 1,
   };
 
   const { replace } = useRouter();
