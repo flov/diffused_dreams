@@ -1,5 +1,6 @@
 import { createTransport } from "nodemailer";
 
+// todo: fix the email transporter for smtp timeout error
 export const gmailEmailTransporter = createTransport({
   host: "smtp.gmail.com",
   port: 465,
