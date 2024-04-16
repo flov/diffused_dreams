@@ -95,7 +95,7 @@ export const GenerateImage: FC<GenerateImageProps> = ({
     pollStatus();
   }, [run]);
 
-  const hasCompleted = status && status.status === "COMPLETED";
+  const hasCompleted = status && (status.status === "COMPLETED" || status.status === "FAILED");
   const generatedImage =
     status && status.status === "COMPLETED"
       ? status.output.images
