@@ -10,7 +10,7 @@ import { Button, Image } from "@nextui-org/react";
 import { BackButton } from "../../common/BackButton";
 import { CardButton } from "@/components/common/CardButton";
 import { UploadIcon } from "@/icons";
-import ImageCompressor from "image-compressor.js";
+import Compressor from "compressorjs";
 
 interface UploadProps {
   setBase64Image: Dispatch<SetStateAction<string>>;
@@ -55,8 +55,9 @@ export const SelectFile: FC<UploadProps> = ({
     if (file) {
       if (file.size > 3 * 1024 * 1024) {
         // Directly compress the file without converting it to a data URL first
-        new ImageCompressor(file, {
+        new Compressor(file, {
           quality: .8, // Compression quality
+          convertSize: 0,
           success(compressedResult) {
             // Convert compressed file to Base64
             const reader = new FileReader();

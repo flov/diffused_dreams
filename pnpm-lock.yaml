@@ -26,18 +26,15 @@ dependencies:
   bcrypt:
     specifier: 5.1.1
     version: 5.1.1
+  compressorjs:
+    specifier: ^1.2.1
+    version: 1.2.1
   dayjs:
     specifier: 1.11.10
     version: 1.11.10
   framer-motion:
     specifier: ^10.18.0
     version: 10.18.0(react-dom@18.2.0)(react@18.2.0)
-  image-compressor:
-    specifier: ^2.0.3
-    version: 2.0.3
-  image-compressor.js:
-    specifier: ^1.1.4
-    version: 1.1.4
   jimp:
     specifier: ^0.22.12
     version: 0.22.12
@@ -3776,6 +3773,13 @@ packages:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
 
+  /compressorjs@1.2.1:
+    resolution: {integrity: sha512-+geIjeRnPhQ+LLvvA7wxBQE5ddeLU7pJ3FsKFWirDw6veY3s9iLxAQEw7lXGHnhCJvBujEQWuNnGzZcvCvdkLQ==}
+    dependencies:
+      blueimp-canvas-to-blob: 3.29.0
+      is-blob: 2.1.0
+    dev: false
+
   /compute-scroll-into-view@3.1.0:
     resolution: {integrity: sha512-rj8l8pD4bJ1nx+dAkMhV1xB5RuZEyVysfxJqB1pRchh1KVvwOv9b7CGB8ZfjTImVv2oF+sYMUkMZq6Na5Ftmbg==}
     dev: false
@@ -4680,18 +4684,6 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
-  /image-compressor.js@1.1.4:
-    resolution: {integrity: sha512-DF1YFSw+m6FqpXsleD4+q9eu/wFFkm8sHuYhgYy5GWFVencXeuB1/UqC12xz+dCZooPetf5LIb8JOGkgEWmlcg==}
-    deprecated: No longer maintainted, please use `comprossorjs`
-    dependencies:
-      blueimp-canvas-to-blob: 3.29.0
-      is-blob: 1.0.0
-    dev: false
-
-  /image-compressor@2.0.3:
-    resolution: {integrity: sha512-/cwVTp+Kx4KejzFtFgpS+TbR/H1eFi1931lptaBPZziQkdDFPKfBqxim9sGPExwF0jiVr7nlXKaG9+02XFo74Q==}
-    dev: false
-
   /image-q@4.0.0:
     resolution: {integrity: sha512-PfJGVgIfKQJuq3s0tTDOKtztksibuUEbJQIYT3by6wctQo+Rdlh7ef4evJ5NCdxY4CfMbvFkocEwbl4BF8RlJw==}
     dependencies:
@@ -4779,9 +4771,9 @@ packages:
     dependencies:
       binary-extensions: 2.2.0
 
-  /is-blob@1.0.0:
-    resolution: {integrity: sha512-QIZDHQZpRfMEZwSTD7egdNZS7H/awVW9FZ3yJv+gg1z8d8GPXEs76QWL67fZs2BoBqp2dGtamTJpEYFJHmD73g==}
-    engines: {node: '>=0.10.0'}
+  /is-blob@2.1.0:
+    resolution: {integrity: sha512-SZ/fTft5eUhQM6oF/ZaASFDEdbFVe89Imltn9uZr03wdKMcWNVYSMjQPFtg05QuNkt5l5c135ElvXEQG0rk4tw==}
+    engines: {node: '>=6'}
     dev: false
 
   /is-boolean-object@1.1.2:
