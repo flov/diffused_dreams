@@ -7,6 +7,7 @@ import {
   SelectCameraAndCapture,
   SelectFile,
   SelectGender,
+  SelectSingleOrTwoPersons,
   SelectCampaign,
   GenerateImage,
   SelectCameraAndFilter,
@@ -24,10 +25,12 @@ type WizardProps = {
 export const Wizard: FC<WizardProps> = ({ initialStep }) => {
   const [base64Image, setBase64Image] = useState<string>("");
   const [gender, setGender] = useState<string>("");
+  const [workflow, setWorkflow] = useState<string>("");
   const [label, setLabel] = useState<string>("");
   const [campaign, setCampaign] = useState<string>("");
   const [filters, setFilters] = useState<string[]>([]);
   const [selectedDevice, setSelectedDevice] = useState("");
+  const [workflowID, setWorkflowID] = useState<number>(5); 
 
   // get query params step and name
   const searchParams = useSearchParams();
@@ -54,10 +57,10 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
     case "SelectCameraOrFile":
       return <SelectCameraOrFile />;
     case "SelectCameraAndCapture":
-      return <SelectCameraAndCapture setBase64Image={setBase64Image} />;
+      return <SelectCameraAndCapture setBase64Image={setBase64Image} workflow={workflow}/>;
     case "SelectFile":
       return (
-        <SelectFile setBase64Image={setBase64Image} base64Image={base64Image} />
+        <SelectFile setBase64Image={setBase64Image} base64Image={base64Image} workflow={workflow} />
       );
     // We have two wizard flows and we need to handle similar steps slightly different.
     // That's why there is ChooseGender and SelectGender
@@ -65,13 +68,17 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
       return <ChooseGender setGender={setGender} />;
     case "SelectGender":
       return <SelectGender setGender={setGender} />;
+    case "SelectSingleOrTwoPersons":
+      return <SelectSingleOrTwoPersons setWorkflow={setWorkflow} />;
     case "SelectCampaign":
       return (
         <SelectCampaign
           setCampaign={setCampaign}
           setLabel={setLabel}
+          setWorkflowID={setWorkflowID}
           gender={gender}
           filters={filters}
+          workflow={workflow}
         />
       );
     case "ChooseCampaign":
@@ -79,8 +86,10 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
         <ChooseCampaign
           setCampaign={setCampaign}
           setLabel={setLabel}
+          setWorkflowID={setWorkflowID}
           gender={gender}
           filters={filters}
+          workflow={workflow}
         />
       );
     case "GenerateImage":
@@ -90,7 +99,7 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
           label={label}
           prompt={campaign}
           negativePrompt={campaign}
-          flowID={5}
+          flowID={workflowID}
         />
       );
     case "PrivacyPolicy":

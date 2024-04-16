@@ -6,6 +6,7 @@ import { SelectCameraOrFile } from "./SelectCameraOrFile";
 import { SelectCampaign } from "./SelectCampaign";
 import { SelectFile } from "./SelectFile";
 import { SelectGender } from "./SelectGender";
+import { SelectSingleOrTwoPersons } from "./SelectSingleOrTwoPerson";
 
 export {
   ChooseGender,
@@ -16,4 +17,5 @@ export {
   SelectCampaign,
   SelectFile,
   SelectGender,
+  SelectSingleOrTwoPersons,
 };

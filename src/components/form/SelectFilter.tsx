@@ -6,9 +6,11 @@ import { prompts } from "@/config/prompts";
 type SelectCampaignProps = {
   setCampaign: Dispatch<SetStateAction<string>>;
   setLabel: Dispatch<SetStateAction<string>>;
+  setWorkflowID: Dispatch<SetStateAction<number>>;
   gender: string;
   filters: string[];
   nextPage?: Step;
+  workflow: string;
 };
 
 export const SelectFilter: FC<SelectCampaignProps> = ({
@@ -16,15 +18,16 @@ export const SelectFilter: FC<SelectCampaignProps> = ({
   gender,
   setCampaign,
   setLabel,
+  setWorkflowID,  
   nextPage,
+  workflow,
 }) => {
   const { handleNextPage } = useWizardNavigation();
   const characters = !!filters.length
-    ? prompts(gender).filter((character) => {
+    ? prompts(workflow === "two persons" ? "two persons" : gender).filter((character) => {
         return filters?.includes(character.label);
       })
-    : prompts(gender);
-
+    : prompts(workflow === "two persons" ? "two persons" : gender);
   return (
     <>
       <div className="grid gap-4 my-8 mx-auto px-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -38,6 +41,7 @@ export const SelectFilter: FC<SelectCampaignProps> = ({
             onPress={() => {
               setCampaign(character.prompt);
               setLabel(character.label);
+              setWorkflowID(character.flowID);
               handleNextPage({ nextPage: nextPage || "GenerateImage" });
             }}
           >

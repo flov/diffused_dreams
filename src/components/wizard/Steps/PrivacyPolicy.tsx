@@ -22,7 +22,7 @@ return (
       </div>
       <div className="mt-4">
         <Button 
-          onClick={() => handleNextPage({ nextPage: "SelectCameraOrFile" })} 
+          onClick={() => handleNextPage({ nextPage: "SelectSingleOrTwoPersons" })} 
           disabled={!accepted}
           style={{ opacity: accepted ? 1 : 0.5 }}>
               Next
