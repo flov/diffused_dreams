@@ -64,9 +64,9 @@ export const {
           return null;
         }
 
-        if (!user.emailVerified) {
-          throw new EmailNotVerifiedError("Email not verified");
-        }
+        // if (!user.emailVerified) {
+        //   throw new EmailNotVerifiedError("Email not verified");
+        // }
 
         return user;
       },
