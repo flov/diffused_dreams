@@ -19,7 +19,7 @@ export async function POST(request: Request) {
   };
 
   try {
-    const { base64Image, positivePrompt, negativePrompt, flowId } =
+    const { base64Image, positivePrompt, negativePrompt, flowId, height, width } =
       (await request.json()) as GenerateImagePayload;
 
     const session = await auth();
@@ -48,6 +48,8 @@ export async function POST(request: Request) {
         positive_prompt: positivePrompt,
         negative_prompt: negativePrompt,
         flow_id: flowId,
+        height: height,
+        width: width,
       },
     };
 

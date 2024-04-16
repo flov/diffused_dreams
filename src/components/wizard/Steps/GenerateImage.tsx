@@ -63,6 +63,8 @@ export const GenerateImage: FC<GenerateImageProps> = ({
       positivePrompt: prompt,
       negativePrompt: negativePrompt,
       flowId: flowID,
+      height: 1152,
+      width: 768,
     });
   }, []);
 
