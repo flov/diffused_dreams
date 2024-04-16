@@ -3,7 +3,7 @@ import { createTransport } from "nodemailer";
 export const gmailEmailTransporter = createTransport({
   host: "smtp.gmail.com",
   port: 465,
-  secure: false,
+  secure: true,
   auth: {
     user: "info@phantaisia.com",
     pass: process.env.EMAIL_PASSWORD,
