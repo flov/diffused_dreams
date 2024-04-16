@@ -8,6 +8,7 @@ export const gmailEmailTransporter = createTransport({
     user: "info@phantaisia.com",
     pass: process.env.EMAIL_PASSWORD,
   },
+  connectionTimeout: 10000
 });
 
 export async function sendEmailVerificationLink({
