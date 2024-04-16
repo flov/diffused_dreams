@@ -15,7 +15,8 @@ export const SelectWorkflow: FC<SelectWorkflowProps> = ({
   return (
     <div className="flex flex-col items-center justify-center gap-4 md:gap-8">
       <div className="flex justify-center w-full flex-wrap md:flex-nowrap gap-2 md:gap-8">
-        {["two persons", "single person"].map((workflow) => (
+        {/* {["two persons", "single person"].map((workflow) => ( */}
+        {["single person"].map((workflow) => ( 
           <GenderCard
             key={workflow}
             setWorkflow={setWorkflow}
