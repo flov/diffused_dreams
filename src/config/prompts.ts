@@ -6,7 +6,7 @@ export type Prompt = {
   image: string;
 };
 
-export const prompts = (gender: string): Prompt[] => [
+export const prompts = (descriptor: string): Prompt[] => [
   // {
   //   label: "Steampunk Inventor",
   //   prompt: `A ${gender} inventor in a steampunk workshop, surrounded by brass gadgets and contraptions, goggles perched on their forehead as they tinker with clockwork mechanisms and steam-powered devices.`,
@@ -193,23 +193,23 @@ export const prompts = (gender: string): Prompt[] => [
   // },
   {
     label: "Animated Superhero",
-    prompt: `Pixarxl, Pixar style, a brave ${gender} as a superhero standing on top of a new york skyscraper rooftop, golden hour, pixar animation`,
+    prompt: `Pixarxl, Pixar style, a brave ${descriptor} as a superhero standing on top of a new york skyscraper rooftop, golden hour, pixar animation`,
     negativePrompt: "nsfw, naked, nipples",
-    flowID: 3,
+    flowID: descriptor === "two persons" ? 37 : 30,
     image: "/images/animated_superhero.jpg",
   },
   {
     label: "Realistic Superhero",
-    prompt: `pos prompt:  A full body portrait of an original and unique ${gender} superhero with bolts of lightning running through, wearing a modest outfit with a unique color theme, and has a unique symbol. realistic, photo-realistic, highly detailed, full length frame, diffused soft lighting, shallow depth of field, sharp focus, cinematic lighting`,
+    prompt: `pos prompt:  A full body portrait of an original and unique ${descriptor} superhero with bolts of lightning running through, wearing a modest outfit with a unique color theme, and has a unique symbol. realistic, photo-realistic, highly detailed, full length frame, diffused soft lighting, shallow depth of field, sharp focus, cinematic lighting`,
     negativePrompt: "Jeans, nsfw, naked, nipples, people in background, people, mask, eye mask, goggles, superman suit",
-    flowID: 5,
+    flowID: descriptor === "two persons" ? 37 : 31,
     image: "/images/realistic_superhero.jpg",
   },
   {
     label: "Space Explorer",
-    prompt: `pos. prompt: A ${gender} space explorer, amidst a garden of bizarre bioluminescent alien flora under a glowing galaxy sky., looking at viewer, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full length frame, High detail RAW color art, diffused soft lighting, shallow depth of field, sharp focus, hyperrealism, cinematic lighting`,
+    prompt: `pos. prompt: A ${descriptor} space explorer, amidst a garden of bizarre bioluminescent alien flora under a glowing galaxy sky., looking at viewer, photography, detailed skin, detailed texture, realistic, photo-realistic, 8k, highly detailed, full length frame, High detail RAW color art, diffused soft lighting, shallow depth of field, sharp focus, hyperrealism, cinematic lighting`,
     negativePrompt: "neg. prompt: nsfw, naked, nipples",
-    flowID: 5,
+    flowID: descriptor === "two persons" ? 37 : 31,
     image: "/images/space_explorer.jpg",
   },
 ];

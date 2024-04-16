@@ -56,7 +56,7 @@ const CaptureAndGenerate: React.FC = () => {
     if (screenshot) {
       // remove the data:image/jpeg;base64, prefix
       const base64Image = screenshot.split(",")[1];
-      generateImage({ base64Image, positivePrompt, negativePrompt, flowId });
+      generateImage({ base64Image, positivePrompt, negativePrompt, flowId, height: 1152, width: 768});
     }
   };
 

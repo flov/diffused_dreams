@@ -20,9 +20,10 @@ import { CapturePhotoForm } from "@/components/form/CapturePhotoForm";
 
 interface CameraProps {
   setBase64Image: Dispatch<SetStateAction<string>>;
+  workflow: string;
 }
 
-export const SelectCameraAndCapture: FC<CameraProps> = ({ setBase64Image }) => {
+export const SelectCameraAndCapture: FC<CameraProps> = ({ setBase64Image, workflow }) => {
   const { handleNextPage } = useWizardNavigation();
 
   return (
@@ -30,7 +31,7 @@ export const SelectCameraAndCapture: FC<CameraProps> = ({ setBase64Image }) => {
       <BackButton page="SelectCameraOrFile" />
       <CapturePhotoForm
         setBase64Image={setBase64Image}
-        onSubmit={() => handleNextPage({ nextPage: "SelectGender" })}
+        onSubmit={() => handleNextPage({ nextPage: workflow === "two persons" ? "ChooseCampaign" : "SelectGender"  })}
       />
     </>
   );

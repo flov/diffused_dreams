@@ -1,3 +1,5 @@
+"use client";
+
 import { DownloadIcon } from "@/icons/DownloadIcon";
 import { Button, Image, Tooltip } from "@nextui-org/react";
 import { GeneratedImage } from "@prisma/client";
@@ -12,6 +14,15 @@ type GalleryImageProps = {
 
 export default function GalleryImage(props: GalleryImageProps) {
   const { image, imageIdx } = props;
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = image.imageUrl;
+    // downcase and substitute spaces with _
+    link.download =
+      image.label?.toLowerCase().replace(" ", "_") || "generated-image.jpg";
+    link.click();
+  };
 
   return (
     <div className="flex flex-col items-center gap-y-1">
@@ -37,6 +48,7 @@ export default function GalleryImage(props: GalleryImageProps) {
           <Button
             variant="bordered"
             className="border-secondary rounded py-1 px-3 "
+            onClick={handleDownload}
           >
             <DownloadIcon />
           </Button>

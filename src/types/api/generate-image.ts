@@ -3,4 +3,6 @@ export type GenerateImagePayload = {
   positivePrompt: string;
   negativePrompt: string;
   flowId: number;
+  height: number;
+  width: number;
 };

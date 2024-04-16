@@ -1,6 +1,7 @@
 import { db } from "@/db";
 import { UserRegisterSchema } from "@/schemas/user";
 import { generateRandomString, hashPassword } from "@/utils/crypto";
+import { sendEmailVerificationLink } from "@/utils/mail";
 import { Prisma, User } from "@prisma/client";
 import dayjs from "dayjs";
 
@@ -52,7 +53,7 @@ export async function POST(request: Request) {
     console.log("Copy this to browser to verify email");
     console.log(`http://localhost:3000/verify-email/${token}`);
   } else {
-    // todo implement the logic to send it to email
+    await sendEmailVerificationLink({ token, email });
   }
 
   return new Response(JSON.stringify({ success: true }), {
