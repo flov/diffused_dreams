@@ -56,7 +56,7 @@ export const SelectFile: FC<UploadProps> = ({
       if (file.size > 3 * 1024 * 1024) {
         // Directly compress the file without converting it to a data URL first
         new Compressor(file, {
-          quality: .8, // Compression quality
+          quality: 0.7, // Compression quality
           convertSize: 0,
           success(compressedResult) {
             // Convert compressed file to Base64
