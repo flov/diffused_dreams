@@ -139,7 +139,7 @@ const ShowImage: FC<{
           Confirm
         </Button>
         <Button color="danger" onClick={() => setBase64Image("")}>
-          Cancel
+          Remove Upload
         </Button>
       </div>
     </div>

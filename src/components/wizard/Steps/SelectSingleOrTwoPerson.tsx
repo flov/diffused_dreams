@@ -9,9 +9,9 @@ type SelectWorkflowProps = {
 export const SelectSingleOrTwoPersons: FC<SelectWorkflowProps> = ({ setWorkflow }) => {
   return (
     <>
-      <div className="flex justify-around">
-        <h1 className="text-4xl md:text-6xl mb-4">Select your Mode</h1>
+      <div className="flex justify-between items-center">
         <BackButton page="PrivacyPolicy" />
+        <h2 className="text-center">Select your Mode</h2>
         <div></div>
       </div>
 

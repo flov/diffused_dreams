@@ -64,15 +64,16 @@ export const ShowGeneratedImage: FC<ShowImageProps> = ({
             Share
           </Button>
         </RWebShare>
-        <div className="flex-grow"></div>
-        <Button
-          color="primary"
-          size="md"
-          variant="bordered"
-          onClick={() => handleNextPage({ nextPage: "PrivacyPolicy" })}
-        >
-          Restart Photobooth
-        </Button>
+      </div>
+      <div className="flex item-center mt-4">
+          <Button
+            color="primary"
+            size="md"
+            variant="bordered"
+            onClick={() => handleNextPage({ nextPage: "PrivacyPolicy" })}
+          >
+            Restart Photobooth
+          </Button>
       </div>
     </>
   );
