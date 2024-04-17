@@ -27,7 +27,8 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
   const [gender, setGender] = useState<string>("");
   const [workflow, setWorkflow] = useState<string>("");
   const [label, setLabel] = useState<string>("");
-  const [campaign, setCampaign] = useState<string>("");
+  const [posPrompt, setPosPrompt] = useState<string>("");
+  const [negPrompt, setNegPrompt] = useState<string>("");
   const [filters, setFilters] = useState<string[]>([]);
   const [selectedDevice, setSelectedDevice] = useState("");
   const [workflowID, setWorkflowID] = useState<number>(5); 
@@ -73,7 +74,8 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
     case "SelectCampaign":
       return (
         <SelectCampaign
-          setCampaign={setCampaign}
+          setPosPrompt={setPosPrompt}
+          setNegPrompt={setNegPrompt}
           setLabel={setLabel}
           setWorkflowID={setWorkflowID}
           gender={gender}
@@ -84,7 +86,8 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
     case "ChooseCampaign":
       return (
         <ChooseCampaign
-          setCampaign={setCampaign}
+          setPosPrompt={setPosPrompt}
+          setNegPrompt={setNegPrompt}
           setLabel={setLabel}
           setWorkflowID={setWorkflowID}
           gender={gender}
@@ -97,8 +100,8 @@ export const Wizard: FC<WizardProps> = ({ initialStep }) => {
         <GenerateImage
           base64Image={base64Image}
           label={label}
-          prompt={campaign}
-          negativePrompt={campaign}
+          prompt={posPrompt}
+          negativePrompt={negPrompt}
           flowID={workflowID}
         />
       );

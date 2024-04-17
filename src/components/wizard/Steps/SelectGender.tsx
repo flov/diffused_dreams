@@ -15,7 +15,7 @@ export const SelectGender: FC<SelectGenderProps> = ({ setGender }) => {
         <div></div>
       </div>
 
-      <SelectGenderForm setGender={setGender} />
+      <SelectGenderForm setGender={setGender} nextPage="ChooseCampaign"/>
     </>
   );
 };

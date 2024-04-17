@@ -4,8 +4,9 @@ import useWizardNavigation, { Step } from "../wizard/useWizardNavigation";
 import { prompts } from "@/config/prompts";
 
 type SelectCampaignProps = {
-  setCampaign: Dispatch<SetStateAction<string>>;
+  setPosPrompt: Dispatch<SetStateAction<string>>;
   setLabel: Dispatch<SetStateAction<string>>;
+  setNegPrompt: Dispatch<SetStateAction<string>>;
   setWorkflowID: Dispatch<SetStateAction<number>>;
   gender: string;
   filters: string[];
@@ -16,7 +17,8 @@ type SelectCampaignProps = {
 export const SelectFilter: FC<SelectCampaignProps> = ({
   filters,
   gender,
-  setCampaign,
+  setPosPrompt,
+  setNegPrompt,
   setLabel,
   setWorkflowID,  
   nextPage,
@@ -39,7 +41,8 @@ export const SelectFilter: FC<SelectCampaignProps> = ({
             isFooterBlurred
             className="min-w-[20rem] w-full h-[370px]"
             onPress={() => {
-              setCampaign(character.prompt);
+              setPosPrompt(character.prompt);
+              setNegPrompt(character.negativePrompt);
               setLabel(character.label);
               setWorkflowID(character.flowID);
               handleNextPage({ nextPage: nextPage || "GenerateImage" });

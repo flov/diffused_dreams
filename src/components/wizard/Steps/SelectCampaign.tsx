@@ -4,7 +4,8 @@ import { prompts } from "@/config/prompts";
 import { SelectFilter } from "@/components/form/SelectFilter";
 
 type SelectCampaignProps = {
-  setCampaign: Dispatch<SetStateAction<string>>;
+  setPosPrompt: Dispatch<SetStateAction<string>>;
+  setNegPrompt: Dispatch<SetStateAction<string>>;
   setLabel: Dispatch<SetStateAction<string>>;
   setWorkflowID: Dispatch<SetStateAction<number>>;
   gender: string;
@@ -16,7 +17,8 @@ export const SelectCampaign: FC<SelectCampaignProps> = ({
   filters,
   gender,
   workflow,
-  setCampaign,
+  setPosPrompt,
+  setNegPrompt,
   setLabel,
   setWorkflowID,
 }) => {
@@ -35,7 +37,8 @@ export const SelectCampaign: FC<SelectCampaignProps> = ({
       </div>
       <SelectFilter
         gender={gender}
-        setCampaign={setCampaign}
+        setPosPrompt={setPosPrompt}
+        setNegPrompt={setNegPrompt}
         setLabel={setLabel}
         setWorkflowID={setWorkflowID}
         filters={filters}
