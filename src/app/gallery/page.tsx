@@ -22,7 +22,7 @@ export default async function Page() {
     <div className="mb-6">
       <div className="flex flex-col justify-center items-center mt-8 gap-x-4 mb-11">
         <h2 className="font-bold mb-4 text-white">Eventname</h2>
-        <DownloadButton userId={user.id} />
+        {/* <DownloadButton userId={user.id} /> */}
       </div>
 
       <ListImages fetchData={() => fetchImagesByUserId(user.id)} />
