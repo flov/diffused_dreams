@@ -29,7 +29,7 @@ export const ChooseCampaign: FC<SelectCampaignProps> = ({
       <div className="flex justify-between items-center">
         <BackButton page="ChooseGender" />
         <h2 className="text-center">Select your filter</h2>
-        <div></div>
+        <div className="w-12"></div>
       </div>
       <SelectFilter
         gender={gender}
