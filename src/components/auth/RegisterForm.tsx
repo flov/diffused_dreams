@@ -32,15 +32,15 @@ export function RegisterForm() {
             "any.only": "Passwords don't match",
             "any.required": "Confirm Password is a required field",
           }),
-      })
+      }),
     ),
   });
 
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const onSubmit: SubmitHandler<RegisterFormInputs> = async (data) => {
-    setLoading(true);
+    setIsLoading(true);
     const res = await fetch("/api/user", {
       method: "POST",
       body: JSON.stringify({
@@ -59,7 +59,7 @@ export function RegisterForm() {
     } else {
       router.push("/register/success");
     }
-    setLoading(false);
+    setIsLoading(false);
   };
 
   return (
@@ -127,7 +127,7 @@ export function RegisterForm() {
         )}
       />
 
-      {loading ? (
+      {isLoading ? (
         <CircularProgress
           color="primary"
           className="py-3 mt-10"
