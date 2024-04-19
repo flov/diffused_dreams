@@ -9,6 +9,7 @@ import {
   PopoverContent,
   Chip,
   Link,
+  CircularProgress,
 } from "@nextui-org/react";
 import { useSession } from "next-auth/react";
 import { signOut } from "@/actions";
@@ -18,11 +19,11 @@ import { useUser } from "@/providers/userProvider";
 export default function HeaderAuth() {
   const session = useSession();
   const { user } = useUser();
+  const isLoggedIn = user !== null;
 
   let authContent: React.ReactNode;
-  if (session.status === "loading") {
-    authContent = null;
-  } else if (session.data?.user) {
+
+  if (isLoggedIn) {
     authContent = (
       <>
         {user && (
@@ -38,7 +39,7 @@ export default function HeaderAuth() {
 
         <Popover placement="bottom" color="default">
           <PopoverTrigger>
-            <Avatar src={session.data.user.image || ""} />
+            <Avatar src={user.image || ""} />
           </PopoverTrigger>
           <PopoverContent>
             <div className="p-4 flex flex-col gap-2">
@@ -54,6 +55,8 @@ export default function HeaderAuth() {
         </Popover>
       </>
     );
+  } else if (session.status === "loading") {
+    return null;
   } else {
     authContent = (
       <NavbarItem>
