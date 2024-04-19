@@ -76,7 +76,7 @@ export function RegisterForm() {
             variant={"bordered"}
             errorMessage={errors.email?.message}
             isInvalid={Boolean(errors.email?.message)}
-            placeholder="EMAIL"
+            placeholder="Email"
             classNames={{
               inputWrapper: "rounded border-white border-1 p-3 h-11 w-full",
               input: "ml-4",
@@ -94,7 +94,7 @@ export function RegisterForm() {
             {...field}
             variant={"bordered"}
             type="password"
-            placeholder="PASSWORD"
+            placeholder="Password"
             errorMessage={errors.password?.message}
             isInvalid={Boolean(errors.password?.message)}
             classNames={{
@@ -113,7 +113,7 @@ export function RegisterForm() {
           <Input
             {...field}
             variant={"bordered"}
-            placeholder="CONFIRM PASSWORD"
+            placeholder="Confirm password"
             errorMessage={errors.confirmPassword?.message}
             isInvalid={Boolean(errors.confirmPassword?.message)}
             type="password"
@@ -138,7 +138,7 @@ export function RegisterForm() {
           type="submit"
           className="bg-white text-black py-3 text-base font-medium mt-10 w-full rounded"
         >
-          CREATE ACCOUNT
+          Create account
         </Button>
       )}
     </form>

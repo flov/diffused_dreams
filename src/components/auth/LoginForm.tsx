@@ -64,7 +64,8 @@ export default function LoginForm() {
             <Input
               {...field}
               variant={"bordered"}
-              placeholder="EMAIL"
+              color="primary"
+              placeholder="Email"
               classNames={{
                 inputWrapper: "rounded border-white border-1 p-3 h-11 w-full",
                 input: "ml-4",
@@ -82,7 +83,8 @@ export default function LoginForm() {
               {...field}
               variant={"bordered"}
               type="password"
-              placeholder="PASSWORD"
+              color="primary"
+              placeholder="Password"
               classNames={{
                 inputWrapper: "rounded border-white border-1 p-3 h-11 w-full",
                 input: "ml-4",

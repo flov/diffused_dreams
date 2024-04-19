@@ -18,7 +18,7 @@ export default async function Login() {
         Transform each event into a unique visual story with customized AI.
       </h4>
 
-      <h3 className="text-white text-4xl mt-6">LOGIN</h3>
+      <h3 className="text-white text-4xl mt-6">Login</h3>
       <LoginForm />
     </div>
   );
