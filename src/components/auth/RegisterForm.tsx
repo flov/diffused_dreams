@@ -75,11 +75,11 @@ export function RegisterForm() {
             {...field}
             variant={"bordered"}
             errorMessage={errors.email?.message}
+            color="primary"
             isInvalid={Boolean(errors.email?.message)}
             placeholder="Email"
             classNames={{
-              inputWrapper: "rounded border-white border-1 p-3 h-11 w-full",
-              input: "ml-4",
+              mainWrapper: "w-96",
               base: "items-center",
             }}
             startContent={<UserIcon />}
@@ -93,13 +93,13 @@ export function RegisterForm() {
           <Input
             {...field}
             variant={"bordered"}
+            color="primary"
             type="password"
             placeholder="Password"
             errorMessage={errors.password?.message}
             isInvalid={Boolean(errors.password?.message)}
             classNames={{
-              inputWrapper: "rounded border-white border-1 p-3 h-11 w-full",
-              input: "ml-4",
+              mainWrapper: "w-96",
               base: "items-center",
             }}
             startContent={<LockIcon />}
@@ -115,11 +115,11 @@ export function RegisterForm() {
             variant={"bordered"}
             placeholder="Confirm password"
             errorMessage={errors.confirmPassword?.message}
+            color="primary"
             isInvalid={Boolean(errors.confirmPassword?.message)}
             type="password"
             classNames={{
-              inputWrapper: "rounded border-white border-1 p-3 h-11 w-full",
-              input: "ml-4",
+              mainWrapper: "w-96",
               base: "items-center",
             }}
             startContent={<LockIcon />}
@@ -136,7 +136,8 @@ export function RegisterForm() {
       ) : (
         <Button
           type="submit"
-          className="bg-white text-black py-3 text-base font-medium mt-10 w-full rounded"
+          color="secondary"
+          className="py-3 text-base font-medium mt-10 w-full rounded"
         >
           Create account
         </Button>

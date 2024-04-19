@@ -6,8 +6,6 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
-import { GoogleIcon } from "@/icons/GoogleLogoIcon";
-import { signInWithGoogle } from "@/actions";
 import { useSearchParams } from "next/navigation";
 import { EMAIL_NOT_VERIFIED } from "@/errors/customErrorTypes";
 
@@ -67,8 +65,6 @@ export default function LoginForm() {
               color="primary"
               placeholder="Email"
               classNames={{
-                inputWrapper: "rounded border-white border-1 p-3 h-11 w-full",
-                input: "ml-4",
                 base: "items-center",
               }}
               startContent={<UserIcon />}
@@ -86,8 +82,6 @@ export default function LoginForm() {
               color="primary"
               placeholder="Password"
               classNames={{
-                inputWrapper: "rounded border-white border-1 p-3 h-11 w-full",
-                input: "ml-4",
                 base: "items-center",
               }}
               startContent={<LockIcon />}
@@ -103,11 +97,8 @@ export default function LoginForm() {
           />
         ) : (
           <>
-            <Button
-              type="submit"
-              className="bg-white text-black py-3 text-base font-medium mt-10 w-full rounded"
-            >
-              LOGIN
+            <Button type="submit" size="lg" color="secondary">
+              Login
             </Button>
             {/* <p className="text-white text-xl">OR</p> */}
             {/* <Button
@@ -131,8 +122,9 @@ export default function LoginForm() {
         </Link>
       </div>
       <Button
-        className="text-base font-medium text-white rounded border-white border-1 mt-5 py-2 min-w-36"
+        size="lg"
         variant="bordered"
+        color="secondary"
         as={Link}
         href="/register"
       >

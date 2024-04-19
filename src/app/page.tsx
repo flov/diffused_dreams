@@ -18,21 +18,16 @@ export default async function Home() {
         Transform each event into a unique visual story with customized ai.
       </h5>
       {session && session.user && session.user.email && (
-        <div className="mt-14 flex flex-col justify-center items-center w-full">
+        <div className="mt-14 gap-4 flex flex-col justify-center items-center w-full">
           <Button
             as={Link}
             href="/eventstation"
             variant="bordered"
-            className="rounded border-2 border-secondary py-2.5 px-24 text-base text-white mb-4 w-64"
+            className="w-64"
           >
             Start Photobooth Loop
           </Button>
-          <Button
-            as={Link}
-            href="/gallery"
-            variant="bordered"
-            className="rounded border-2 border-secondary py-2.5 px-24 text-base text-white w-64"
-          >
+          <Button as={Link} href="/gallery" variant="bordered" className="w-64">
             Gallery
           </Button>
         </div>
